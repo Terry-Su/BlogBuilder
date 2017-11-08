@@ -1,3 +1,9 @@
+# bundle
+bundle.js
+
+# map
+*.map
+
 # Logs
 logs
 *.log
