@@ -6,18 +6,18 @@ const rimraf = require( "rimraf" )
 const sourcemaps = require( 'gulp-sourcemaps' )
 
 const buildPathStr = 'build'
-const buildPath = PATH.resolve( __dirname, buildPathStr )
+const buildPath = PATH.resolve( __dirname, `./server/${ buildPathStr }` )
 const srcOtherFilesGlobs = [
 	// 'src/**/*.json',
 	// 'src/**/\.*/*.json',
-	'src/**/*',
-	'src/**/\.*/*',
-	// '!src/**/*.ts'
+	'server/src/**/*',
+	'server/src/**/\.*/*',
+	'!server/src/**/*.ts'
 ]
 // const watchingSrcGlob = srcOtherFilesGlobs
 const watchingSrcGlob = [
-	'src/**/*',
-	'src/**/\.*/*',
+	'server/src/**/*',
+	'server/src/**/\.*/*',
 ]
 
 let watcher = undefined
@@ -36,21 +36,21 @@ function asyncMainTs() {
 		.pipe( tsProject() ).js
 		.pipe( sourcemaps.write( '.', {
 			sourceRoot: function( file ) {
-					return file.cwd + '/src'
+					return PATH.resolve( file.cwd, './server/src' )
 			}
 		} ) )
-		.pipe( gulp.dest( 'build' ) )
+		.pipe( gulp.dest( buildPath ) )
 }
 
 function asyncMainOther() {
 	return gulp.src( srcOtherFilesGlobs )
-		.pipe( gulp.dest( buildPathStr ) )
+		.pipe( gulp.dest( buildPath ) )
 }
 
 function main() {
 	try {
 		// deleteBuild().then( () => {
-			// asyncMainOther()
+			asyncMainOther()
 			asyncMainTs()
 		// } )
 	} catch (e) {
