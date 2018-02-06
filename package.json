@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "c1": "npm run s1 | webpack --watch --config client/webpack.config.nav.js",
-    "c2": "npm run s2 | webpack --watch --config client/webpack.config.detail.js",
-    "s1": "browser-sync start --config client/server.config.nav.js",
-    "s2": "browser-sync start --config client/server.config.detail.js"
+    "c1": "npm run sc1 | webpack --watch --config client/webpack.config.nav.js",
+    "c2": "npm run sc2 | webpack --watch --config client/webpack.config.detail.js",
+    "sc1": "browser-sync start --config client/server.config.nav.js",
+    "sc2": "browser-sync start --config client/server.config.detail.js",
+    "server": "gulp --gulpfile server/gulpfile.js"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,8 @@
     "eslint": "^4.17.0",
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.6.1",
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^3.2.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "ts-loader": "^3.4.0",
