@@ -6,17 +6,17 @@ import {
 } from "./interface/index"
 import {
   getBlogPropComputed,
-  getOutputSomeRelativeUrlsPath
+  getOutputNewestRelativeUrlsPath
 } from "./store/index"
 import { outputJSONSync } from "fs-extra"
 import { slice } from "lodash"
 
 export default function( blogsOriginInfo: BlogOriginInfo[], output: Path ) {
-  const urls: BlogRelativeUrl[] = getSomeRelativeUrls( blogsOriginInfo )
-  const path = getOutputSomeRelativeUrlsPath( output )
+  const urls: BlogRelativeUrl[] = getNewestRelativeUrls( blogsOriginInfo )
+  const path = getOutputNewestRelativeUrlsPath( output )
   outputJSONSync( path, urls )
 
-  function getSomeRelativeUrls(
+  function getNewestRelativeUrls(
     blogsOriginInfo: BlogOriginInfo[]
   ): BlogRelativeUrl[] {
     const allUrls: BlogRelativeUrl[] = blogsOriginInfo.map( getUrl )

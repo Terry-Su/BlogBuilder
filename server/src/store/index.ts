@@ -14,7 +14,7 @@ import isHourNameValid from "../util/isHourNameValid"
 import isMinuteNameValid from "../util/isMinuteNameValid"
 import isNotNil from "../util/isNotNil"
 import * as PATH from "path"
-import { EXT_HTML, OUTPUT_FOLDER_CATEGORY, OUTPUT_FOLDER_TAG, OUTPUT_FOLDER_SCRIPT, SOME } from './constant';
+import { EXT_HTML, OUTPUT_FOLDER_CATEGORY, OUTPUT_FOLDER_TAG, OUTPUT_FOLDER_SCRIPT, NEWEST } from './constant';
 import pathReplaceExt from "../util/pathReplaceExt"
 
 export function getBlogPropComputed(
@@ -138,6 +138,6 @@ export function getOutputHomeHtmlPath( output: Path ) {
   return PATH.resolve( output, `./index.html` )
 }
 
-export function getOutputSomeRelativeUrlsPath( output: Path ) {
-  return PATH.resolve( output, `./${ SOME }.json` )
+export function getOutputNewestRelativeUrlsPath( output: Path ) {
+  return PATH.resolve( output, `./${ NEWEST }.json` )
 }
