@@ -14,7 +14,6 @@ import { isArray, isString, uniq, isNil, mapValues } from 'lodash';
 import isNotNil from "./util/isNotNil";
 import setUniqArrayValueOfPlainObject from "./util/setUniqArrayValueOfPlainObject";
 import * as PATH from 'path';
-import { CATEGORY } from './store/constant';
 import { outputJSONSync } from "fs-extra";
 
 const { keys } = Object

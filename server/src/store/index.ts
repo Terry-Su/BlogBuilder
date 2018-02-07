@@ -14,7 +14,7 @@ import isHourNameValid from "../util/isHourNameValid"
 import isMinuteNameValid from "../util/isMinuteNameValid"
 import isNotNil from "../util/isNotNil"
 import * as PATH from "path"
-import { EXT_HTML, CATEGORY, TAG } from "./constant"
+import { EXT_HTML, OUTPUT_FOLDER_CATEGORY, OUTPUT_FOLDER_TAG, OUTPUT_FOLDER_SCRIPT } from './constant';
 import pathReplaceExt from "../util/pathReplaceExt"
 
 export function getBlogPropComputed(
@@ -114,18 +114,22 @@ export function getBlogRelativeUrl( blogPath: Path ) {
 }
 
 export function getOutputCategoryJsonPath( output: Path ) {
-  return PATH.resolve( output, `./${CATEGORY}.json` )
+  return PATH.resolve( output, `./${OUTPUT_FOLDER_CATEGORY}.json` )
 }
 
 
 export function getOutputTagJsonPath( output: Path ) {
-  return PATH.resolve( output, `./${TAG}.json` )
+  return PATH.resolve( output, `./${OUTPUT_FOLDER_TAG}.json` )
 }
 
 export function getOutputCategoryChunksJsonPath( name: string, output: Path ) {
-  return PATH.resolve( output, `./${CATEGORY}/${ name }.json` )
+  return PATH.resolve( output, `./${OUTPUT_FOLDER_CATEGORY}/${ name }.json` )
 }
 
 export function getOutputTagChunksJsonPath( name: string, output: Path ) {
-  return PATH.resolve( output, `./${TAG}/${ name }.json` )
+  return PATH.resolve( output, `./${OUTPUT_FOLDER_TAG}/${ name }.json` )
+}
+
+export function getOutputScriptPath( scriptFileName: string, output: Path ) {
+  return PATH.resolve( output, `./${OUTPUT_FOLDER_SCRIPT}/${ scriptFileName }` )
 }
