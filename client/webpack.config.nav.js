@@ -18,31 +18,31 @@ module.exports = {
   plugins: [
     new CopyWebpackPlugin( [
       {
-        from: PATH.resolve( __dirname, './src/nav/static/index.html' ),
+        from: PATH.resolve( __dirname, './src/nav/index.html' ),
         to: PATH.resolve( __dirname, './build/nav/index.html' ),
       },
       {
-        from: PATH.resolve( __dirname, './src/nav/static/category' ),
+        from: PATH.resolve( __dirname, './src/shared/static/category' ),
         to: PATH.resolve( __dirname, './build/nav/category' ),
       },
       {
-        from: PATH.resolve( __dirname, './src/nav/static/tag' ),
+        from: PATH.resolve( __dirname, './src/shared/static/tag' ),
         to: PATH.resolve( __dirname, './build/nav/tag' ),
       },
       {
-        from: PATH.resolve( __dirname, './src/nav/static/2018' ),
+        from: PATH.resolve( __dirname, './src/shared/static/2018' ),
         to: PATH.resolve( __dirname, './build/nav/2018' ),
       },
       {
-        from: PATH.resolve( __dirname, './src/nav/static/category.json' ),
+        from: PATH.resolve( __dirname, './src/shared/static/category.json' ),
         to: PATH.resolve( __dirname, './build/nav/category.json' ),
       },
       {
-        from: PATH.resolve( __dirname, './src/nav/static/tag.json' ),
+        from: PATH.resolve( __dirname, './src/shared/static/tag.json' ),
         to: PATH.resolve( __dirname, './build/nav/tag.json' ),
       },
       {
-        from: PATH.resolve( __dirname, './src/nav/static/newest.json' ),
+        from: PATH.resolve( __dirname, './src/shared/static/newest.json' ),
         to: PATH.resolve( __dirname, './build/nav/newest.json' ),
       },
       
