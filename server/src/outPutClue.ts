@@ -39,7 +39,7 @@ export default function( blogsOriginInfo: BlogOriginInfo[], output: Path ) {
 
     return clue
 
-    function setClue( blogOriginInfo: any ) {
+    function setClue( blogOriginInfo: BlogOriginInfo ) {
       const blogPropComputed: BlogPropComputed = getBlogPropComputed(
         blogOriginInfo
       )
