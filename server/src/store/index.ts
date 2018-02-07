@@ -113,11 +113,19 @@ export function getBlogRelativeUrl( blogPath: Path ) {
   return relativeUrl
 }
 
+export function getOutputCategoryJsonPath( output: Path ) {
+  return PATH.resolve( output, `./${CATEGORY}.json` )
+}
 
-export function getOutputCategoryJsonPath( name: string, output: Path ) {
+
+export function getOutputTagJsonPath( output: Path ) {
+  return PATH.resolve( output, `./${TAG}.json` )
+}
+
+export function getOutputCategoryChunksJsonPath( name: string, output: Path ) {
   return PATH.resolve( output, `./${CATEGORY}/${ name }.json` )
 }
 
-export function getOutputTagJsonPath( name: string, output: Path ) {
+export function getOutputTagChunksJsonPath( name: string, output: Path ) {
   return PATH.resolve( output, `./${TAG}/${ name }.json` )
 }

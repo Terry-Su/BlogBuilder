@@ -9,7 +9,7 @@ import {
 } from "./interface/index"
 import readFileJson from "./util/readFileJson"
 import { defaultBlogProp } from "./store/initialState"
-import { getBlogPropComputed, getOutputCategoryJsonPath, getOutputTagJsonPath } from './store/index';
+import { getBlogPropComputed, getOutputCategoryChunksJsonPath, getOutputTagChunksJsonPath, getOutputCategoryJsonPath, getOutputTagJsonPath } from './store/index';
 import { isArray, isString, uniq, isNil, mapValues } from 'lodash';
 import isNotNil from "./util/isNotNil";
 import setUniqArrayValueOfPlainObject from "./util/setUniqArrayValueOfPlainObject";
@@ -17,11 +17,15 @@ import * as PATH from 'path';
 import { CATEGORY } from './store/constant';
 import { outputJSONSync } from "fs-extra";
 
+const { keys } = Object
+
 export default function( blogsOriginInfo: BlogOriginInfo[], output: Path ) {
   const clue: Clue = getClue( blogsOriginInfo )
 
   outputCategory( clue.category, output )
   outputTag( clue.tag, output )
+  outputCategoryChunks( clue.category, output )
+  outputTagChunks( clue.tag, output )
 
   function getClue( blogsOriginInfo: BlogOriginInfo[] ): Clue {
     let clueCategory: ClueCategory = {}
@@ -76,19 +80,32 @@ export default function( blogsOriginInfo: BlogOriginInfo[], output: Path ) {
   }
 
   function outputCategory( clueCategory: ClueCategory, output: Path ) {
+    const json = keys( clueCategory )
+    const path = getOutputCategoryJsonPath( output )
+    outputJSONSync( path, json )
+  }
+
+  function outputTag( clueTag: ClueCategory, output: Path ) {
+    const json = keys( clueTag )
+    const path = getOutputTagJsonPath( output )
+    outputJSONSync( path, json )
+  }
+  
+
+  function outputCategoryChunks( clueCategory: ClueCategory, output: Path ) {
     mapValues( clueCategory, outputJson )
 
     function outputJson( json: string[], key: string ) {
-      const path = getOutputCategoryJsonPath( key, output )
+      const path = getOutputCategoryChunksJsonPath( key, output )
       outputJSONSync( path, json )
     }
   }
 
-  function outputTag( clueTag: ClueTag, output: Path ) {
+  function outputTagChunks( clueTag: ClueTag, output: Path ) {
     mapValues( clueTag, outputJson )
 
     function outputJson( json: string[], key: string ) {
-      const path = getOutputTagJsonPath( key, output )
+      const path = getOutputTagChunksJsonPath( key, output )
       outputJSONSync( path, json )
     }
   }
