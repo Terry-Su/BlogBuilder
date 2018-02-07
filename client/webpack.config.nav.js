@@ -2,7 +2,7 @@ const PATH = require( "path" )
 const CopyWebpackPlugin = require( "copy-webpack-plugin" )
 const configShared = require( './webpack.config.shared.js' )
 
-const { module: sharedModule } = configShared
+const { module: sharedModule, resolve: sharedResolve } = configShared
 
 
 module.exports = {
@@ -14,12 +14,34 @@ module.exports = {
     filename: '[name]'
   },
   module: sharedModule,
+  resolve: sharedResolve,
   plugins: [
     new CopyWebpackPlugin( [
       {
-        from: PATH.resolve( __dirname, './src/nav/index.html' ),
+        from: PATH.resolve( __dirname, './src/nav/static/index.html' ),
         to: PATH.resolve( __dirname, './build/nav/index.html' ),
       },
+      {
+        from: PATH.resolve( __dirname, './src/nav/static/category' ),
+        to: PATH.resolve( __dirname, './build/nav/category' ),
+      },
+      {
+        from: PATH.resolve( __dirname, './src/nav/static/tag' ),
+        to: PATH.resolve( __dirname, './build/nav/tag' ),
+      },
+      {
+        from: PATH.resolve( __dirname, './src/nav/static/2018' ),
+        to: PATH.resolve( __dirname, './build/nav/2018' ),
+      },
+      {
+        from: PATH.resolve( __dirname, './src/nav/static/category.json' ),
+        to: PATH.resolve( __dirname, './build/nav/category.json' ),
+      },
+      {
+        from: PATH.resolve( __dirname, './src/nav/static/tag.json' ),
+        to: PATH.resolve( __dirname, './build/nav/tag.json' ),
+      },
+      
     ] )
   ]
 }

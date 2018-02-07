@@ -1,8 +1,8 @@
 import { Path } from './interface/index';
 import getBlogsOriginInfo from './getBlogsOriginInfo';
 import { BlogOriginInfo } from './interface/index';
-import outPutDetailPage from './outPutDetailPage';
-import outPutClue from './outPutClue';
+import outputDetailPage from './outputDetailPage';
+import outputClue from './outputClue';
 import outputClientScripts from './outputClientScripts';
 import outputClientHomeHtml from './outputClientHomeHtml';
 
@@ -10,9 +10,9 @@ import outputClientHomeHtml from './outputClientHomeHtml';
 export default function ( root: Path, output: Path ) {
    const blogsOriginInfo: BlogOriginInfo[] =  getBlogsOriginInfo( root )
 
-   blogsOriginInfo.map( outPutDetailPage( output ) )
+   blogsOriginInfo.map( outputDetailPage( output ) )
 
-   outPutClue( blogsOriginInfo, output )
+   outputClue( blogsOriginInfo, output )
 
    outputClientScripts( output )
    outputClientHomeHtml( output )

@@ -2,7 +2,7 @@ const PATH = require( "path" )
 const CopyWebpackPlugin = require( "copy-webpack-plugin" )
 const configShared = require( './webpack.config.shared.js' )
 
-const { module: sharedModule } = configShared
+const { module: sharedModule, resolve: sharedResolve } = configShared
 
 
 module.exports = {
@@ -14,6 +14,7 @@ module.exports = {
     filename: '[name]'
   },
   module: sharedModule,
+  resolve: sharedResolve,
   plugins: [
     new CopyWebpackPlugin( [
       {
