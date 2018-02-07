@@ -9,7 +9,8 @@ import pathReplaceExt from './util/pathReplaceExt';
 
 const { outputFileSync } = FS
 
-export default function ( blogOriginInfo: BlogOriginInfo, output: Path ) {
+export default function ( output: Path ) {
+  return function ( blogOriginInfo: BlogOriginInfo ) {
     const {
       blogPath
     }: {
@@ -29,6 +30,7 @@ export default function ( blogOriginInfo: BlogOriginInfo, output: Path ) {
       const htmlPath = pathReplaceExt( markdownPath, EXT_HTML )
       return htmlPath
     }
+}
 }
  
 
