@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import { render } from "react-dom"
 import axios from "axios"
+import Newest from './Newest';
+import Category from './Category';
 import {
   fetchCategory,
   fetchTag,
@@ -23,22 +25,8 @@ class App extends Component {
 
     return (
       <div>
-        <div>
-          {` Category: `}
-          {category.map((item, index) => (
-            <div key={index}>
-              <h5>{ item }</h5>
-
-            </div>
-          ))}
-        </div>
-
-        {/* <div>
-          {` Tag: `}
-          {this.state.tag.map((item, index) => (
-            <span key={index}>{`${item} `}</span>
-          ))}
-        </div> */}
+        <Newest />
+        <Category />
       </div>
     )
   }

@@ -41,6 +41,10 @@ module.exports = {
         from: PATH.resolve( __dirname, './src/nav/static/tag.json' ),
         to: PATH.resolve( __dirname, './build/nav/tag.json' ),
       },
+      {
+        from: PATH.resolve( __dirname, './src/nav/static/newest.json' ),
+        to: PATH.resolve( __dirname, './build/nav/newest.json' ),
+      },
       
     ] )
   ]
