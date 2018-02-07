@@ -138,6 +138,6 @@ export function getOutputHomeHtmlPath( output: Path ) {
   return PATH.resolve( output, `./index.html` )
 }
 
-export function getOutputNewestRelativeUrlsPath( output: Path ) {
+export function getOutputNewestBlogsInfoPath( output: Path ) {
   return PATH.resolve( output, `./${ NEWEST }.json` )
 }

@@ -5,7 +5,7 @@ import outputDetailPage from './outputDetailPage';
 import outputClue from './outputClue';
 import outputClientScripts from './outputClientScripts';
 import outputClientHomeHtml from './outputClientHomeHtml';
-import outputNewestRelativeUrls from './outputNewestRelativeUrls';
+import outputNewestBlogsInfo from './outputNewestBlogsInfo';
 
 
 export default function ( root: Path, output: Path ) {
@@ -17,5 +17,5 @@ export default function ( root: Path, output: Path ) {
 
    outputClientScripts( output )
    outputClientHomeHtml( output )
-   outputNewestRelativeUrls( blogsOriginInfo, output )
+   outputNewestBlogsInfo( blogsOriginInfo, output )
 }

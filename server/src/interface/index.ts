@@ -25,6 +25,8 @@ export type BlogPropComputed = {
   tag: string | string[],
 }
 
+export type BlogInfo = {}
+
 export type ClueCategory = {
   [index: string]: BlogRelativeUrl[]
 }

@@ -2,12 +2,12 @@ import React, { Component } from "react"
 import { asyncGetNewest, getUrlByRelativeUrl } from "../shared/store/index"
 
 type State = {
-  urls: string[]
+  blogsInfo: string[]
 }
 
 export default class Category extends Component {
   state: State = {
-    urls: []
+    blogsInfo: []
   }
 
   componentDidMount() {
@@ -17,34 +17,38 @@ export default class Category extends Component {
 
     function setData(data) {
       self.setState({
-        urls: data
+        blogsInfo: data
       })
     }
   }
 
-  handleUrlClick = url => () => {
+  handleTitleClick = url => () => {
     const urlToJump: string = getUrlByRelativeUrl(url)
+
+    console.log( url )
+
     window.location.href = urlToJump
   }
 
   render() {
     const self = this
-    const { urls } = this.state
+    const { blogsInfo } = this.state
 
     return (
       <div>
         <h2>The Newest</h2>
-        {getUrlsComponents(urls)}
+        {getComponents(blogsInfo)}
       </div>
     )
 
-    function getUrlsComponents(urls) {
-      return urls.map(resolve)
+    function getComponents(blogsInfo) {
+      return blogsInfo.map(resolve)
 
-      function resolve(url: string, index: number) {
+      function resolve(blogInfo: any, index: number) {
+        const { name, relativeUrl } = blogInfo        
         return (
-          <h6 key={index} onClick={self.handleUrlClick(url)}>
-            {url}
+          <h6 key={index} onClick={self.handleTitleClick( relativeUrl )}>
+            {name}
           </h6>
         )
       }
