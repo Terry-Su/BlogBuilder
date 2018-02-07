@@ -6,6 +6,7 @@ import { BlogOriginInfo, Path } from './interface/index';
 import pathSrcToBuild from './util/pathSrcToBuild';
 import { EXT_HTML } from './store/constant';
 import pathReplaceExt from './util/pathReplaceExt';
+import checkIfSameHtml from './checkIfSameHtml'
 
 const { outputFileSync } = FS
 
@@ -22,7 +23,12 @@ export default function ( output: Path ) {
 
     const outputBlogPath: Path = getOutputBlogPath( blogPath, output ) 
 
-    outputFileSync( outputBlogPath, html )
+    /**
+     * Output html only when html changes
+     */
+    if ( !checkIfSameHtml( html,outputBlogPath ) ) {
+      outputFileSync( outputBlogPath, html )
+    }
 
     function getOutputBlogPath( blogPath: Path, output: Path ): Path {
       const src = PATH.resolve( blogPath, '../../../' )
