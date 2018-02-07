@@ -7,7 +7,7 @@ import {
 } from "../interface/index"
 import readFileJson from "../util/readFileJson"
 import { defaultBlogProp } from "./initialState"
-import { isNil } from "lodash"
+import { isNil, cloneDeep } from "lodash"
 import getFileNameWithoutExt from "../util/getFileNameWithoutExt"
 import isNumberString from "../util/isNumberString"
 import isHourNameValid from "../util/isHourNameValid"
@@ -39,7 +39,7 @@ export function getBlogPropComputed(
     blogPath: Path,
     date: Date
   ): BlogPropComputed {
-    let transitionalProp: BlogProp = Object.assign( defaultBlogProp, prop )
+    let transitionalProp: BlogProp = Object.assign( cloneDeep( defaultBlogProp ) , prop )
 
     const timeStr = transitionalProp.time
 

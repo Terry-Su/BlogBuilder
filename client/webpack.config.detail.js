@@ -7,7 +7,7 @@ const { module: sharedModule } = configShared
 
 module.exports = {
   entry: {
-    'detail/detail.bundle.js': PATH.resolve( __dirname, './src/detail/app.tsx' ),
+    'detail/script/detail.bundle.js': PATH.resolve( __dirname, './src/detail/app.tsx' ),
   },
   output: {
     path: PATH.resolve( __dirname, './build' ),

@@ -1,4 +1,4 @@
-const build = require( '../server/build/index' )
+const { default: build } = require( '../server/build/index' )
 
 
 /**

@@ -7,7 +7,7 @@ const { module: sharedModule } = configShared
 
 module.exports = {
   entry: {
-    'nav/nav.bundle.js': PATH.resolve( __dirname, './src/nav/app.tsx' ),
+    'nav/script/nav.bundle.js': PATH.resolve( __dirname, './src/nav/app.tsx' ),
   },
   output: {
     path: PATH.resolve( __dirname, './build' ),

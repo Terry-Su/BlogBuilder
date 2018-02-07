@@ -17,7 +17,7 @@ export default function getJsonByPath( path: string ) {
 			res = potentialJson
 		}
 	} catch ( e ) {
-		console.log( e )
+		// console.log( e )
 	}
 
 	return res

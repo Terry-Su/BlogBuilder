@@ -9,7 +9,8 @@
     "sc1": "browser-sync start --config client/server.config.nav.js",
     "sc2": "browser-sync start --config client/server.config.detail.js",
     "server": "gulp",
-    "test": "jasmine"
+    "test": "node spec/jasmineEntry",
+    "testMain": "jasmine main/__test__/index/index.spec.js"
   },
   "repository": {
     "type": "git",

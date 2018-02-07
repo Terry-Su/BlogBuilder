@@ -9,7 +9,7 @@
 			"request": "launch",
 			"name": "Server - Jasmine Individual Test",
 			"cwd": "${workspaceRoot}",
-			"program": "${workspaceFolder}/server/spec/runnerForVscodeDebugger.js",
+			"program": "${workspaceFolder}/spec/jasmineEntry.js",
 			"outFiles": [
 				"${workspaceRoot}/server/build/**/*.js"
 			],
