@@ -4,6 +4,7 @@ import { BlogOriginInfo } from './interface/index';
 import outPutDetailPage from './outPutDetailPage';
 import outPutClue from './outPutClue';
 import outputClientScripts from './outputClientScripts';
+import outputClientHomeHtml from './outputClientHomeHtml';
 
 
 export default function ( root: Path, output: Path ) {
@@ -14,4 +15,5 @@ export default function ( root: Path, output: Path ) {
    outPutClue( blogsOriginInfo, output )
 
    outputClientScripts( output )
+   outputClientHomeHtml( output )
 }

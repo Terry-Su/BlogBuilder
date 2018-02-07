@@ -133,3 +133,7 @@ export function getOutputTagChunksJsonPath( name: string, output: Path ) {
 export function getOutputScriptPath( scriptFileName: string, output: Path ) {
   return PATH.resolve( output, `./${OUTPUT_FOLDER_SCRIPT}/${ scriptFileName }` )
 }
+
+export function getOutputHomeHtmlPath( output: Path ) {
+  return PATH.resolve( output, `./index.html` )
+}
