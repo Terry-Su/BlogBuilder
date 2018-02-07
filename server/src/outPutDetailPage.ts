@@ -1,12 +1,11 @@
 import * as PATH from 'path'
-import * as marked from 'marked'
-import readFileText from './util/readFileText';
 import * as FS from 'fs-extra';
 import { BlogOriginInfo, Path } from './interface/index';
 import pathSrcToBuild from './util/pathSrcToBuild';
 import { EXT_HTML } from './store/constant';
 import pathReplaceExt from './util/pathReplaceExt';
 import checkIfSameHtml from './checkIfSameHtml'
+import composeDetailPage from './composeDetailPage';
 
 const { outputFileSync } = FS
 
@@ -18,8 +17,7 @@ export default function ( output: Path ) {
       blogPath: Path
     } = blogOriginInfo
 
-    const markdownText = readFileText( blogPath )
-    const html: string = marked( markdownText )
+    const html: string = composeDetailPage( blogOriginInfo )
 
     const outputBlogPath: Path = getOutputBlogPath( blogPath, output ) 
 
