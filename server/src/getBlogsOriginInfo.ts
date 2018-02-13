@@ -1,9 +1,8 @@
 import { Path, BlogOriginInfo } from "./interface/index"
 import isNotNil from "./util/isNotNil"
-import * as PATH from 'path'
-import { EXT_MARKDOWN, EXT_JSON } from "./store/constant";
+import * as PATH from "path"
+import { EXT_MARKDOWN, EXT_JSON } from "./store/constant"
 const dirTree = require( "directory-tree" )
-
 
 export default function( root: Path ): BlogOriginInfo[] {
   let res: BlogOriginInfo[] = []
@@ -40,17 +39,19 @@ export default function( root: Path ): BlogOriginInfo[] {
       }: { path: Path; name: string } = dayInfo
 
       if ( isDayNameValid( dayName ) ) {
-        const date: Date = getDate( yearName, dayName )
         const blogPath: Path = getBlogPath( dayPath )
         const blogPropPath: Path = getBlogPropPath( dayPath )
 
-        const blogOriginInfo: BlogOriginInfo = {
-          date,
-          blogPath,
-          blogPropPath
-        }
+        if ( isNotNil( blogPath ) && isNotNil( blogPropPath ) ) {
+          const date: Date = getDate( yearName, dayName )
+          const blogOriginInfo: BlogOriginInfo = {
+            date,
+            blogPath,
+            blogPropPath
+          }
 
-        res.push( blogOriginInfo )
+          res.push( blogOriginInfo )
+        }
       }
     }
   }
@@ -76,21 +77,37 @@ export default function( root: Path ): BlogOriginInfo[] {
   function getBlogFilePath( dayPath: Path, extName: string ): Path {
     let res: Path
     const dayPathDirTreeEd = dirTree( dayPath )
-    
+
     if ( isNotNil( dayPathDirTreeEd ) ) {
-      const filesInfo: any[] = dayPathDirTreeEd.children
-      filesInfo.map( resolveFileInfo )
+      const dirsInfo: any[] = dayPathDirTreeEd.children
+
+      dirsInfo.filter( isDirectoryInfo ).map( resolveDirInfo )
     }
-    
+
     return res
 
+    function resolveDirInfo( { path: dirPath }: any ) {
+      const dirPathDirTreeEd: any = dirTree( dirPath )
+
+      if ( isNotNil( dirPathDirTreeEd ) ) {
+        const filesInfo: any[] = dirPathDirTreeEd.children
+
+        filesInfo.map( resolveFileInfo )
+      }
+    }
+
     function resolveFileInfo( fileInfo: any ) {
-      const { name, path }: { name: string, path: Path } = fileInfo
+      const { name, path }: { name: string; path: Path } = fileInfo
       const extNameToCompare = PATH.extname( path )
       if ( extNameToCompare === extName ) {
         res = path
       }
     }
+  }
+
+  function isDirectoryInfo( potentialDirectoryInfo: any ) {
+    const res = potentialDirectoryInfo[ "type" ] === "directory"
+    return res
   }
 
   function isYearNameValid( yearName: string ) {
