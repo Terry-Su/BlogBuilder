@@ -12,7 +12,7 @@ const serverConfig = {
     baseDir: output
   },
   files: [ `${output}/**` ],
-  open : true,
+  open : false,
   port : 3900
 }
 

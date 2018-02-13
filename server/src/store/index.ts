@@ -107,7 +107,7 @@ export function getBlogPropComputed(
 }
 
 export function getBlogRelativeUrl( blogPath: Path ) {
-  const src = PATH.resolve( blogPath, "../../../" )
+  const src = PATH.resolve( blogPath, "../../../../" )
   const relative: string = PATH.relative( src, blogPath )
   const relativeUrl = pathReplaceExt( relative, EXT_HTML )
   return relativeUrl

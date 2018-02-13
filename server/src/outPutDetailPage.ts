@@ -29,7 +29,7 @@ export default function ( output: Path ) {
     }
 
     function getOutputBlogPath( blogPath: Path, output: Path ): Path {
-      const src = PATH.resolve( blogPath, '../../../' )
+      const src = PATH.resolve( blogPath, '../../../../' )
       const markdownPath: Path = pathSrcToBuild( blogPath, src, output )
       const htmlPath = pathReplaceExt( markdownPath, EXT_HTML )
       return htmlPath
