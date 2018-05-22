@@ -4,11 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "c1": "npm run sc1 | webpack --watch --config client/webpack.config.nav.js",
-    "c2": "npm run sc2 | webpack --watch --config client/webpack.config.detail.js",
-    "sc1": "browser-sync start --config client/server.config.nav.js",
-    "sc2": "browser-sync start --config client/server.config.detail.js",
-    "server": "gulp",
+    "start": "node client/buildStaticAndServer.js | webpack --watch --config client/webpack.config.js",
+    "bs": "gulp",
     "test": "node spec/jasmineEntry",
     "testMain": "jasmine main/__test__/index/index.spec.js"
   },
