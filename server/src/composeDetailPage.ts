@@ -23,9 +23,6 @@ export default function ( blogOriginInfo: BlogOriginInfo ): string {
     <title>${ name }</title>
   </head>
   <body>
-    <div>
-      Catalog
-    </div>
     ${ markdownHtml }
   </body>
   </html>

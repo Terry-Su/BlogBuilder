@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { asyncGetCategories, asyncGetCategoryChunk } from '../shared/store/index';
+import { asyncGetCategories, asyncGetCategoryChunk, getUrlByRelativeUrl } from '../shared/store/index';
 
 type State = {
   categories: string[]
@@ -26,7 +26,11 @@ export default class Category extends Component {
     asyncGetCategoryChunk( category ).then( resolve )
 
     function resolve( url: string ) {
-      console.log( url )
+      const jumpingUrl: string = getUrlByRelativeUrl(url)
+      console.log( jumpingUrl )
+
+      window.location.href = jumpingUrl
+      
     }
   }
 

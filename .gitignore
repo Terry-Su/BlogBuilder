@@ -1,6 +1,7 @@
 # build
 build
 dist
+publish
 
 
 # Dependecies
@@ -14,3 +15,4 @@ node_modules
 
 # System files
 .DS_Store
+

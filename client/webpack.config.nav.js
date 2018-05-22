@@ -18,6 +18,10 @@ module.exports = {
   plugins: [
     new CopyWebpackPlugin( [
       {
+        from: PATH.resolve( __dirname, './build/detail/script/detail.bundle.js' ),
+        to: PATH.resolve( __dirname, './build/nav/script/detail.bundle.js' ),
+      },
+      {
         from: PATH.resolve( __dirname, './src/nav/index.html' ),
         to: PATH.resolve( __dirname, './build/nav/index.html' ),
       },

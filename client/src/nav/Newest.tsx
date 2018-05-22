@@ -23,11 +23,11 @@ export default class Category extends Component {
   }
 
   handleTitleClick = url => () => {
-    const urlToJump: string = getUrlByRelativeUrl(url)
+    const jumpingUrl: string = getUrlByRelativeUrl(url)
 
     console.log( url )
 
-    window.location.href = urlToJump
+    window.location.href = jumpingUrl
   }
 
   render() {
