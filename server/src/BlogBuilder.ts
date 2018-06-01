@@ -6,10 +6,20 @@ export default class BlogBuilder {
   mutations: Mutations
   actions: Actions
 
-  constructor() {
+  constructor( root: Path, output: Path ) {
     this.store = new Store()    
     this.getters = new Getters( this.store )    
     this.mutations = new Mutations( this.getters )    
     this.actions = new Actions( this.mutations )    
+
+    const { mutations } = this
+
+    mutations.UPDATE_ROOT( root )
+    mutations.UPDATE_OUTPUT( output )
+
+  }
+
+  build() {
+    this.actions.build()
   }
 }

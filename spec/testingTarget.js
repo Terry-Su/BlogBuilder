@@ -7,14 +7,10 @@ module.exports = {
 		// "main/__test__/index/index.spec.js"
 
     /**
-     * Server index
+     * Server
      */
-    "server/build/__test__/index/index.spec.js"
-
-    /**
-     * Server - getBlogsOriginInfo
-     */
-		// "server/build/__test__/getBlogsOriginInfo/index.spec.js",
+		"server/build/__test__/getBlogsInfo/index.spec.js",    
+    // "server/build/__test__/index/index.spec.js"
 		
 		/**
 		 * All
