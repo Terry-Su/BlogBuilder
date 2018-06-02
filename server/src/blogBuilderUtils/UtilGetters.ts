@@ -10,21 +10,49 @@ import { notNil } from "../utils/lodash"
 import getFileNameWithoutItsExtension from "../utils/getFileNameWithoutItsExtension"
 import { BlogInfo } from "../../src_old/interface/index"
 import { BlogProps } from "../typings/BlogProps"
-import { NAME, CREATE_TIME, TAGS, NAME_PATH, INTRODUCTION, RELATIVE_URL } from '../constants/names';
-import * as FS from 'fs-extra';
-import { BLOG_INTRODUCTION_CHARS_COUNT } from '../constants/numbers';
-import * as PATH from 'path';
-import { CLIENT_CATEGORY_RELATIVE_PATH } from '../constants/path';
+import {
+  NAME,
+  CREATE_TIME,
+  TAGS,
+  NAME_PATH,
+  INTRODUCTION,
+  DOT_JSON
+} from "../constants/names"
+import * as FS from "fs-extra"
+import { BLOG_INTRODUCTION_CHARS_COUNT } from "../constants/numbers"
+import * as PATH from "path"
+import * as marked from "marked"
+import { CLIENT_CATEGORY_RELATIVE_PATH } from "../constants/path"
+import { UTF8 } from '../constants/names';
+import { ClientNavBlog } from "../typings/ClientNavBlog"
+import getBlogDetailHtml from "../constants/dynamic/getBlogDetailHtml";
 const dirTree = require( "directory-tree" )
-
 
 export default class UtilGetters {
   getClientCategoryJsonPath( upperDirectoryPath: string ): string {
     return PATH.resolve( upperDirectoryPath, CLIENT_CATEGORY_RELATIVE_PATH )
   }
 
+  getClientTagJsonFileName( tagName: string ) {
+    return `${tagName}${DOT_JSON}`
+  }
+
   getBlogIntroduction( blogPath: string ) {
-    const string: string = FS.readFileSync( blogPath, { encoding: 'utf8' } )
-    return notNil( string ) ? string.trim().substr( 0, BLOG_INTRODUCTION_CHARS_COUNT ): ''
+    const string: string = FS.readFileSync( blogPath, { encoding: UTF8 } )
+    return notNil( string ) ?
+      string.trim().substr( 0, BLOG_INTRODUCTION_CHARS_COUNT ) :
+      ""
+  }
+
+
+  getBlogDetailPageHtml( blog: BlogInfo ): string {
+    const { [ NAME_PATH ]: blogPath, [ NAME ]: blogName } = blog
+    const string = FS.readFileSync( blogPath, { encoding: UTF8 } )
+    if ( string ) {
+      const blogHtml = marked( string )
+
+      return getBlogDetailHtml( blogName, blogHtml )
+    }
+    return ""
   }
 }

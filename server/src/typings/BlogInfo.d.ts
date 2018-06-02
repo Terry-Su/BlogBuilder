@@ -1,4 +1,4 @@
-import { RELATIVE_URL } from "../constants/names"
+import { RELATIVE_CLIENT_URL } from '../constants/names';
 import {
   NAME,
   CREATE_TIME,
@@ -9,7 +9,7 @@ import {
 
 interface BlogInfo {
   [NAME_PATH]: string
-  [RELATIVE_URL]: string,
+  [RELATIVE_CLIENT_URL]: string,
   [NAME]: string
   [CREATE_TIME]: string
   [TAGS]: string[]
