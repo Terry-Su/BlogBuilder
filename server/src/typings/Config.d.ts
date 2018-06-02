@@ -1,6 +1,5 @@
-import { CONFIG_TOPDIRECTORYNAME, CONFIG_CLIENT_NEWEST_BLOGS_COUNT } from '../constants/fields';
-
+import { TOP_DIRECTORY_NAME, NAME_NEWEST_BLOGS_COUNT } from '../constants/names';
 interface Config {
-  [ CONFIG_TOPDIRECTORYNAME ]: string,
-  [ CONFIG_CLIENT_NEWEST_BLOGS_COUNT ]: number
+  [ TOP_DIRECTORY_NAME ]: string,
+  [ NAME_NEWEST_BLOGS_COUNT ]: number
 }

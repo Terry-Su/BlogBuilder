@@ -1,5 +1,9 @@
-import { CLIENT_CATEGORY_NAME, CLIENT_CATEGORY_CATEGORIES } from '../constants/fields';
-interface ClientCategory {
-  [ CLIENT_CATEGORY_NAME ]: string  
-  [ CLIENT_CATEGORY_CATEGORIES ]: ClientCategory[]
+import { NAME, BLOGS, CATEGORIES } from '../constants/names';
+import { BlogInfo } from '../../src_old/interface/index';
+import { ClientNavBlog } from './ClientNavBlog';
+
+interface Category {
+  [ NAME ]: string
+  [ BLOGS ]: ClientNavBlog[]
+  [ CATEGORIES ]: Category[]
 }

@@ -1,11 +1,8 @@
-import {
-  BLOG_PROPS_NAME,
-  BLOG_PROPS_CREATE_TIME,
-  BLOG_PROPS_TAGS
-} from "../constants/fields"
+import { NAME, CREATE_TIME, TAGS, INTRODUCTION } from '../constants/names';
 
 interface BlogProps {
-  [BLOG_PROPS_NAME]?: string
-  [BLOG_PROPS_CREATE_TIME]?: string
-  [BLOG_PROPS_TAGS]?: string[]
+  [NAME]?: string
+  [CREATE_TIME]?: string
+  [TAGS]?: string[],
+  [INTRODUCTION]?: string
 }

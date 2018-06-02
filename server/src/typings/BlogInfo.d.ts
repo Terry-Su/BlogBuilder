@@ -1,13 +1,17 @@
+import { RELATIVE_URL } from "../constants/names"
 import {
-  BLOG_INFO_PATH,
-  BLOG_INFO_NAME,
-  BLOG_INFO_CREATE_TIME,
-  BLOG_INFO_TAGS
-} from "../constants/fields"
+  NAME,
+  CREATE_TIME,
+  TAGS,
+  NAME_PATH,
+  INTRODUCTION
+} from "../constants/names"
 
 interface BlogInfo {
-  [BLOG_INFO_PATH]: Path
-  [BLOG_INFO_NAME]: string
-  [BLOG_INFO_CREATE_TIME]: string
-  [BLOG_INFO_TAGS]: string[]
+  [NAME_PATH]: string
+  [RELATIVE_URL]: string,
+  [NAME]: string
+  [CREATE_TIME]: string
+  [TAGS]: string[]
+  [INTRODUCTION]: string
 }

@@ -10,73 +10,21 @@ import { notNil } from "../utils/lodash"
 import getFileNameWithoutItsExtension from "../utils/getFileNameWithoutItsExtension"
 import { BlogInfo } from "../../src_old/interface/index"
 import { BlogProps } from "../typings/BlogProps"
-import { BLOG_PROPS_CREATE_TIME } from '../constants/fields';
-import {
-  BLOG_PROPS_TAGS,
-  BLOG_PROPS_NAME,
-  BLOG_INFO_PATH,
-  BLOG_INFO_NAME,
-  BLOG_INFO_CREATE_TIME,
-  BLOG_INFO_TAGS
-} from "../constants/fields"
+import { NAME, CREATE_TIME, TAGS, NAME_PATH, INTRODUCTION, RELATIVE_URL } from '../constants/names';
+import * as FS from 'fs-extra';
+import { BLOG_INTRODUCTION_CHARS_COUNT } from '../constants/numbers';
+import * as PATH from 'path';
+import { CLIENT_CATEGORY_RELATIVE_PATH } from '../constants/path';
 const dirTree = require( "directory-tree" )
 
-var Ajv = require( "ajv" )
-var ajv = new Ajv()
 
 export default class UtilGetters {
-  getBlogsInfo( path: string ): BlogInfo[] {
-    let res: BlogInfo[] = []
+  getClientCategoryJsonPath( upperDirectoryPath: string ): string {
+    return PATH.resolve( upperDirectoryPath, CLIENT_CATEGORY_RELATIVE_PATH )
+  }
 
-    resolveRoot( path )
-
-    return res
-
-    function resolveRoot( path: string ) {
-      const directoryInfo = dirTree( path )
-
-      if ( directoryInfo ) {
-        const { type } = directoryInfo
-        isDirectoryType( type ) && resolveDirectoryInfo( directoryInfo )
-      }
-    }
-
-    function resolveDirectoryInfo( directoryInfo: any ) {
-      const isTheBlogDirectoryInfo = isBlogDirectoryInfo( directoryInfo )
-
-      if ( isTheBlogDirectoryInfo ) {
-        const blogPropsFilePath: string = getBlogPropsFilePath( directoryInfo )
-        const potentialBlogProps: any = readJsonFromFile( blogPropsFilePath )
-
-        const isValid = ajv.validate( BLOG_PROPS_SCHEMA, potentialBlogProps )
-        if ( isValid ) {
-          const blogProps: BlogProps = potentialBlogProps
-          const blogPath: Path = getBlogFilePath( directoryInfo )
-
-          const name: string = notNil( blogProps[ BLOG_PROPS_NAME ] ) ?
-            blogProps[ BLOG_PROPS_NAME ] :
-            getFileNameWithoutItsExtension( blogPath )
-          const createTime: string = notNil( blogProps[ BLOG_PROPS_CREATE_TIME ] ) ?
-            blogProps[ BLOG_PROPS_CREATE_TIME ] :
-            null
-          const tags: string[] = notNil( blogProps[ BLOG_PROPS_TAGS ] ) ?
-            blogProps[ BLOG_PROPS_TAGS ] :
-            []
-
-          const blogInfo: BlogInfo = {
-            [ BLOG_INFO_PATH ]       : blogPath,
-            [ BLOG_INFO_NAME ]       : name,
-            [ BLOG_INFO_CREATE_TIME ]: createTime,
-            [ BLOG_INFO_TAGS ]       : tags
-          }
-
-          res.push( blogInfo )
-        }
-      }
-      if ( !isTheBlogDirectoryInfo ) {
-        const { children } = directoryInfo
-        children.filter( filterIsDirectoryType ).map( resolveDirectoryInfo )
-      }
-    }
+  getBlogIntroduction( blogPath: string ) {
+    const string: string = FS.readFileSync( blogPath, { encoding: 'utf8' } )
+    return notNil( string ) ? string.trim().substr( 0, BLOG_INTRODUCTION_CHARS_COUNT ): ''
   }
 }

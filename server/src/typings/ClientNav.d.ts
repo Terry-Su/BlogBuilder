@@ -1,9 +1,9 @@
-import { CLIENT_NAV_NEWEST_BLOGS, CLIENT_NAV_CATEGORY, CLIENT_NAV_TAGS } from '../constants/fields';
-import { ClientBlogOverview } from './ClientBlogOverview';
-import { ClientCategory } from './ClientCategory';
+import { ClientNavCategory } from './ClientNavCategory';
+import { NEWEST_BLOGS, CATEGORY, TAGS } from '../constants/names';
+import { ClientNavBlog } from './ClientNavBlog';
 
 interface ClientNav {
-  [ CLIENT_NAV_NEWEST_BLOGS ]: ClientBlogOverview[]
-  [ CLIENT_NAV_CATEGORY ]: ClientCategory,
-  [ CLIENT_NAV_TAGS ]: string[]
+  [ NEWEST_BLOGS ]: ClientNavBlog[]
+  [ CATEGORY ]: ClientNavCategory,
+  [ TAGS ]: string[]
 }

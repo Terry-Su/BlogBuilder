@@ -8,7 +8,7 @@ export default class BlogBuilder {
   actions: Actions
   utilGetters: UtilGetters
 
-  constructor( root: Path, output: Path ) {
+  constructor( root: string, output: string ) {
     this.store = new Store()    
     this.getters = new Getters( this.store, this )    
     this.mutations = new Mutations( this.getters )    

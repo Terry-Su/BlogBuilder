@@ -1,6 +1,6 @@
-import { CLIENT_BLOG_OVERVIEW_NAME, CLIENT_BLOG_OVERVIEW_CREATE_TIME } from '../constants/fields';
+import { NAME, CREATE_TIME } from '../constants/names';
 
 interface ClientBlogOverview {
-  [ CLIENT_BLOG_OVERVIEW_NAME ]: string
-  [ CLIENT_BLOG_OVERVIEW_CREATE_TIME ]: string
+  [ NAME ]: string
+  [ CREATE_TIME ]: string
 }
