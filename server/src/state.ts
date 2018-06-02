@@ -12,12 +12,42 @@ import getFileNameWithoutItsExtension from "./utils/getFileNameWithoutItsExtensi
 import BLOG_PROPS_SCHEMA from "./constants/schemas/BLOG_PROPS_SCHEMA"
 import readJsonFromFile from "./utils/readJsonFromFile"
 import { isValidDateString } from "./blogBuilderUtils/validate"
-import { isNil } from "lodash"
+import { isNil, cloneDeep, uniqWith, take } from "lodash"
 import { DEFAULT_CONFIG } from "./constants/default/index"
-import Category from '../../client/src/nav/Newest';
+import {
+  BLOGS,
+  CLIENT_NAV_NEWEST_BLOGS,
+  CLIENT_NAV_CATEGORY,
+  CLIENT_NAV_TAGS,
+  BLOG_INFO_PATH,
+  BLOG_INFO_CREATE_TIME,
+  BLOG_INFO_TAGS,
+  STORE_TAG_NAME,
+  STORE_CATEGORY_NAME,
+  CONFIG_TOPDIRECTORYNAME
+} from "./constants/fields"
+import BlogBuilder from "./BlogBuilder"
+import UtilGetters from "./blogBuilderUtils/UtilGetters"
+import { notEmpty, isEmpty } from "./utils/array"
+import { ClientNav } from "./typings/ClientNav"
+import { BlogInfo } from "../src_old/interface/index"
+import { Category, Tag } from "./typings/Store"
+import { ClientBlogOverview } from "./typings/ClientBlogOverview"
+import { Config } from "./typings/Config"
+import { ClientCategory } from "./typings/ClientCategory"
+import { CONFIG_CLIENT_NEWEST_BLOGS_COUNT, BLOG_INFO_NAME } from './constants/fields';
+import {
+  STORE_TAG_BLOGS,
+  STORE_CATEGORY_CATEGORIES,
+  STORE_CATEGORY_BLOGS
+} from "./constants/fields"
+import * as FS from 'fs-extra'
+import * as PATH from 'path';
+import { CLIENT_NAV_JSON_RELATIVE_PATH } from './constants/pathNames';
+import { outputJSONSync } from 'fs-extra';
+
+
 const dirTree = require( "directory-tree" )
-var Ajv = require( "ajv" )
-var ajv = new Ajv()
 
 export class Store {
   root: Path
@@ -29,48 +59,27 @@ export class Store {
 export class Getters {
   store: Store
 
-  constructor( store: Store ) {
+  blogBuilder: BlogBuilder
+
+  constructor( store: Store, blogBuilder: BlogBuilder ) {
     this.store = store
+    this.blogBuilder = blogBuilder
   }
 
-  get clientNav(): ClientNav {
-    const { newestBlogs, clientCategory } = this
-
-    return
+  get utilGetters(): UtilGetters {
+    return this.blogBuilder.utilGetters
   }
 
-  get newestBlogs(): ClientBlogOverview[] {
-    const { blogsInfo } = this.store
-
-    return blogsInfo
-      .map( ( { name, createTime } ) => ( {
-        name,
-        createTime
-      } ) )
-      .sort( sort )
-
-    function sort(
-      { createTime: timeString1 }: ClientBlogOverview,
-      { createTime: timeString2 }: ClientBlogOverview
-    ) {
-      if ( isValidDateString( timeString1 ) && isValidDateString( timeString2 ) ) {
-        const t1 = Date.parse( timeString1 )
-        const t2 = Date.parse( timeString2 )
-        return t1 - t2
-      }
-      return 0
-    }
-  }
-
-  get clientCategory(): Category {
+  get category(): Category {
     const { root, config, blogsInfo } = this.store
+    const { getBlogsInfo } = this.utilGetters
 
-    const { topDirectoryName } = config
+    const { [ CONFIG_TOPDIRECTORYNAME ]: topDirectoryName } = config
 
     let res: Category = {
-      name : topDirectoryName,
-      blogs: blogsInfo,
-      categories: []
+      [ STORE_CATEGORY_NAME ]      : topDirectoryName,
+      [ STORE_CATEGORY_BLOGS ]     : blogsInfo,
+      [ STORE_CATEGORY_CATEGORIES ]: []
     }
 
     resolveRoot( root )
@@ -82,8 +91,9 @@ export class Getters {
 
       if ( directoryInfo ) {
         const { type } = directoryInfo
-        const { categories: passingCategories } = res
-        isDirectoryType( type ) && resolveDirectoryInfo( directoryInfo, passingCategories )
+        const { [ STORE_CATEGORY_CATEGORIES ]: passingCategories } = res
+        isDirectoryType( type ) &&
+          resolveDirectoryInfo( directoryInfo, passingCategories )
       }
     }
 
@@ -101,9 +111,9 @@ export class Getters {
         const { children, name, path } = directoryInfo
 
         paramPassingCategories.push( {
-          name,
-          blogs: this.getBlogsInfo( path ),
-          categories: passingCategories
+          [ STORE_CATEGORY_NAME ]      : name,
+          [ STORE_CATEGORY_BLOGS ]     : getBlogsInfo( path ),
+          [ STORE_CATEGORY_CATEGORIES ]: passingCategories
         } )
 
         children
@@ -115,57 +125,101 @@ export class Getters {
     }
   }
 
-  getBlogsInfo( path: string ): BlogInfo[] {
-    let res: BlogInfo[] = []
-    
-    resolveRoot( path )
+  get tags(): Tag[] {
+    let res: Tag[] = []
+    let excessiveRes: Tag[] = []
+
+    const { blogsInfo } = this.store
+
+    blogsInfo.map( updateExcessiveRes )
 
     return res
 
-    function resolveRoot( path: string ) {
-      const directoryInfo = dirTree( path )
+    function updateExcessiveRes( blogInfo: BlogInfo ) {
+      const { [ BLOG_INFO_TAGS ]: tags } = blogInfo
 
-      if ( directoryInfo ) {
-        const { type } = directoryInfo
-        isDirectoryType( type ) && resolveDirectoryInfo( directoryInfo )
-      }
-    }
+      tags.map( ( tagString: string ) => {
+        let tagInRes: Tag = res.filter(
+          ( { [ STORE_TAG_NAME ]: theName }: Tag ) => theName === tagString
+        )[ 0 ]
 
-    function resolveDirectoryInfo( directoryInfo: any ) {
-      const isTheBlogDirectoryInfo = isBlogDirectoryInfo( directoryInfo )
-
-      if ( isTheBlogDirectoryInfo ) {
-        const blogPropsFilePath: string = getBlogPropsFilePath( directoryInfo )
-        const potentialBlogProps: any = readJsonFromFile( blogPropsFilePath )
-
-        const isValid = ajv.validate( BLOG_PROPS_SCHEMA, potentialBlogProps )
-        if ( isValid ) {
-          const blogProps: BlogProps = potentialBlogProps
-          const blogPath: Path = getBlogFilePath( directoryInfo )
-
-          const name: string = notNil( blogProps.name ) ?
-            blogProps.name :
-            getFileNameWithoutItsExtension( blogPath )
-          const createTime: string = notNil( blogProps.createTime ) ?
-            blogProps.createTime :
-            null
-          const tags: string[] = notNil( blogProps.tags ) ? blogProps.tags : []
-
-          const blogInfo: BlogInfo = {
-            path: blogPath,
-            name,
-            createTime,
-            tags
-          }
-
-          res.push( blogInfo )
+        if ( tagInRes ) {
+          tagInRes[ STORE_TAG_BLOGS ] = [ ...tagInRes[ STORE_TAG_BLOGS ], blogInfo ]
         }
-      }
-      if ( !isTheBlogDirectoryInfo ) {
-        const { children } = directoryInfo
-        children.filter( filterIsDirectoryType ).map( resolveDirectoryInfo )
-      }
+        if ( !tagInRes ) {
+          const tag: Tag = {
+            [ STORE_TAG_NAME ] : tagString,
+            [ STORE_TAG_BLOGS ]: [ blogInfo ]
+          }
+          res.push( tag )
+        }
+      } )
     }
+  }
+
+  get clientNewestBlogs(): ClientBlogOverview[] {
+    const { blogsInfo, config } = this.store
+    const { [ CONFIG_CLIENT_NEWEST_BLOGS_COUNT ]: count } = config
+    const all: ClientBlogOverview[] = blogsInfo
+      .map(
+        ( { [ BLOG_INFO_NAME ]: name, [ BLOG_INFO_CREATE_TIME ]: createTime } ) => ( {
+          name,
+          createTime
+        } )
+      )
+      .sort( sort )
+    const res: ClientBlogOverview[] = take( all, count )
+    return res
+
+    function sort(
+      { [ BLOG_INFO_CREATE_TIME ]: timeString1 }: ClientBlogOverview,
+      { [ BLOG_INFO_CREATE_TIME ]: timeString2 }: ClientBlogOverview
+    ) {
+      if ( isValidDateString( timeString1 ) && isValidDateString( timeString2 ) ) {
+        const t1 = Date.parse( timeString1 )
+        const t2 = Date.parse( timeString2 )
+        return t1 - t2
+      }
+      return 0
+    }
+  }
+
+  get clientCategory(): ClientCategory {
+    const { category } = this
+    let res: any = cloneDeep( category )
+    resolveCategory( res )
+    recurCategories( res[ STORE_CATEGORY_CATEGORIES ] )
+
+    return res
+
+    function recurCategories( categories: Category[] ) {
+      categories.map( category => {
+        resolveCategory( category )
+        recurCategories( category[ STORE_CATEGORY_CATEGORIES ] )
+      } )
+    }
+
+    function resolveCategory( category: Category ) {
+      delete category[ BLOGS ]
+    }
+  }
+
+  get clientTags(): string[] {
+    return this.tags.map( ( { [ STORE_TAG_NAME ]: name }: Tag ) => name )
+  }
+
+  get clientNav(): ClientNav {
+    const { clientNewestBlogs, clientCategory, clientTags } = this
+    return {
+      [ CLIENT_NAV_NEWEST_BLOGS ]: clientNewestBlogs,
+      [ CLIENT_NAV_CATEGORY ]    : clientCategory,
+      [ CLIENT_NAV_TAGS ]        : clientTags
+    }
+  }
+
+  get clientNavJsonPath(): string {
+    const { output } = this.store
+    return PATH.resolve( output, CLIENT_NAV_JSON_RELATIVE_PATH )
   }
 }
 
@@ -206,13 +260,18 @@ export class Actions {
     this.mutations = mutations
   }
 
+  get utilGetters(): UtilGetters {
+    return this.getters.utilGetters
+  }
+
   build( config?: Config ) {
     const { mutations, store } = this
     const { root } = store
+    const { getBlogsInfo } = this.utilGetters
 
     notNil( config ) && mutations.UPDATE_CONFIG( config )
 
-    const blogsInfo: BlogInfo[] = this.getters.getBlogsInfo( root )
+    const blogsInfo: BlogInfo[] = getBlogsInfo( root )
     mutations.UPDATE_BLOGS_INFO( blogsInfo )
 
     this.buildClientNavJson()
@@ -222,7 +281,8 @@ export class Actions {
   }
 
   buildClientNavJson() {
-    const { clientNav } = this.getters
+    const { clientNav, clientNavJsonPath } = this.getters
+    FS.outputJSONSync( clientNavJsonPath, clientNav )
   }
 
   buildCategories() {}

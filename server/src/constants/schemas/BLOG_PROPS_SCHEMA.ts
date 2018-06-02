@@ -1,12 +1,15 @@
-import { CREATE_TIME, CATEGORIES, TAGS } from "../fields";
+import { BLOG_PROPS_NAME, BLOG_PROPS_CREATE_TIME, BLOG_PROPS_TAGS } from '../fields';
 
 export default {
   type: 'object',
   patternProperties: {
-    [ CREATE_TIME ]: {
+    [ BLOG_PROPS_NAME ]: {
       type: 'string'
     },
-    [ TAGS ]: {
+    [ BLOG_PROPS_CREATE_TIME ]: {
+      type: 'string'
+    },
+    [ BLOG_PROPS_TAGS ]: {
       type: 'array',
       items: [
         {
