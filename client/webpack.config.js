@@ -1,13 +1,15 @@
 const PATH = require("path")
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
+const buildDirectory = PATH.resolve(__dirname, './build')
 
 module.exports = {
   entry: {
-    'script/nav.bundle.js': PATH.resolve(__dirname, './src/nav/app.tsx'),
-    'script/detail.bundle.js': PATH.resolve(__dirname, './src/detail/app.tsx'),
+    'script/nav.bundle.js': PATH.resolve(__dirname, './src/nav/App.tsx'),
+    'script/detail.bundle.js': PATH.resolve(__dirname, './src/detail/App.tsx'),
   },
   output: {
-    path: PATH.resolve(__dirname, './build'),
+    path: buildDirectory,
     filename: '[name]'
   },
   module: {
@@ -26,4 +28,12 @@ module.exports = {
       '.js'
     ],
   },
+  plugins: [
+    new CopyWebpackPlugin([
+      {
+        from: PATH.resolve( __dirname, './src/nav/index.html' ),
+        to: buildDirectory
+      }
+    ])
+  ]
 }

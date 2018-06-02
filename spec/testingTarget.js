@@ -4,12 +4,12 @@ module.exports = {
 		/**
 		 * Main
 		 */
-		// "main/__test__/index/index.spec.js"
+		"main/__test__/index/index.spec.js"
 
     /**
      * Server
      */
-		"server/build/__test__/getBlogsInfo/index.spec.js",    
+		// "server/build/__test__/getBlogsInfo/index.spec.js",    
     // "server/build/__test__/index/index.spec.js"
 		
 		/**

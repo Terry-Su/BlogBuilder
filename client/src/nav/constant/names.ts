@@ -1,0 +1,1 @@
+export const NAV_DOT_JSON = 'nav.json'

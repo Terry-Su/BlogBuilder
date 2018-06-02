@@ -1,7 +1,9 @@
 import BlogBuilder from './BlogBuilder';
 
-export default function ( root: string, output: string ) {
+function build( root: string, output: string ) {
   const builder = new BlogBuilder( root, output )
 
   builder.build()
 }
+export default build
+// module.exports = build
