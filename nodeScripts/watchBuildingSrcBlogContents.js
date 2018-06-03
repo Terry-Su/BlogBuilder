@@ -10,5 +10,9 @@ gulp.watch(`${ origin }/**`, build)
 
 
 function build() {
-  buildBlogContents(origin, output)
+  buildBlogContents(origin, output, {
+    insertedScripts: [
+      '<script src="/script/detail.bundle.js"></script>'
+    ]
+  })
 }
