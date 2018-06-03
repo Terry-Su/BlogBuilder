@@ -1,7 +1,11 @@
 import React, { Component } from "react"
 import { render } from "react-dom"
-import axios from "axios"
 import { fetchNav } from './http/index';
+import { hot } from 'react-hot-loader'
+
+// import App from './App'
+import Test from './Test';
+
 
 class App extends Component {
   componentDidMount() {
@@ -13,10 +17,13 @@ class App extends Component {
   render() {
     return (
       <div>
-        123
+        <Test />
       </div>
     )
   }
 }
 
-render(<App />, document.getElementById("app"))
+const HotApp = hot( module )( App )
+
+
+render(<HotApp />, document.getElementById("app"))

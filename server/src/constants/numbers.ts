@@ -1,2 +1,0 @@
-export const BLOG_INTRODUCTION_CHARS_COUNT = 100
-export const NEWEST_BLOGS_COUNT = 100
