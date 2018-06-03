@@ -18,6 +18,7 @@ module.exports = {
   devServer: {
     contentBase: buildDirectory,
     hot: true,
+    openPage: 'All/staticBlogs/blogs/Test/blog.html'
   },
   module: {
     rules: [
