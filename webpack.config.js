@@ -8,12 +8,13 @@ const webpack = require('webpack')
 
 module.exports = {
   entry: {
-    'script/nav.bundle.js': PATH.resolve(__dirname, './src/nav/entry.tsx'),
-    'script/detail.bundle.js': PATH.resolve(__dirname, './src/detail/entry.tsx'),
+    'script/nav.bundle.js': [  "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000", PATH.resolve(__dirname, './src/nav/entry.tsx')],
+    'script/detail.bundle.js': [ "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000", PATH.resolve(__dirname, './src/detail/entry.tsx')  ],
   },
   output: {
     path: buildDirectory,
-    filename: '[name]'
+    filename: '[name]',
+    // publicPath: buildDirectory
   },
   devServer: {
     contentBase: buildDirectory,
