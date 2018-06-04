@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node nodeScripts/watchBuildingSrcBlogContents.js | node server.js",    
+    "start": "node nodeScripts/watchBuildingSrcBlogContents.js | node server.js",
     "start2": "node nodeScripts/watchBuildingSrcBlogContents.js | webpack-dev-server --mode development --watch --open | webpack --mode development --watch",
     "build": "webpack --mode production",
     "test": "node spec/jasmineEntry",
-    "publish": "node nodeScripts/publishScriptsHtmlFromBuild.js",
+    "publish": "node nodeScripts/publishScriptsHtmlFromBuild.js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,7 @@
     "@types/react-hot-loader": "^4.1.0",
     "axios": "^0.17.1",
     "copy-webpack-plugin": "^4.3.1",
+    "dva": "^2.3.0",
     "eslint": "^4.17.0",
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.6.1",

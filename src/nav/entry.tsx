@@ -1,29 +1,26 @@
 import React, { Component } from "react"
-import { render } from "react-dom"
-import { fetchNav } from './http/index';
 import { hot } from 'react-hot-loader'
+import App from './components/App'
+import dva, { connect, Router } from 'dva'
 
-// import App from './App'
-import Test from './Test';
 
-
-class App extends Component {
-  componentDidMount() {
-    fetchNav().then( data => {
-      console.log( data )
-    } )
-  }
-
+class AppComponent  extends Component {
   render() {
     return (
-      <div>
-        <Test />
-      </div>
+      <App />
     )
   }
 }
 
-const HotApp = hot( module )( App )
+const app = dva();
 
+app.model({
+  namespace: 'count',
+  state: 3,
+});
 
-render(<HotApp />, document.getElementById("app"))
+const HotAppComponent = hot( module )( connect( props => props )( App ) )  
+
+app.router(() => <HotAppComponent />);
+
+app.start('#app');
