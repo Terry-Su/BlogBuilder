@@ -1,6 +1,9 @@
 import React, { Component } from "react"
 import { hot } from "react-hot-loader"
 import { fetchNav } from "../http/index"
+import TheHeader from './TheHeader/TheHeader';
+import TheSidebar from './TheSidebar/TheSidebar';
+import TheList from './TheList/TheList';
 
 class App extends Component<any, any> {
   componentDidMount() {
@@ -10,7 +13,11 @@ class App extends Component<any, any> {
   }
   render() {
     console.log(this.props)
-    return <div>Test {this.props.count}</div>
+    return <div>
+      <TheHeader />
+      <TheSidebar/>
+      <TheList />
+    </div>
   }
 }
 
