@@ -1,26 +1,26 @@
 import React, { Component } from "react"
-import { hot } from 'react-hot-loader'
-import App from './components/App'
-import dva, { connect, Router } from 'dva'
+import { hot } from "react-hot-loader"
+import App from "./components/App"
+import dva, { connect, Router } from "dva"
+import modelsMap from "./models/index"
+import { mapValues } from "lodash"
 
-
-class AppComponent  extends Component {
+class AppComponent extends Component {
   render() {
-    return (
-      <App />
-    )
+    return <App />
   }
 }
 
-const app = dva();
+const app = dva()
 
-app.model({
-  namespace: 'count',
-  state: 3,
-});
+model()
 
-const HotAppComponent = hot( module )( connect( props => props )( App ) )  
+const HotAppComponent = hot(module)(connect(props => props)(App))
 
-app.router(() => <HotAppComponent />);
+app.router(() => <HotAppComponent />)
 
-app.start('#app');
+app.start("#app")
+
+function model() {
+  mapValues(modelsMap, (model: any) => app.model(model))
+}

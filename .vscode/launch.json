@@ -4,17 +4,27 @@
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
-    {
-			"type": "node",
+		{
+			"type": "chrome",
 			"request": "launch",
-			"name": "Server - Jasmine Individual Test",
-			"cwd": "${workspaceRoot}",
-			"program": "${workspaceFolder}/spec/jasmineEntry.js",
-			"outFiles": [
-				"${workspaceRoot}/server/build/**/*.js"
-			],
-			"sourceMaps": true,
-			// "console": "externalTerminal"
-		},
+			"name": "Launch Chrome",
+			"url": "http://localhost:5000",
+			"webRoot": "${workspaceFolder}",
+			"pathMapping": {
+				"/": "${workspaceFolder}"
+			},
+		}
+    // {
+		// 	"type": "node",
+		// 	"request": "launch",
+		// 	"name": "Server - Jasmine Individual Test",
+		// 	"cwd": "${workspaceRoot}",
+		// 	"program": "${workspaceFolder}/spec/jasmineEntry.js",
+		// 	"outFiles": [
+		// 		"${workspaceRoot}/build/**/*.js"
+		// 	],
+		// 	"sourceMaps": true,
+		// 	// "console": "externalTerminal"
+		// },
   ]
 }
