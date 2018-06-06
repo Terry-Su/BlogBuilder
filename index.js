@@ -7,8 +7,8 @@ const FS = require('fs-extra')
  * @param {*} root Original blogs' source path 
  * @param {*} output Output path 
  */
-module.exports = function(src, output) {
-  buildBlogContents(src, output)
+module.exports = function(src, output, config={}) {
+  buildBlogContents(src, output, config)
   buildNavHtml(output)
   buildScripts(output)
 }
