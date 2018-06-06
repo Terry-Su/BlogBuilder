@@ -5,7 +5,7 @@ const styles = {
 
 }
 
-export default mapStateAndStyle( styles ) ( class Template extends Component {
+export default mapStateAndStyle( styles ) ( class Template extends Component<any, any> {
   render() {
     return <div></div>
   }
