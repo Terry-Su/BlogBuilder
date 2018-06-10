@@ -1,9 +1,6 @@
 import React, { Component } from "react"
 import mapStateAndStyle from "../../../../shared/utils/mapStateAndStyle"
 const styles = {
-  container: {
-    cursor: "default"
-  },
   list: {
     margin: "0 0 0 5px",
   },
@@ -37,6 +34,8 @@ export default mapStateAndStyle(styles)(
             showIcon={true}
             name={ NAV_SIDE_BAR_TAG }
             shouldExpand={shouldExpand}
+            canNotBeActivated={true}
+            clickOnlyToExpand={true}
             onExpandIconClick={this.onExpandIconClick}
           />
 

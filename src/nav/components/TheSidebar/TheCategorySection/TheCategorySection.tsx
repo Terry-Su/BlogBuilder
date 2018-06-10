@@ -4,7 +4,6 @@ import ItemsContainer from "./ItemsContainer";
 
 export default mapStateAndStyle({
   container: {
-    cursor: "default"
   }
 })(
   class TheCategorySection extends Component<any, any> {

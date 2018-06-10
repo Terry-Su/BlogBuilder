@@ -2,10 +2,14 @@ export default interface SidebarItemProps {
   name: string
   shouldExpand: boolean
   categories: SidebarItemProps[]
+  showIcon?: boolean
   interval: number
-  active?: boolean
+  active?: boolean,
+  canNotBeActivated?: boolean
+  clickOnlyToExpand: boolean
   classes?: any
   onExpandIconClick?: Function
   onNameClick?: Function
-  showIcon?: boolean
+  mountedCallbackComponent?: Function
+  willUnmountCallbackComponent?: Function
 }

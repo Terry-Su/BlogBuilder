@@ -18,7 +18,7 @@ export default {
 
       function setShouldExpand( info ) {
         if ( info ) {
-          info.shouldExpand = true
+          info.shouldExpand = false
           info.categories && info.categories.map( setShouldExpand )
         }
       }

@@ -9,12 +9,13 @@ const styles = {
     minWidth: '200px',
     color: '#2166f1',
     fontSize: '16px',
+    cursor: "default"
   },
   categoryContainer: {
-    margin: '20px 0 0 0'
+    // margin: '20px 0 0 0'
   },
   tagContainer: {
-    margin: '20px 0 0 0'
+    // margin: '20px 0 0 0'
   }
 }
 

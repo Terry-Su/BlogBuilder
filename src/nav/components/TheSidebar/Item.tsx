@@ -3,31 +3,90 @@ import SidebarItemProps from "../../typings/SidebarItemProps"
 import mapStyle from "../../../shared/utils/mapStyle"
 import ExpandIcon from "./ExpandIcon"
 import { BOTTOM, RIGHT } from "../../constants/names"
+import sidebarItemList from "../../mixin/sidebarItemList";
 
 export default mapStyle({
   container: {
-    padding: "5px 0",
     display: "flex",
-    alignItems: "center"
+    alignItems: "center",
     // background: 'blue'
   },
+  expandIconContainer: {
+    display: 'flex',
+    height: '38px',
+    padding: '0 5px',
+    justifyContent: 'center',
+    alignItems: 'center',
+    // background: 'orange',
+  },
   name: {
+    width: '100%',
+    padding: "10px 0",
     margin: "0 0 0 5px"
   },
   active: {
-    // background: "blue"
+    background: "#ddd"
   }
 })(
   class Item extends Component<SidebarItemProps, any> {
+    expandIconDom: any
+
+    constructor( props ) {
+      super( props )
+
+    }
+
+    state = {
+      active: false
+    }
+
+    componentDidMount() {
+      const { mountedCallbackComponent } = this.props
+      sidebarItemList.add( this )
+
+      mountedCallbackComponent && mountedCallbackComponent( this )
+    }
+
+    componentWillUnmount() {
+      const { willUnmountCallbackComponent } = this.props
+
+      sidebarItemList.remove( this )
+
+      willUnmountCallbackComponent && willUnmountCallbackComponent( this )
+    }
+
     onExpandIconClick = () => {
       const { onExpandIconClick } = this.props
       onExpandIconClick && onExpandIconClick()
     }
 
     onNameClick = () => {
-      const { onNameClick } = this.props
-      onNameClick && onNameClick()
+      const { onNameClick, canNotBeActivated, clickOnlyToExpand, onExpandIconClick } = this.props
+
+      if ( ! clickOnlyToExpand ) {
+        onNameClick && onNameClick()
+      ! canNotBeActivated && sidebarItemList.activateOnly( this )
+      }
+
+      if ( clickOnlyToExpand ) {
+        onExpandIconClick && onExpandIconClick()
+      }
     }
+
+
+
+    activate() {
+      this.setState( {
+        active: true
+      } )
+    }
+
+    deactivate() {
+      this.setState( {
+        active: false
+      } )
+    }
+
 
     render() {
       const {
@@ -36,18 +95,19 @@ export default mapStyle({
         classes: c,
         showIcon,
         interval = 0,
-        active = true
       } = this.props
+      const { active } = this.state
       const direction = shouldExpand ? BOTTOM : RIGHT
 
-      const style={ padding: `0 0 0 ${ interval }px` }
+      const style={ paddingLeft: `${ interval }px` }
       return (
-        <div className={`${c.container} ${active ? c.active : ""}`} style={ style }>
+        <div className={`${c.container} ${active ? c.active : ""}`} style={ style } >
           <div
+          className={ c.expandIconContainer }
             style={{ visibility: showIcon ? "visible" : "hidden" }}
             onClick={this.onExpandIconClick}
           >
-            <ExpandIcon direction={direction} />
+            <ExpandIcon direction={direction}  />
           </div>
 
           <div className={c.name} onClick={this.onNameClick}>

@@ -4,6 +4,7 @@ import TheTest from "./TheTest/TheTest"
 import TheSidebar from "./TheSidebar/TheSidebar"
 import TheList from "./TheList/TheList"
 import TheHeader from "./TheHeader/TheHeader"
+import sidebarItemList from "../mixin/sidebarItemList";
 const styles = {
   container: {},
   mainContainer: {
@@ -40,6 +41,8 @@ export default mapStateAndStyle(styles)(
           type: "list/UPDATE_BLOGS",
           blogs: newestBlogs
         })
+
+        sidebarItemList.activateOnlyDefaultItem()
       })
     }
     render() {
