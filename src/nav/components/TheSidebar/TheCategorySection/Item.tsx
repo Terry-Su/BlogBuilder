@@ -9,7 +9,6 @@ export default mapStyle({
     padding: "5px 0",
     display: "flex",
     alignItems: "center",
-    cursor: "default"
     // background: 'blue'
   },
   name: {

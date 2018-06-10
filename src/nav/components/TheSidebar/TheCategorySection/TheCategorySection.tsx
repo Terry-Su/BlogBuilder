@@ -4,12 +4,17 @@ import mapStateAndStyle from "../../../../shared/utils/mapStateAndStyle"
 import ItemsContainer from "./ItemsContainer";
 import category from '../../../models/category';
 
-export default mapStateAndStyle({})(
+export default mapStateAndStyle({
+  container: {
+    cursor: "default"
+  }
+})(
   class TheCategorySection extends Component<any, any> {
     render() {
+      const { classes: c } = this.props
       const { info } = this.props.category
       return (
-        <div>
+        <div className={ c.container }>
           <ItemsContainer categoryInfo={ info } />
         </div>
       )

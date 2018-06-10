@@ -3,7 +3,7 @@ import CategoryItemProps from "../typings/CategoryItemProps"
 
 const defaultInfo: CategoryItemProps = null
 
-const category = {
+export default {
   namespace: "category",
   state    : {
     info: defaultInfo
@@ -32,12 +32,13 @@ const category = {
       return { ...state, info }
 
       function recurToUpdateInfo( info ) {
-        if ( info === currentInfo) {
+        if ( info === currentInfo ) {
           const { shouldExpand } = info
           info.shouldExpand = !shouldExpand
         }
         if ( info !== currentInfo ) {
-          info.categories && info.categories.map( category => recurToUpdateInfo( category ) )
+          info.categories &&
+            info.categories.map( category => recurToUpdateInfo( category ) )
         }
       }
     }
@@ -45,4 +46,3 @@ const category = {
   effects: {}
 }
 
-export default category
