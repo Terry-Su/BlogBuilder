@@ -4,8 +4,8 @@ import mapStateAndStyle from "../../../../shared/utils/mapStateAndStyle"
 import mapStyle from "../../../../shared/utils/mapStyle"
 
 const styles = {
-  list: {
-    margin: "0 0 0 5px"
+  item: {
+    margin: '0 0 5px 0'
   }
 }
 
@@ -17,26 +17,29 @@ const ItemsContainer = mapStateAndStyle(styles)(
     }
 
     render() {
-      let { categoryInfo = {}, classes: c } = this.props
+      let { categoryInfo = {}, classes: c, interval = 0 } = this.props
       categoryInfo = categoryInfo || {}
       const { shouldExpand, categories = [], name } = categoryInfo
       const shouldShowMore = categories.length > 0
+
+      const newInterval = interval + 5
       return (
         <div>
-          <div>
+          <div className={ c.item }>
             <Item
               name={name}
               shouldExpand={shouldExpand}
+              interval={ interval }
               showIcon={shouldShowMore}
               onExpandIconClick={this.onItemExpandIconClick}
             />
           </div>
           {shouldShowMore &&
             shouldExpand && (
-              <div className={c.list}>
+              <div>
                 {categories &&
                   categories.map((categoryInfo, index: number) => (
-                    <ItemsContainer key={index} categoryInfo={categoryInfo} />
+                    <ItemsContainer categoryInfo={categoryInfo} interval={ newInterval } key={index} />
                   ))}
               </div>
             )}

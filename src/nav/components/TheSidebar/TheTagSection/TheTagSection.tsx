@@ -12,6 +12,7 @@ const styles = {
   }
 }
 import Item from "../Item"
+import { NAV_SIDE_BAR_TAG } from '../../../constants/names';
 
 export default mapStateAndStyle(styles)(
   class TheTagSection extends Component<any, any> {
@@ -34,7 +35,7 @@ export default mapStateAndStyle(styles)(
         <div className={c.container}>
           <Item
             showIcon={true}
-            name="Tag"
+            name={ NAV_SIDE_BAR_TAG }
             shouldExpand={shouldExpand}
             onExpandIconClick={this.onExpandIconClick}
           />

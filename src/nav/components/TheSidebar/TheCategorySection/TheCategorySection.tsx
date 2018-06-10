@@ -1,8 +1,6 @@
 import React, { Component } from "react"
-import Item from "./Item"
 import mapStateAndStyle from "../../../../shared/utils/mapStateAndStyle"
 import ItemsContainer from "./ItemsContainer";
-import category from '../../../models/category';
 
 export default mapStateAndStyle({
   container: {

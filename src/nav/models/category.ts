@@ -1,7 +1,7 @@
 import { cloneDeep } from "lodash"
-import CategoryItemProps from "../typings/CategoryItemProps"
+import SidebarItemProps from "../typings/SidebarItemProps"
 
-const defaultInfo: CategoryItemProps = null
+const defaultInfo: SidebarItemProps = null
 
 export default {
   namespace: "category",
