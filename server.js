@@ -32,7 +32,7 @@ app.get( "/", ( req, res ) => {
 } )
 
 app.get( "/detail", ( req, res ) => {
-  res.sendFile( PATH.resolve( __dirname, 'build/All/staticBlogs/blogs/Test/blog.html' ) )
+  res.sendFile( PATH.resolve( __dirname, 'build/All/bar/Test1/blog.html' ) )
 } )
 
 app.listen( port, () => { console.log( `listening on the port ${ port }` ) } )

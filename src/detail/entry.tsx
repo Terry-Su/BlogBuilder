@@ -1,20 +1,25 @@
 import React, { Component } from "react"
-import { render } from "react-dom"
-import { hot } from 'react-hot-loader'
+import { hot } from "react-hot-loader"
+import TheApp from "./components/TheApp"
+import dva, { connect, Router } from "dva"
+import modelsMap from "./models/index"
+import { mapValues } from "lodash"
+
+const appDom = document.getElementById( 'app' )
+const markedHtml = appDom ? appDom.innerHTML : ''
+
+const app = dva()
+
+model()
 
 
-class App extends Component {
+const TheHotAppComponent = hot(module)(connect(props => props)(TheApp))
 
-  render() {
-    return (
-      <div>
-        Test123123123123123123
-      </div>
-    )
-  }
+app.router(() => <TheHotAppComponent markedHtml={markedHtml}/>)
+
+app.start("#app")
+
+
+function model() {
+  mapValues(modelsMap, (model: any) => app.model(model))
 }
-
-const HotApp = hot( module )( App )
-
-
-render(<HotApp />, document.getElementById("app"))
