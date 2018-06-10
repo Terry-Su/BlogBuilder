@@ -1,18 +1,32 @@
 import React, { Component } from "react"
-import { hot } from "react-hot-loader"
 import TheHeader from "./TheHeader/TheHeader"
 import TheSidebar from "./TheSidebar/TheSidebar"
 import TheList from "./TheList/TheList"
+import TheTest from "./TheTest/TheTest"
 
-class App extends Component<any, any> {
+const testing: boolean = true
+
+export default class App extends Component<any, any> {
   componentDidMount() {
     const { dispatch } = this.props
     dispatch({
       type: "app/fetchConfig"
     })
+    dispatch({
+      type: "app/fetchNav"
+    }).then(() => {
+      dispatch({
+        type: "category/UPDATE_STRUCTURE",
+        navCategory: this.props.app.nav.category
+      })
+    }
+      
+    )
   }
   render() {
-    return (
+    return testing ? (
+      <TheTest />
+    ) : (
       <div>
         <TheHeader />
         <TheSidebar />
@@ -21,5 +35,3 @@ class App extends Component<any, any> {
     )
   }
 }
-
-export default App
