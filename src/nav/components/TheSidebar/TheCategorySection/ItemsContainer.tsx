@@ -16,11 +16,53 @@ const ItemsContainer = mapStateAndStyle(styles)(
       dispatch({ type: "category/TOOGLE_CATEGORY_ITEM_EXPANSION", currentInfo })
     }
 
+    onItemNameClick = categoryInfo => {
+      let sequence = []
+      const { category, dispatch } = this.props
+      if (category) {
+        const { info } = category
+
+        recurToGetSequence(info)
+
+        dispatch( { type: 'category/fetchCategoryBlogs',  sequence } )
+      }
+
+      function recurToGetSequence(info) {
+        const { name, categories } = info
+
+        if (canFindCategoryInfoUnderInfo(info)) {
+          sequence.push(name)
+        }
+
+        if (info !== categoryInfo) {
+          categories.map(subInfo => recurToGetSequence(subInfo))
+        }
+      }
+
+      function canFindCategoryInfoUnderInfo(info) {
+        let find: boolean = false
+
+        recurToFind(info)
+
+        return find
+
+        function recurToFind(info) {
+          if (info === categoryInfo) {
+            find = true
+          }
+          if (info !== categoryInfo) {
+            const { categories } = info
+            categories.map(subInfo => recurToFind(subInfo))
+          }
+        }
+      }
+    }
+
     render() {
       let { categoryInfo = {}, classes: c, interval = 0 } = this.props
       categoryInfo = categoryInfo || {}
       const { shouldExpand, categories = [], name } = categoryInfo
-      const shouldShowMore =  categories.length > 0
+      const shouldShowMore = categories.length > 0
 
       const newInterval = interval + 5
       return (
@@ -32,12 +74,13 @@ const ItemsContainer = mapStateAndStyle(styles)(
               interval={interval}
               showIcon={shouldShowMore}
               onExpandIconClick={this.onItemExpandIconClick}
+              onNameClick={() => this.onItemNameClick(categoryInfo)}
             />
           </div>
           {
             <div
               style={{
-                display: ( shouldExpand && shouldShowMore ) ? "block": "none"
+                display: shouldExpand && shouldShowMore ? "block" : "none"
               }}
             >
               {categories &&

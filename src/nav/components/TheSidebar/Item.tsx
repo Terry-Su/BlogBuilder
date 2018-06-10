@@ -3,7 +3,7 @@ import SidebarItemProps from "../../typings/SidebarItemProps"
 import mapStyle from "../../../shared/utils/mapStyle"
 import ExpandIcon from "./ExpandIcon"
 import { BOTTOM, RIGHT } from "../../constants/names"
-import sidebarItemList from "../../mixin/sidebarItemList";
+import sidebarItemList from "../../mixins/sidebarItemList";
 
 export default mapStyle({
   container: {
@@ -73,6 +73,11 @@ export default mapStyle({
       }
     }
 
+    onClick = ( event ) => {
+      const { onClick } = this.props
+      onClick && onClick( event )
+    }
+
 
 
     activate() {
@@ -101,7 +106,7 @@ export default mapStyle({
 
       const style={ paddingLeft: `${ interval }px` }
       return (
-        <div className={`${c.container} ${active ? c.active : ""}`} style={ style } >
+        <div className={`${c.container} ${active ? c.active : ""}`} style={ style } onClick={this.onClick}>
           <div
           className={ c.expandIconContainer }
             style={{ visibility: showIcon ? "visible" : "hidden" }}

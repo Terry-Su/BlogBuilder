@@ -20,6 +20,11 @@ export default mapStateAndStyle(styles)(
       dispatch({ type: "tag/TOOGLE_SHOULD_EXPAND" })
     }
 
+    onTagClick = ( tagName ) => {
+      const { dispatch } = this.props
+      dispatch( { type: 'tag/fetchTagBlogs', tagName } )
+    }
+
     render() {
       let tags = []
       const { classes: c, app, tag } = this.props
@@ -45,7 +50,8 @@ export default mapStateAndStyle(styles)(
                 <div className={c.item} key={index}>
                   <Item
                     name={tagName}
-                    onNameClick={this.onTagNameClick(tagName)}
+                    onNameClick={ () => this.onTagNameClick(tagName)}
+                    onClick={ () => this.onTagClick( tagName ) }
                   />
                 </div>
               ))}

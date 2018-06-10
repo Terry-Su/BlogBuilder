@@ -1,5 +1,6 @@
 import { cloneDeep } from "lodash"
 import SidebarItemProps from "../typings/SidebarItemProps"
+import { fetchCategoryBlogs } from '../services/index';
 
 const defaultInfo: SidebarItemProps = null
 
@@ -41,8 +42,18 @@ export default {
             info.categories.map( category => recurToUpdateInfo( category ) )
         }
       }
-    }
+  }
   },
-  effects: {}
-}
+  effects: {
+    *fetchCategoryBlogs( { sequence }, { put, call } ) {
+      yield put( { type: "list/RESET_BLOGS" } )
 
+      const data = yield call( fetchCategoryBlogs, sequence )
+
+      if ( data ) {
+        const { blogs } = data
+        yield put( { type: "list/UPDATE_BLOGS", blogs } )
+      }
+    }
+  }
+}

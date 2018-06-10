@@ -12,7 +12,7 @@ export default {
     UPDATE_NAV      : ( state, { nav } ) => ( { ...state, nav } ),
   },
   effects: {
-    *fetchConfig( action, { put, call } ) {
+    *fetchConfig( {}, { put, call } ) {
       const data = yield call( fetchConfig )
 
       if ( data ) {
