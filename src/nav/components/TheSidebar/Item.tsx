@@ -1,8 +1,8 @@
 import React, { Component } from "react"
-import CategoryItemProps from "../../../typings/CategoryItemProps"
-import mapStyle from "../../../../shared/utils/mapStyle"
+import CategoryItemProps from "../../typings/CategoryItemProps"
+import mapStyle from "../../../shared/utils/mapStyle"
 import ExpandIcon from "./ExpandIcon"
-import { BOTTOM, RIGHT } from "../../../constants/names"
+import { BOTTOM, RIGHT } from "../../constants/names"
 
 export default mapStyle({
   container: {
@@ -13,13 +13,17 @@ export default mapStyle({
   },
   name: {
     margin: "0 0 0 5px",
-    fontSize: "16px"
   }
 })(
   class Item extends Component<CategoryItemProps, any> {
     onExpandIconClick = () => {
       const { onExpandIconClick } = this.props
       onExpandIconClick && onExpandIconClick()
+    }
+
+    onNameClick = () => {
+      const { onNameClick } = this.props
+      onNameClick && onNameClick()
     }
 
     render() {
@@ -37,7 +41,7 @@ export default mapStyle({
             <ExpandIcon direction={direction} />
           </div>
 
-          <div className={c.name}>{name}</div>
+          <div className={c.name} onClick={ this.onNameClick }>{name}</div>
         </div>
       )
     }

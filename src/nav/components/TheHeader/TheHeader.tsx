@@ -8,7 +8,7 @@ const styles = {
     justifyContent: "flex-start",
     alignItems: 'center',
     // background: "blue"
-    border: '1px solid grey',
+    // border: '1px solid grey',
   },
   subContainer: {
     width: "180px",

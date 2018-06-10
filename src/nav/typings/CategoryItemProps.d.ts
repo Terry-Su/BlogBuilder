@@ -4,5 +4,6 @@ export default interface CategoryItemProps {
   categories: CategoryItemProps[],
   classes?: any,
   onExpandIconClick?: Function
+  onNameClick?: Function
   showIcon?: boolean
 }

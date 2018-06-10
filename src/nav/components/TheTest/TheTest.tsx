@@ -3,6 +3,7 @@ import TheHeader from '../TheHeader/TheHeader';
 import TheCategorySection from '../TheSidebar/TheCategorySection/TheCategorySection';
 import TheTagSection from '../TheSidebar/TheTagSection/TheTagSection';
 import TheSidebar from '../TheSidebar/TheSidebar';
+import TheList from '../TheList/TheList';
 
 export default class TheTest extends Component {
   render() {
@@ -10,7 +11,8 @@ export default class TheTest extends Component {
       {/* <TheHeader /> */}
       {/* <TheCategorySection /> */}
       {/* <TheTagSection/> */}
-      <TheSidebar />
+      {/* <TheSidebar /> */}
+      {/* <TheList /> */}
     </div>
   }
 }

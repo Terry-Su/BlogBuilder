@@ -2,32 +2,55 @@ import React, { Component } from "react"
 import mapStateAndStyle from "../../../../shared/utils/mapStateAndStyle"
 const styles = {
   container: {
-    cursor: 'default'
+    cursor: "default"
+  },
+  list: {
+    margin: "0 0 0 5px",
   },
   item: {
-    padding: '5px 0'
+    padding: "5px 0"
   }
 }
-import Item from "./Item"
+import Item from "../Item"
 
 export default mapStateAndStyle(styles)(
   class TheTagSection extends Component<any, any> {
-    onTagClick = (tagName: string) => {}
+    onTagNameClick = (tagName: string) => {}
+
+    onExpandIconClick = () => {
+      const { dispatch } = this.props
+      dispatch({ type: "tag/TOOGLE_SHOULD_EXPAND" })
+    }
 
     render() {
       let tags = []
-      const { classes: c } = this.props
-      const { nav } = this.props.app
+      const { classes: c, app, tag } = this.props
+      const { nav } = app
+      const { shouldExpand } = tag
       if (nav) {
         tags = nav.tags
       }
       return (
-        <div className={ c.container }>
-          {tags.map((tagName, index) => (
-            <div className={c.item} key={index}>
-              <Item name={tagName} onClick={this.onTagClick(tagName)} />
+        <div className={c.container}>
+          <Item
+            showIcon={true}
+            name="Tag"
+            shouldExpand={shouldExpand}
+            onExpandIconClick={this.onExpandIconClick}
+          />
+
+          {shouldExpand && (
+            <div className={c.list}>
+              {tags.map((tagName, index) => (
+                <div className={c.item} key={index}>
+                  <Item
+                    name={tagName}
+                    onNameClick={this.onTagNameClick(tagName)}
+                  />
+                </div>
+              ))}
             </div>
-          ))}
+          )}
         </div>
       )
     }

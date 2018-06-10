@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import Item from "./Item"
+import Item from "../Item"
 import mapStateAndStyle from "../../../../shared/utils/mapStateAndStyle"
 import mapStyle from "../../../../shared/utils/mapStyle"
 

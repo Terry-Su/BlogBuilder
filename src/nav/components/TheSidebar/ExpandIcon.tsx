@@ -1,6 +1,6 @@
 import React, { Component } from "react"
-import mapStateAndStyle from "../../../../shared/utils/mapStateAndStyle"
-import { RIGHT, BOTTOM } from "../../../constants/names"
+import mapStateAndStyle from "../../../shared/utils/mapStateAndStyle"
+import { RIGHT, BOTTOM } from "../../constants/names"
 
 const styles = {
   container: {
