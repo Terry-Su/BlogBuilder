@@ -1,12 +1,12 @@
 const PATH = require( 'path' )
 const FS = require( 'fs-extra' )
-const { clientNavScriptDirectory, clientHomeHtmlPath, publishNavScriptDirectory, publishHomeHtmlPath } = require( './utils/paths' )
+const { CLIENT_NAV_SCRIPT_DIRECTORY, CLIENT_HOME_HTML_PATH, PUBLISH_NAV_SCRIPT_DIRECTORY, PUBLISH_HOME_HTML_PATH } = require( './constants/paths' )
 
-const publishDirectory = PATH.resolve( __dirname, 'publish' )
+const publishDirectory = PATH.resolve( __dirname, '../publish' )
 
 
 
 FS.mkdirpSync( publishDirectory )
-FS.copyFileSync( clientHomeHtmlPath, publishHomeHtmlPath )
-FS.copySync( clientNavScriptDirectory, publishNavScriptDirectory )
+FS.copyFileSync( CLIENT_HOME_HTML_PATH, PUBLISH_HOME_HTML_PATH )
+FS.copySync( CLIENT_NAV_SCRIPT_DIRECTORY, PUBLISH_NAV_SCRIPT_DIRECTORY )
 
