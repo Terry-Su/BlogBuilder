@@ -5,6 +5,8 @@ import TheSidebar from "./TheSidebar/TheSidebar"
 import TheList from "./TheList/TheList"
 import TheHeader from "./TheHeader/TheHeader"
 import sidebarItemList from "../mixins/sidebarItemList";
+import '../../shared/assets/css/main.scss'
+
 const styles = {
   container: {},
   mainContainer: {

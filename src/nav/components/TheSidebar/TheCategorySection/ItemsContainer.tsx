@@ -24,7 +24,7 @@ const ItemsContainer = mapStateAndStyle(styles)(
 
         recurToGetSequence(info)
 
-        dispatch( { type: 'category/fetchCategoryBlogs',  sequence } )
+        dispatch({ type: "category/fetchCategoryBlogs", sequence })
       }
 
       function recurToGetSequence(info) {
@@ -59,7 +59,12 @@ const ItemsContainer = mapStateAndStyle(styles)(
     }
 
     render() {
-      let { categoryInfo = {}, classes: c, interval = 0 } = this.props
+      let {
+        categoryInfo = {},
+        classes: c,
+        interval = 0,
+        isRootCategory = true
+      } = this.props
       categoryInfo = categoryInfo || {}
       const { shouldExpand, categories = [], name } = categoryInfo
       const shouldShowMore = categories.length > 0
@@ -73,6 +78,8 @@ const ItemsContainer = mapStateAndStyle(styles)(
               shouldExpand={shouldExpand}
               interval={interval}
               showIcon={shouldShowMore}
+              canNotBeActivated={isRootCategory}
+              clickOnlyToExpand={isRootCategory}
               onExpandIconClick={this.onItemExpandIconClick}
               onNameClick={() => this.onItemNameClick(categoryInfo)}
             />
@@ -89,6 +96,7 @@ const ItemsContainer = mapStateAndStyle(styles)(
                     categoryInfo={categoryInfo}
                     interval={newInterval}
                     key={index}
+                    isRootCategory={false}
                   />
                 ))}
             </div>

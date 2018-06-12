@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import mapStateAndStyle from "../../../shared/utils/mapStateAndStyle"
+
 const styles = {
   container: {
     display: "flex",
@@ -9,7 +10,7 @@ const styles = {
   subContainer: {
     width: "700px",
     fontSize: "16px",
-    color: "#2166f1"
+    // color: "#2166f1"
   }
 }
 
@@ -21,7 +22,7 @@ export default mapStateAndStyle(styles)(
       return (
         <div className={c.container}>
           <div
-            className={c.subContainer}
+            className={`${c.subContainer} highlight`}
             dangerouslySetInnerHTML={{ __html: body }}
           >
           </div>

@@ -5,9 +5,9 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    fontSize: '20px',
+    fontSize: '24px',
     fontWeight: 'bold',
-    color: '#2166f1',
+    color: 'steelblue',
   }
 }
 

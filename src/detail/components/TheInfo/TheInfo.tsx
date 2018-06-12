@@ -17,22 +17,22 @@ const styles = {
   postTime: {
     display: "flex",
     justifyContent: "flex-end",
-    color: "#2166f1"
+    // color: "#2166f1"
   },
   categorySequence: {
     display: "flex",
     justifyContent: "flex-end",
-    color: "#21aff1"
+    // color: "#21aff1"
   },
   tags: {
     display: "flex",
     justifyContent: "flex-end",
-    color: "#c64725"
+    // color: "#c64725"
   },
   reprintingNote: {
     display: "flex",
     justifyContent: "flex-end",
-    color: "#2166f1"
+    // color: "#2166f1"
   }
 }
 

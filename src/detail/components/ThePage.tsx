@@ -4,12 +4,15 @@ import TheArticle from "./TheArticle/TheArticle"
 import TheInfo from "./TheInfo/TheInfo"
 import TheTest from "./TheTest/TheTest"
 import TheCopyright from "../../shared/components/TheCopyright"
+import '../../shared/assets/css/main.scss'
+import '../assets/css/highlight.scss'
+
 const styles = {
   infoContainer: {
     margin: '20px 0 0 0'
   },
   copyright: {
-    margin: '50px 0 0 0'
+    padding: '100px 0 15px 0'
   },
 }
 

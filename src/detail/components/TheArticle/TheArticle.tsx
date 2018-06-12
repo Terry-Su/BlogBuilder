@@ -4,7 +4,7 @@ import TheTitle from "./TheTitle"
 import TheBody from "./TheBody"
 const styles = {
   container: {
-    
+    fontSize: '16px',    
   },
   titleContainer: {
     margin: "50px 0 0 0"

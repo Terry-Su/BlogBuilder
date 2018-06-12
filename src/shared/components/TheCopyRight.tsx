@@ -6,8 +6,8 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    fontSize: "12px",
-    color: "#979797"
+    fontSize: '14px',    
+    // color: "#979797"
   },
   link: {
     color: "#2166f1",
@@ -25,7 +25,7 @@ export default mapStateAndStyle(styles)(
       const { classes: c } = this.props
       return (
         <div className={c.container}>
-          <span>Copyright © 2015-2018</span>
+          <span>Copyright © 2017-2018</span>
           <Space />
           <Space />
           <a className={c.link} href="https://github.com/Terry-Su">Terry Su</a> 

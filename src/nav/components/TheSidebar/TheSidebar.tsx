@@ -7,7 +7,7 @@ import TheNewestItem from "./TheNewestItem";
 const styles = {
   container: {
     minWidth: '200px',
-    color: '#2166f1',
+    // color: 'steelblue',
     fontSize: '16px',
     cursor: "default"
   },

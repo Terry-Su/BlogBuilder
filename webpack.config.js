@@ -8,13 +8,13 @@ const webpack = require('webpack')
 
 module.exports = {
   entry: {
-    'scripts/nav.bundle.js': [  "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000", PATH.resolve(__dirname, './src/nav/entry.tsx')],
-    'scripts/detail.bundle.js': [ "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000", PATH.resolve(__dirname, './src/detail/entry.tsx')  ],
+    'scripts/nav.bundle.js': ["webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000", PATH.resolve(__dirname, './src/nav/entry.tsx')],
+    'scripts/detail.bundle.js': ["webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000", PATH.resolve(__dirname, './src/detail/entry.tsx')],
   },
   output: {
     path: buildDirectory,
     filename: '[name]',
-    // publicPath: buildDirectory
+  // publicPath: buildDirectory
   },
   devServer: {
     contentBase: buildDirectory,
@@ -29,6 +29,18 @@ module.exports = {
         // include: __dirname
         exclude: /node_modules/,
       },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          "style-loader", // creates style nodes from JS strings
+          "css-loader", // translates CSS into CommonJS
+          "sass-loader" // compiles Sass to CSS
+        ]
+      }
     ]
   },
   resolve: {
@@ -50,7 +62,7 @@ module.exports = {
     // new HtmlWebpackPlugin({
     //   template: PATH.resolve( __dirname, 'src/nav/index.html' )
     // }),
-    
+
     new webpack.HotModuleReplacementPlugin()
   ]
 }
