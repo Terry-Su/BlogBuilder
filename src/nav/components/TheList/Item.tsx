@@ -20,11 +20,19 @@ const styles = {
 
 export default mapStateAndStyle( styles )(
   class TsTemplate extends Component<any, any> {
+
+    onNameClick = () => {
+      const { classes: c, blog={} } = this.props
+      const { relativeClientUrl } = blog
+      
+      window.location.href = relativeClientUrl
+    }
+
     render() {
       const { classes: c, blog={} } = this.props
-      const { name, createTime, introduction, relativeClientUrl } = blog
+      const { name, createTime, introduction } = blog
       return <div>
-        <div className={ c.name }>{ name }</div>
+        <div className={ c.name } onClick={ this.onNameClick }>{ name }</div>
         <div className={ c.property }>PostTime: { createTime }</div>
         <div className={ c.introduction }>{ introduction }</div>
       </div>
