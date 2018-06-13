@@ -25,27 +25,27 @@ const testing: boolean = false
 export default mapStateAndStyle(styles)(
   class ThePage extends Component<any, any> {
     componentDidMount() {
+      const { config, nav } = window['GV']
+      const { textLogo, slogan } = config
       const { dispatch } = this.props
+
+      dispatch( { type: "app/UPDATE_TEXT_LOGO", textLogo } )
+      dispatch( { type: "app/UPDATE_SLOGAN", slogan } )
+      dispatch( { type: 'app/UPDATE_NAV', nav } )
+      
+      const { category, newestBlogs } = nav
+
       dispatch({
-        type: "app/fetchConfig"
+        type: "category/UPDATE_STRUCTURE",
+        navCategory: category
       })
+
       dispatch({
-        type: "app/fetchNav"
-      }).then(() => {
-        const { category, newestBlogs } = this.props.app.nav
-
-        dispatch({
-          type: "category/UPDATE_STRUCTURE",
-          navCategory: category
-        })
-
-        dispatch({
-          type: "list/UPDATE_BLOGS",
-          blogs: newestBlogs
-        })
-
-        sidebarItemList.activateOnlyDefaultItem()
+        type: "list/UPDATE_BLOGS",
+        blogs: newestBlogs
       })
+
+      sidebarItemList.activateOnlyDefaultItem()
     }
     render() {
       const { classes: c } = this.props
