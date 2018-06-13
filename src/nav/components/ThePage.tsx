@@ -16,7 +16,7 @@ const styles = {
     margin: "0 0 0 100px"
   },
   listContainer: {
-    margin: "0 0 0 20px"
+    margin: "0 0 0 50px"
   }
 }
 

@@ -18,14 +18,14 @@ const styles = {
   logo: {
     height: '50px',
     fontSize: '50px',
-    color: 'steelblue',
+    color: '#0071ea',
     textAlign: 'center'
   },
   slogan: {
     height: '20px',
     margin: '20px 0 0 0',
     fontSize: '20px',
-    color: 'steelblue',
+    color: '#0071ea',
     textAlign: 'center'
   }
 }

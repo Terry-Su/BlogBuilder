@@ -7,7 +7,7 @@ const styles = {
     alignItems: "center",
     fontSize: '24px',
     fontWeight: 'bold',
-    color: 'steelblue',
+    color: '#0071ea',
   }
 }
 

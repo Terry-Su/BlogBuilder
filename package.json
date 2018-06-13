@@ -4,11 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node nodeScripts/watchBuildingSrcBlogContents.js | node server.js",
-    "start2": "node nodeScripts/watchBuildingSrcBlogContents.js | webpack-dev-server --mode development --watch --open | webpack --mode development --watch",
+    "start": "node nodeScripts/dev-watchBuildingSrcBlogContents | node server.js",
     "build": "webpack --mode production",
     "test": "node spec/jasmineEntry",
-    "publish": "node nodeScripts/publishScriptsHtmlFromBuild.js"
+    "copy": "node nodeScripts/transportToBlogCDN.js"
   },
   "repository": {
     "type": "git",

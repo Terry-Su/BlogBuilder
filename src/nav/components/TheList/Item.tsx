@@ -4,7 +4,7 @@ const styles = {
   name: {
     fontSize: '20px',
     fontWeight: 'bold',
-    color: 'steelblue'
+    color: '#0071ea'
   },
   property: {
     margin: '10px 0 0 0',

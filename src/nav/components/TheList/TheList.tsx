@@ -2,6 +2,9 @@ import React, { Component } from "react"
 import mapStateAndStyle from "../../../shared/utils/mapStateAndStyle"
 import Item from "./Item"
 const styles = {
+  container: {
+    width: '800px',
+  },
   itemContainer:{
     padding: '0 0 20px 0'
   }
@@ -14,7 +17,7 @@ export default mapStateAndStyle(styles)(
       const { blogs } = list
       const { classes: c } = this.props
       return (
-        <div>
+        <div className={ c.container }>
           {blogs &&
             blogs.map((blog, index) => (
               <div className={ c.itemContainer } key={index}>
