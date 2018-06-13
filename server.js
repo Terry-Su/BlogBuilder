@@ -5,7 +5,7 @@ const webpackConfig = require( './webpack.config.js' )
 const buildDirectory = PATH.resolve(__dirname, './build')
 
 const combinedWebpackConfig = {
-  ...webpackConfig,
+  ...webpackConfig( {},{} ),
   mode: "development",
 }
 

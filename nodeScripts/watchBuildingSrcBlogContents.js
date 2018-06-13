@@ -13,7 +13,10 @@ function build() {
   buildBlogContents(origin, output, {
     textLogo: 'Custom',
     slogan: 'Custom slogan',
-    insertedScripts: [
+    navScripts: [
+      '<script src="/scripts/nav.bundle.js"></script>'
+    ],
+    detailScripts: [
       '<script src="/scripts/detail.bundle.js"></script>'
     ]
   })
