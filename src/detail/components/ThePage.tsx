@@ -21,12 +21,14 @@ const testing: boolean = false
 export default mapStateAndStyle(styles)(
   class ThePage extends Component<any, any> {
     componentDidMount() {
-      const { markedHtml, dispatch, app } = this.props
-      // const {} = window["GV"]
+      const { markedHtml, dispatch } = this.props
+      const { name, createTime, categorySequence, tags } = window['GV'] 
 
+      dispatch( { type: 'app/UPDATE_NAME', name } )
+      dispatch( { type: 'app/UPDATE_CREATE_TIME', createTime } )
+      dispatch( { type: 'app/UPDATE_CATEGORY_SEQUENCE', categorySequence } )
+      dispatch( { type: 'app/UPDATE_TAGS', tags } )
       dispatch({ type: "app/UPDATE_BODY", body: markedHtml })
-
-      dispatch({ type: "app/fetchProps" })
     }
     render() {
       const { classes: c } = this.props
