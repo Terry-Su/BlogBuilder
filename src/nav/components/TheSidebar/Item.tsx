@@ -25,7 +25,7 @@ export default mapStyle({
     margin: "0 0 0 5px"
   },
   active: {
-    background: "#ddd"
+    background: "rgba(0,0,0,0.06)"
   }
 })(
   class Item extends Component<SidebarItemProps, any> {

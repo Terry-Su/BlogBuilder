@@ -13,14 +13,14 @@ export default {
     UPDATE_STRUCTURE: ( state, { navCategory } ) => {
       const info = cloneDeep( navCategory )
 
-      setShouldExpand( info )
+      setShouldExpand( info, true )
 
       return { ...state, info }
 
-      function setShouldExpand( info ) {
+      function setShouldExpand( info, isFirst: boolean = false ) {
         if ( info ) {
-          info.shouldExpand = false
-          info.categories && info.categories.map( setShouldExpand )
+          info.shouldExpand = isFirst ? true : false
+          info.categories && info.categories.map( info => setShouldExpand( info ) )
         }
       }
     },

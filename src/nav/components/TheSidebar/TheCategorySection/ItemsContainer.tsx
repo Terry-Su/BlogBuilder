@@ -63,13 +63,17 @@ const ItemsContainer = mapStateAndStyle(styles)(
         categoryInfo = {},
         classes: c,
         interval = 0,
-        isRootCategory = true
       } = this.props
       categoryInfo = categoryInfo || {}
-      const { shouldExpand, categories = [], name } = categoryInfo
+      const {  categories = [], name } = categoryInfo
+      let { shouldExpand } = categoryInfo
       const shouldShowMore = categories.length > 0
 
       const newInterval = interval + 5
+
+      const isLastBlogsDirectory = categories.length === 0
+
+      
       return (
         <div>
           <div className={c.item}>
@@ -78,8 +82,8 @@ const ItemsContainer = mapStateAndStyle(styles)(
               shouldExpand={shouldExpand}
               interval={interval}
               showIcon={shouldShowMore}
-              canNotBeActivated={isRootCategory}
-              clickOnlyToExpand={isRootCategory}
+              canNotBeActivated={!isLastBlogsDirectory}
+              clickOnlyToExpand={!isLastBlogsDirectory}
               onExpandIconClick={this.onItemExpandIconClick}
               onNameClick={() => this.onItemNameClick(categoryInfo)}
             />
@@ -96,7 +100,6 @@ const ItemsContainer = mapStateAndStyle(styles)(
                     categoryInfo={categoryInfo}
                     interval={newInterval}
                     key={index}
-                    isRootCategory={false}
                   />
                 ))}
             </div>
