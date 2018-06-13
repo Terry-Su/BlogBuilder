@@ -3,7 +3,7 @@ import mapStateAndStyle from "../../../shared/utils/mapStateAndStyle"
 
 const styles = {
   container: {
-    height: "200px",
+    height: "150px",
     display: "flex",
     justifyContent: "flex-start",
     alignItems: 'center',

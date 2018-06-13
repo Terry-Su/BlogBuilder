@@ -12,19 +12,19 @@ module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production'
   return {
     entry: {
-      'scripts/nav.bundle.js': ["webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000", PATH.resolve(__dirname, './src/nav/entry.tsx')],
-      'scripts/detail.bundle.js': ["webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000", PATH.resolve(__dirname, './src/detail/entry.tsx')],
+      'scripts/nav.bundle.js': [PATH.resolve(__dirname, './src/nav/entry.tsx')].concat(isProduction ? [] : ["webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000"]),
+      'scripts/detail.bundle.js': [PATH.resolve(__dirname, './src/detail/entry.tsx')].concat(isProduction ? [] : ["webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000"]),
     },
     output: {
       path: buildDirectory,
       filename: '[name]',
     // publicPath: buildDirectory
     },
-    devServer: {
-      contentBase: buildDirectory,
-      hot: true,
-      openPage: 'All/staticBlogs/blogs/Test/blog.html'
-    },
+    // devServer: {
+    //   contentBase: buildDirectory,
+    //   hot: true,
+    //   openPage: 'All/staticBlogs/blogs/Test/blog.html'
+    // },
     module: {
       rules: [
         {

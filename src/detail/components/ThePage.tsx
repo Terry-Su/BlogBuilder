@@ -11,7 +11,7 @@ const styles = {
   infoContainer: {
     margin: '20px 0 0 0'
   },
-  copyright: {
+  copyrightContainer: {
     padding: '100px 0 15px 0'
   },
 }
@@ -43,7 +43,7 @@ export default mapStateAndStyle(styles)(
             <TheInfo />
           </div>
 
-          <div className={c.copyright}>
+          <div className={c.copyrightContainer}>
             <TheCopyright />
           </div>
         </div>
