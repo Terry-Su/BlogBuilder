@@ -4,7 +4,8 @@ const styles = {
   name: {
     fontSize: '20px',
     fontWeight: 'bold',
-    color: '#0071ea'
+    color: '#0071ea',
+    textDecoration: 'none'
   },
   property: {
     margin: '10px 0 0 0',
@@ -20,19 +21,11 @@ const styles = {
 
 export default mapStateAndStyle( styles )(
   class TsTemplate extends Component<any, any> {
-
-    onNameClick = () => {
-      const { classes: c, blog={} } = this.props
-      const { relativeClientUrl } = blog
-      
-      window.location.href = relativeClientUrl
-    }
-
     render() {
       const { classes: c, blog={} } = this.props
-      const { name, createTime, introduction } = blog
+      const { name, createTime, introduction, relativeClientUrl } = blog
       return <div>
-        <div className={ c.name } onClick={ this.onNameClick }>{ name }</div>
+        <a className={ c.name } href={relativeClientUrl}>{ name }</a>
         <div className={ c.property }>PostTime: { createTime }</div>
         <div className={ c.introduction }>{ introduction }</div>
       </div>
