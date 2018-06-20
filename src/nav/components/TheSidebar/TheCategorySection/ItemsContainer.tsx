@@ -24,6 +24,7 @@ const ItemsContainer = mapStateAndStyle(styles)(
 
         recurToGetSequence(info)
 
+        dispatch({ type: "category/UPDATE_SEQUENCE", sequence })
         dispatch({ type: "category/fetchCategoryBlogs", sequence })
       }
 

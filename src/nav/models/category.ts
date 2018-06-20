@@ -1,13 +1,15 @@
 import { cloneDeep } from "lodash"
 import SidebarItemProps from "../typings/SidebarItemProps"
-import { fetchCategoryBlogs } from '../services/index';
+import { fetchCategoryBlogs } from "../services/index"
+import { isNil } from "lodash"
 
 const defaultInfo: SidebarItemProps = null
 
 export default {
   namespace: "category",
   state    : {
-    info: defaultInfo
+    info    : defaultInfo,
+    sequence: null
   },
   reducers: {
     UPDATE_STRUCTURE: ( state, { navCategory } ) => {
@@ -18,7 +20,7 @@ export default {
       return { ...state, info }
 
       function setShouldExpand( info, isFirst: boolean = false ) {
-        if ( info ) {
+        if ( info && isNil( info.shouldExpand ) ) {
           info.shouldExpand = isFirst ? true : false
           info.categories && info.categories.map( info => setShouldExpand( info ) )
         }
@@ -42,7 +44,8 @@ export default {
             info.categories.map( category => recurToUpdateInfo( category ) )
         }
       }
-  }
+    },
+    UPDATE_SEQUENCE: ( state, { sequence } ) => ({...state, sequence})
   },
   effects: {
     *fetchCategoryBlogs( { sequence }, { put, call } ) {
