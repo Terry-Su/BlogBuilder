@@ -3,25 +3,27 @@ import { hot } from "react-hot-loader"
 import TheApp from "./components/TheApp"
 import dva, { connect, Router } from "dva"
 import modelsMap from "./models/index"
-import { mapValues, find } from "lodash"
+import { mapValues, find, pick, cloneDeep } from 'lodash';
 import localStore from "./store/localStore"
+import { isBackFromOnePage, removeBackInfoFromUrl } from './navUtils/url';
 
 const app = dva({
   onStateChange: () => {
-    let category = null
-    let categorySequence = null
+    // let category = null
+    // let categorySequence = null
+
+    let store = null
+
     try {
-      category = app['_store'].getState().category.info
-      categorySequence = app['_store'].getState().category.sequence
-    } catch(e) {}
-    
-    console.log( app['_store'].getState() )
-    localStore.setCategory( category )
-    localStore.setCategorySequence( categorySequence )
+      const storeKeys = Object.keys(modelsMap)
+      store = pick(app["_store"].getState(), storeKeys)
+    } catch (e) {}
+
+    localStore.setStore(store)
   }
 })
 
-model()
+model(app)
 
 const TheHotAppComponent = hot(module)(connect(props => props)(TheApp))
 
@@ -29,6 +31,30 @@ app.router(() => <TheHotAppComponent />)
 
 app.start("#app")
 
-function model() {
-  mapValues(modelsMap, (model: any) => app.model(model))
+function model(app) {
+  let resModelsMap = modelsMap
+
+  if ( isBackFromOnePage() ) {
+    
+
+    const storeLocal = localStore.getStore()
+
+    resModelsMap = getNewResModelsMapStatesWithStoreLocal( resModelsMap, storeLocal  )
+  }
+
+  mapValues(resModelsMap, (model: any) => app.model(model))
+}
+
+function getNewResModelsMapStatesWithStoreLocal( resModelsMap, storeLocal ) {
+  try {
+    if ( resModelsMap && storeLocal ) {
+      let clonedReModelsMap = cloneDeep( resModelsMap )
+      mapValues( storeLocal, ( value, key ) => {
+        clonedReModelsMap[key]['state'] = value
+      } )
+      return clonedReModelsMap
+    }
+  } catch(e) {}
+
+  return resModelsMap
 }

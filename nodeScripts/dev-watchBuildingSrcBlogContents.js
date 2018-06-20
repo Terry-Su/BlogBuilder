@@ -19,6 +19,7 @@ function build() {
     detailScripts: [
       '<script src="/scripts/detail.bundle.js"></script>'
     ],
-    nameOfDirectoryPlacingDataExceptNavHtml: 'blogsOutputExceptNavHtml'
+    nameOfDirectoryPlacingDataExceptNavHtml: 'blogsOutputExceptNavHtml',
+    symbolUpdatingLocalstorage: '0'
   })
 }

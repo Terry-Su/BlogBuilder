@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import mapStateAndStyle from "../../../shared/utils/mapStateAndStyle";
+import { appendBackInfoToUrl, removeBackInfoFromUrl } from '../../navUtils/url';
 const styles = {
   name: {
     fontSize: '20px',
@@ -21,11 +22,15 @@ const styles = {
 
 export default mapStateAndStyle( styles )(
   class TsTemplate extends Component<any, any> {
+    onClick = () => {
+      appendBackInfoToUrl()
+    }
+
     render() {
       const { classes: c, blog={} } = this.props
       const { name, createTime, introduction, relativeClientUrl } = blog
       return <div>
-        <a className={ c.name } href={relativeClientUrl}>{ name }</a>
+        <a className={ c.name } href={relativeClientUrl} onClick={ this.onClick }>{ name }</a>
         <div className={ c.property }>PostTime: { createTime }</div>
         <div className={ c.introduction }>{ introduction }</div>
       </div>
