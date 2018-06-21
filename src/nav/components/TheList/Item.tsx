@@ -23,7 +23,7 @@ const styles = {
 export default mapStateAndStyle( styles )(
   class TsTemplate extends Component<any, any> {
     onClick = () => {
-      appendBackInfoToUrl()
+      // appendBackInfoToUrl()
     }
 
     render() {

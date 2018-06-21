@@ -10,6 +10,7 @@ const styles = {
 }
 import Item from "../Item"
 import { NAV_SIDE_BAR_TAG } from '../../../constants/names';
+import { isEqual } from 'lodash';
 
 export default mapStateAndStyle(styles)(
   class TheTagSection extends Component<any, any> {
@@ -20,9 +21,22 @@ export default mapStateAndStyle(styles)(
       dispatch({ type: "tag/TOOGLE_SHOULD_EXPAND" })
     }
 
+    getSequence( tagName ) {
+      return [ NAV_SIDE_BAR_TAG, tagName ]
+    }
+
     onTagClick = ( tagName ) => {
       const { dispatch } = this.props
+      const sequence = this.getSequence( tagName )
+      dispatch( { type: 'app/UPDATE_ACTIVE_SEQUENCE', activeSequence: sequence } )
       dispatch( { type: 'tag/fetchTagBlogs', tagName } )
+    }
+
+    getIsTagSequenceActive( tagName ) {
+      const sequence = this.getSequence( tagName )
+      const { app={} } = this.props
+      const { activeSequence } = app
+      return isEqual( activeSequence, sequence )
     }
 
     render() {
@@ -50,6 +64,7 @@ export default mapStateAndStyle(styles)(
                 <div className={c.item} key={index}>
                   <Item
                     name={tagName}
+                    active={this.getIsTagSequenceActive( tagName )}
                     onNameClick={ () => this.onTagNameClick(tagName)}
                     onClick={ () => this.onTagClick( tagName ) }
                   />

@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import Item from "../Item"
 import mapStateAndStyle from "../../../../shared/utils/mapStateAndStyle"
 import mapStyle from "../../../../shared/utils/mapStyle"
+import { isEqual } from 'lodash';
 
 const styles = {
   item: {
@@ -16,17 +17,15 @@ const ItemsContainer = mapStateAndStyle(styles)(
       dispatch({ type: "category/TOOGLE_CATEGORY_ITEM_EXPANSION", currentInfo })
     }
 
-    onItemNameClick = categoryInfo => {
+    getSequence(categoryInfo) {
       let sequence = []
-      const { category, dispatch } = this.props
+      const { category } = this.props
       if (category) {
         const { info } = category
-
-        recurToGetSequence(info)
-
-        dispatch({ type: "category/UPDATE_SEQUENCE", sequence })
-        dispatch({ type: "category/fetchCategoryBlogs", sequence })
+        info && recurToGetSequence(info)
       }
+
+      return sequence
 
       function recurToGetSequence(info) {
         const { name, categories } = info
@@ -59,14 +58,26 @@ const ItemsContainer = mapStateAndStyle(styles)(
       }
     }
 
+    onItemNameClick = categoryInfo => {
+      const { dispatch } = this.props
+
+      const sequence = this.getSequence(categoryInfo)
+      dispatch({ type: "category/UPDATE_SEQUENCE", sequence })
+      dispatch({ type: "category/fetchCategoryBlogs", sequence })
+      dispatch({ type: "app/UPDATE_ACTIVE_SEQUENCE", activeSequence: sequence })
+    }
+
+    getIsCategoryInfoSequenceActive( categoryInfo ) {
+      const sequence = this.getSequence( categoryInfo )
+      const { app={} } = this.props
+      const { activeSequence } = app
+      return isEqual( activeSequence, sequence )
+    }
+
     render() {
-      let {
-        categoryInfo = {},
-        classes: c,
-        interval = 0,
-      } = this.props
+      let { categoryInfo = {}, classes: c, interval = 0 } = this.props
       categoryInfo = categoryInfo || {}
-      const {  categories = [], name } = categoryInfo
+      const { categories = [], name } = categoryInfo
       let { shouldExpand } = categoryInfo
       const shouldShowMore = categories.length > 0
 
@@ -74,7 +85,6 @@ const ItemsContainer = mapStateAndStyle(styles)(
 
       const isLastBlogsDirectory = categories.length === 0
 
-      
       return (
         <div>
           <div className={c.item}>
@@ -85,6 +95,7 @@ const ItemsContainer = mapStateAndStyle(styles)(
               showIcon={shouldShowMore}
               canNotBeActivated={!isLastBlogsDirectory}
               clickOnlyToExpand={!isLastBlogsDirectory}
+              active={ this.getIsCategoryInfoSequenceActive( categoryInfo ) }
               onExpandIconClick={this.onItemExpandIconClick}
               onNameClick={() => this.onItemNameClick(categoryInfo)}
             />

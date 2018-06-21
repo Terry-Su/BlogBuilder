@@ -4,11 +4,11 @@ import TheTest from "./TheTest/TheTest"
 import TheSidebar from "./TheSidebar/TheSidebar"
 import TheList from "./TheList/TheList"
 import TheHeader from "./TheHeader/TheHeader"
-import sidebarItemList from "../mixins/sidebarItemList"
 import "../../shared/assets/css/main.scss"
 import TheCopyright from "../../shared/components/TheCopyright"
-import { isBackFromOnePage, removeBackInfoFromUrl } from "../navUtils/url"
-import { shouldLocalstorageUpdate } from '../navUtils/initialize';
+import { shouldLocalstorageUpdate } from "../navUtils/initialize"
+import localStore from "../store/localStore"
+import TheNewestItem from "./TheSidebar/TheNewestItem";
 
 const styles = {
   container: {},
@@ -32,9 +32,11 @@ const testing: boolean = false
 export default mapStateAndStyle(styles)(
   class ThePage extends Component<any, any> {
     componentDidMount() {
-      const theIsBackFromOnePage = isBackFromOnePage()
+      const { config } = window["GV"]
+      const { symbolUpdatingLocalstorage } = config
+
       const theshouldLocalstorageUpdate = shouldLocalstorageUpdate()
-      if ( theshouldLocalstorageUpdate || !theIsBackFromOnePage) {
+      if (theshouldLocalstorageUpdate) {
         const { dispatch } = this.props
 
         const { config, nav } = window["GV"]
@@ -55,11 +57,11 @@ export default mapStateAndStyle(styles)(
         dispatch({ type: "app/UPDATE_SLOGAN", slogan })
         dispatch({ type: "app/UPDATE_NAV", nav })
 
-        sidebarItemList.activateOnlyDefaultItem()
+        dispatch( { type: 'app/UPDATE_ACTIVE_SEQUENCE', activeSequence: TheNewestItem.sequence } )
       }
-      if (theIsBackFromOnePage) {
-        removeBackInfoFromUrl()
-      }
+
+
+      localStore.setUpdateSymbol(symbolUpdatingLocalstorage)
     }
     render() {
       const { classes: c } = this.props

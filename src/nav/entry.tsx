@@ -6,6 +6,7 @@ import modelsMap from "./models/index"
 import { mapValues, find, pick, cloneDeep } from 'lodash';
 import localStore from "./store/localStore"
 import { isBackFromOnePage, removeBackInfoFromUrl } from './navUtils/url';
+import { shouldLocalstorageUpdate } from './navUtils/initialize';
 
 const app = dva({
   onStateChange: () => {
@@ -34,9 +35,8 @@ app.start("#app")
 function model(app) {
   let resModelsMap = modelsMap
 
-  if ( isBackFromOnePage() ) {
-    
-
+  const theshouldLocalstorageUpdate = shouldLocalstorageUpdate()
+  if ( ! theshouldLocalstorageUpdate ) {
     const storeLocal = localStore.getStore()
 
     resModelsMap = getNewResModelsMapStatesWithStoreLocal( resModelsMap, storeLocal  )

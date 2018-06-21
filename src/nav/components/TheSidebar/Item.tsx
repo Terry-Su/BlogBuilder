@@ -3,7 +3,6 @@ import SidebarItemProps from "../../typings/SidebarItemProps"
 import mapStyle from "../../../shared/utils/mapStyle"
 import ExpandIcon from "./ExpandIcon"
 import { BOTTOM, RIGHT } from "../../constants/names"
-import sidebarItemList from "../../mixins/sidebarItemList";
 
 export default mapStyle({
   container: {
@@ -36,21 +35,18 @@ export default mapStyle({
 
     }
 
-    state = {
-      active: false
-    }
+    // state = {
+    //   active: false
+    // }
 
     componentDidMount() {
       const { mountedCallbackComponent } = this.props
-      sidebarItemList.add( this )
 
       mountedCallbackComponent && mountedCallbackComponent( this )
     }
 
     componentWillUnmount() {
       const { willUnmountCallbackComponent } = this.props
-
-      sidebarItemList.remove( this )
 
       willUnmountCallbackComponent && willUnmountCallbackComponent( this )
     }
@@ -65,7 +61,6 @@ export default mapStyle({
 
       if ( ! clickOnlyToExpand ) {
         onNameClick && onNameClick()
-      ! canNotBeActivated && sidebarItemList.activateOnly( this )
       }
 
       if ( clickOnlyToExpand ) {
@@ -100,8 +95,9 @@ export default mapStyle({
         classes: c,
         showIcon,
         interval = 0,
+        active
       } = this.props
-      const { active } = this.state
+      // const { } = this.state
       const direction = shouldExpand ? BOTTOM : RIGHT
 
       const style={ paddingLeft: `${ interval }px` }
