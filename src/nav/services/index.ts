@@ -4,8 +4,8 @@ import { notNil } from "../../shared/utils/lodash"
 const { config = {} } = window[ "GV" ]
 const { nameOfDirectoryPlacingDataExceptNavHtml } = config
 const root = notNil( nameOfDirectoryPlacingDataExceptNavHtml ) ?
-  `/${nameOfDirectoryPlacingDataExceptNavHtml}/` :
-  `/`
+  `./${nameOfDirectoryPlacingDataExceptNavHtml}/` :
+  `./`
 
 export const fetchCategoryBlogs = sequence => {
   const url = `${root}${sequence.reduce(
