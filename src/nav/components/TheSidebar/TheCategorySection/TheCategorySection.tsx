@@ -8,8 +8,8 @@ export default mapStateAndStyle({
 })(
   class TheCategorySection extends Component<any, any> {
     render() {
-      const { classes: c } = this.props
-      const { info } = this.props.category
+      const { classes: c, category } = this.props
+      const { info } = category
       return (
         <div className={ c.container }>
           <ItemsContainer categoryInfo={ info } />

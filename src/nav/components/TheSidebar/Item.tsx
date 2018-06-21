@@ -8,7 +8,6 @@ export default mapStyle({
   container: {
     display: "flex",
     alignItems: "center",
-    // background: 'blue'
   },
   expandIconContainer: {
     display: 'flex',
@@ -16,7 +15,6 @@ export default mapStyle({
     padding: '0 5px',
     justifyContent: 'center',
     alignItems: 'center',
-    // background: 'orange',
   },
   name: {
     width: '100%',
@@ -33,22 +31,6 @@ export default mapStyle({
     constructor( props ) {
       super( props )
 
-    }
-
-    // state = {
-    //   active: false
-    // }
-
-    componentDidMount() {
-      const { mountedCallbackComponent } = this.props
-
-      mountedCallbackComponent && mountedCallbackComponent( this )
-    }
-
-    componentWillUnmount() {
-      const { willUnmountCallbackComponent } = this.props
-
-      willUnmountCallbackComponent && willUnmountCallbackComponent( this )
     }
 
     onExpandIconClick = () => {
@@ -73,21 +55,6 @@ export default mapStyle({
       onClick && onClick( event )
     }
 
-
-
-    activate() {
-      this.setState( {
-        active: true
-      } )
-    }
-
-    deactivate() {
-      this.setState( {
-        active: false
-      } )
-    }
-
-
     render() {
       const {
         name,
@@ -97,7 +64,6 @@ export default mapStyle({
         interval = 0,
         active
       } = this.props
-      // const { } = this.state
       const direction = shouldExpand ? BOTTOM : RIGHT
 
       const style={ paddingLeft: `${ interval }px` }

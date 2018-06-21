@@ -11,6 +11,4 @@ export default interface SidebarItemProps {
   onExpandIconClick?: Function
   onNameClick?: Function
   onClick?: Function
-  mountedCallbackComponent?: Function
-  willUnmountCallbackComponent?: Function
 }

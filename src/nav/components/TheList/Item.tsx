@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import mapStateAndStyle from "../../../shared/utils/mapStateAndStyle";
 import { appendBackInfoToUrl, removeBackInfoFromUrl } from '../../navUtils/url';
+import { POST_TIME } from '../../../shared/constants/localization';
 const styles = {
   name: {
     fontSize: '20px',
@@ -31,7 +32,7 @@ export default mapStateAndStyle( styles )(
       const { name, createTime, introduction, relativeClientUrl } = blog
       return <div>
         <a className={ c.name } href={relativeClientUrl} onClick={ this.onClick }>{ name }</a>
-        <div className={ c.property }>PostTime: { createTime }</div>
+        <div className={ c.property }>{ POST_TIME }: { createTime }</div>
         <div className={ c.introduction }>{ introduction }</div>
       </div>
     }

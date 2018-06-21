@@ -9,6 +9,8 @@ import TheCopyright from "../../shared/components/TheCopyright"
 import { shouldLocalstorageUpdate } from "../navUtils/initialize"
 import localStore from "../store/localStore"
 import TheNewestItem from "./TheSidebar/TheNewestItem";
+import {  NAV } from '../constants/names';
+import { CONFIG, GV } from '../../shared/constants/names';
 
 const styles = {
   container: {},
@@ -32,14 +34,14 @@ const testing: boolean = false
 export default mapStateAndStyle(styles)(
   class ThePage extends Component<any, any> {
     componentDidMount() {
-      const { config } = window["GV"]
+      const { [CONFIG]: config } = window[GV]
       const { symbolUpdatingLocalstorage } = config
 
-      const theshouldLocalstorageUpdate = shouldLocalstorageUpdate()
-      if (theshouldLocalstorageUpdate) {
+      const theShouldLocalstorageUpdate = shouldLocalstorageUpdate()
+      if (theShouldLocalstorageUpdate) {
         const { dispatch } = this.props
 
-        const { config, nav } = window["GV"]
+        const { [CONFIG]:config, [NAV]: nav } = window[GV]
         const { textLogo, slogan } = config
         const { category, newestBlogs } = nav
 

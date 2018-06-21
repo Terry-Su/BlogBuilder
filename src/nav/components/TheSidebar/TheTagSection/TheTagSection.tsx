@@ -9,8 +9,9 @@ const styles = {
   }
 }
 import Item from "../Item"
-import { NAV_SIDE_BAR_TAG } from '../../../constants/names';
+import { NAV } from '../../../constants/names';
 import { isEqual } from 'lodash';
+import { NAV_SIDE_BAR_TAG } from "../../../constants/localization";
 
 export default mapStateAndStyle(styles)(
   class TheTagSection extends Component<any, any> {
@@ -42,7 +43,7 @@ export default mapStateAndStyle(styles)(
     render() {
       let tags = []
       const { classes: c, app, tag } = this.props
-      const { nav } = app
+      const { [NAV]: nav } = app
       const { shouldExpand } = tag
       if (nav) {
         tags = nav.tags

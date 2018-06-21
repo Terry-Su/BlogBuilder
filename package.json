@@ -7,7 +7,8 @@
     "start": "node nodeScripts/dev-watchBuildingSrcBlogContents | node server.js",
     "build": "webpack --mode production",
     "test": "node spec/jasmineEntry",
-    "copy": "node nodeScripts/transportToBlogCDN.js"
+    "copy": "node nodeScripts/transportToBlogCDN.js",
+    "eslint": "eslint src/**/*.ts"
   },
   "repository": {
     "type": "git",

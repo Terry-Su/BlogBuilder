@@ -20,6 +20,8 @@ function build() {
       '<script src="/scripts/detail.bundle.js"></script>'
     ],
     nameOfDirectoryPlacingDataExceptNavHtml: 'blogsOutputExceptNavHtml',
-    symbolUpdatingLocalstorage: new Date()
+    symbolUpdatingLocalstorage: new Date(),
+    lang: 'en',
+    // lang: 'cn',
   })
 }

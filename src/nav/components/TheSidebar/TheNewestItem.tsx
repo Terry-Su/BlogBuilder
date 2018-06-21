@@ -1,8 +1,9 @@
 import React, { Component } from "react"
 import mapStateAndStyle from "../../../shared/utils/mapStateAndStyle"
 import Item from "./Item"
-import { NAV_SIDE_BAR_THE_NEWEST } from "../../constants/names"
+import { NAV } from '../../constants/names';
 import { isEqual } from "lodash";
+import { NAV_SIDE_BAR_THE_NEWEST } from "../../constants/localization";
 const styles = {}
 
 export default mapStateAndStyle(styles)(
@@ -11,15 +12,9 @@ export default mapStateAndStyle(styles)(
 
     static sequence = [ NAV_SIDE_BAR_THE_NEWEST ]
 
-    mountedItemCallbackComponent(itemComponent) {
-    }
-
-    willUnmountItemCallbackComponent(itemComponent) {
-    }
-
     onItemClick = () => {
       const { dispatch, app } = this.props
-      const { nav } = app
+      const { [NAV]: nav } = app
       const { newestBlogs } = nav
 
       dispatch( { type: 'app/UPDATE_ACTIVE_SEQUENCE', activeSequence: TheNewestItem.sequence } )
@@ -37,8 +32,6 @@ export default mapStateAndStyle(styles)(
       return (
         <Item
           name={NAV_SIDE_BAR_THE_NEWEST}
-          mountedCallbackComponent={this.mountedItemCallbackComponent}
-          willUnmountCallbackComponent={this.willUnmountItemCallbackComponent}
           onClick={this.onItemClick}
           active={isActive}
         />

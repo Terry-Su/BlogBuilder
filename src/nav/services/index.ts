@@ -1,7 +1,8 @@
+import { GV } from './../../shared/constants/names';
 import request from "../../shared/utils/request"
 import { notNil } from "../../shared/utils/lodash"
 
-const { config = {} } = window[ "GV" ]
+const { config = {} } = window[ GV ]
 const { nameOfDirectoryPlacingDataExceptNavHtml } = config
 const root = notNil( nameOfDirectoryPlacingDataExceptNavHtml ) ?
   `./${nameOfDirectoryPlacingDataExceptNavHtml}/` :

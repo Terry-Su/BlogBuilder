@@ -1,7 +1,8 @@
 import localStore from "../store/localStore"
+import { CONFIG, GV } from '../../shared/constants/names';
 
 export const shouldLocalstorageUpdate = () => {
-  const { config } = window[ "GV" ]
+  const { [CONFIG]:config } = window[ GV ]
   const { symbolUpdatingLocalstorage } = config
 
   const currentUpdateSymbol = localStore.getUpdateSymbol()
