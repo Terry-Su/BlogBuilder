@@ -3,8 +3,8 @@ import { CONFIG, GV } from '../../shared/constants/names';
 
 export const shouldLocalstorageUpdate = () => {
   const { [CONFIG]:config } = window[ GV ]
-  const { symbolUpdatingLocalstorage } = config
+  const { navSymbolUpdatingLocalstorage } = config
 
   const currentUpdateSymbol = localStore.getUpdateSymbol()
-  return symbolUpdatingLocalstorage !== currentUpdateSymbol
+  return navSymbolUpdatingLocalstorage !== currentUpdateSymbol
 }

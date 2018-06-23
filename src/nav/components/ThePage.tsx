@@ -35,7 +35,7 @@ export default mapStateAndStyle(styles)(
   class ThePage extends Component<any, any> {
     componentDidMount() {
       const { [CONFIG]: config } = window[GV]
-      const { symbolUpdatingLocalstorage } = config
+      const { navSymbolUpdatingLocalstorage } = config
 
       const theShouldLocalstorageUpdate = shouldLocalstorageUpdate()
       if (theShouldLocalstorageUpdate) {
@@ -63,7 +63,7 @@ export default mapStateAndStyle(styles)(
       }
 
 
-      localStore.setUpdateSymbol(symbolUpdatingLocalstorage)
+      localStore.setUpdateSymbol(navSymbolUpdatingLocalstorage)
     }
     render() {
       const { classes: c } = this.props
