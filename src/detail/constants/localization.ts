@@ -9,6 +9,6 @@ export const REPRINT_NOTE = getLangString( {
 
 export const REPRINT_NOTE_DETAIL = getLangString( {
   [ EN ]: `Author all Rights reserved, reprint please indicate
-  the source. no commercial reprint`,
+  the source, no commercial reprint`,
   [ CN ]: `作者版权所有，转载请注明出处，谢绝商业转载`
 } )
