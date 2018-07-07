@@ -1,6 +1,7 @@
 import { notNil } from './../../shared/utils/lodash';
 import { GV, CN } from './../constants/names';
 import { CONFIG, LANG, EN } from '../constants/names';
+import { GVConfig } from '../store/global';
 
 interface Props {
   [EN]: string,
@@ -10,7 +11,7 @@ interface Props {
 export const getLangString = ( props: Props ) => {
   let lang = EN
   try {
-    lang = window[GV][CONFIG][LANG]
+    lang = GVConfig[LANG]
   } catch( e ) {}
   let res = props[ lang ]
 

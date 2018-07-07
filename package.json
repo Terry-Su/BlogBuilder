@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node nodeScripts/dev-watchBuildingSrcBlogContents | node server.js",
+    "start": "npm run content | node server.js",
+    "content": "node nodeScripts/dev-watchBuildingSrcBlogContents",
     "build": "webpack --mode production",
     "cb": "node nodeScripts/dev-watchBuildingSrcBlogContents",
     "test": "node spec/jasmineEntry",

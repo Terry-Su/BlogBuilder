@@ -7,6 +7,8 @@ import TheCopyright from "../../shared/components/TheCopyright"
 import '../../shared/assets/css/main.scss'
 import '../assets/css/highlight.scss'
 import { GV } from '../../shared/constants/names';
+import { GVConfigDetail } from "../store/global";
+import { GVData } from "../../shared/store/global";
 
 const styles = {
   infoContainer: {
@@ -23,7 +25,7 @@ export default mapStateAndStyle(styles)(
   class ThePage extends Component<any, any> {
     componentDidMount() {
       const { markedHtml, dispatch } = this.props
-      const { name, createTime, categorySequence, tags } = window[GV] 
+      const { name, createTime, categorySequence, tags } = GVData
 
       dispatch( { type: 'app/UPDATE_NAME', name } )
       dispatch( { type: 'app/UPDATE_CREATE_TIME', createTime } )

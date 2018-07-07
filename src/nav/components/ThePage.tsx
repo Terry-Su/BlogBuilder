@@ -11,6 +11,7 @@ import localStore from "../store/localStore"
 import TheNewestItem from "./TheSidebar/TheNewestItem";
 import {  NAV } from '../constants/names';
 import { CONFIG, GV } from '../../shared/constants/names';
+import {  GVConfigNav, GVNav } from "../store/global";
 
 const styles = {
   container: {},
@@ -34,16 +35,15 @@ const testing: boolean = false
 export default mapStateAndStyle(styles)(
   class ThePage extends Component<any, any> {
     componentDidMount() {
-      const { [CONFIG]: config } = window[GV]
-      const { navSymbolUpdatingLocalstorage } = config
+      const { symbolUpdatingLocalstorage } = GVConfigNav
 
       const theShouldLocalstorageUpdate = shouldLocalstorageUpdate()
+
       if (theShouldLocalstorageUpdate) {
         const { dispatch } = this.props
 
-        const { [CONFIG]:config, [NAV]: nav } = window[GV]
-        const { textLogo, slogan } = config
-        const { category, newestBlogs } = nav
+        const { textLogo, slogan } = GVConfigNav
+        const { category, newestBlogs } = GVNav
 
         dispatch({
           type: "category/UPDATE_STRUCTURE",
@@ -57,13 +57,13 @@ export default mapStateAndStyle(styles)(
 
         dispatch({ type: "app/UPDATE_TEXT_LOGO", textLogo })
         dispatch({ type: "app/UPDATE_SLOGAN", slogan })
-        dispatch({ type: "app/UPDATE_NAV", nav })
+        dispatch({ type: "app/UPDATE_NAV", [NAV]: GVNav })
+
 
         dispatch( { type: 'app/UPDATE_ACTIVE_SEQUENCE', activeSequence: TheNewestItem.sequence } )
       }
 
-
-      localStore.setUpdateSymbol(navSymbolUpdatingLocalstorage)
+      localStore.setUpdateSymbol(symbolUpdatingLocalstorage)
     }
     render() {
       const { classes: c } = this.props

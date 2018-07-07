@@ -10,18 +10,34 @@ gulp.watch(`${ origin }/**`, build)
 
 
 function build() {
+  const textLogo =  'Custom'
+  const slogan = 'Custom slogan'
   buildBlogContents(origin, output, {
-    textLogo: 'Custom',
-    slogan: 'Custom slogan',
-    navScripts: [
-      '<script src="/scripts/nav.bundle.js"></script>'
-    ],
-    detailScripts: [
-      '<script src="/scripts/detail.bundle.js"></script>'
-    ],
     nameOfDirectoryPlacingDataExceptNavHtml: 'blogsOutputExceptNavHtml',
-    symbolUpdatingLocalstorage: new Date(),
-    lang: 'en',
     // lang: 'cn',
+    lang: 'cn',
+
+
+    nav: {
+      textLogo,
+      slogan,
+      scripts: [
+        '<script src="/scripts/nav.bundle.js"></script>'
+      ],
+      symbolUpdatingLocalstorage: new Date(),
+    },
+    
+    detail: {
+      textLogo,
+      slogan,
+      scripts: [
+        '<script src="/scripts/detail.bundle.js"></script>'
+      ],
+    },
+
+    
+    
   })
+
+  console.log('built')
 }
