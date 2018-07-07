@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import { GVData } from "../../../shared/store/global";
 
 export default class TheDisqus extends Component {
   componentDidMount() {
@@ -6,9 +7,10 @@ export default class TheDisqus extends Component {
      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
      *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
 
+    const { uniqueHtmlName: PAGE_IDENTIFIER } = GVData
+    const PAGE_URL = location.href
+    console.log( { PAGE_IDENTIFIER, PAGE_URL } )
     var disqus_config = function() {
-      var PAGE_URL = location.href
-      var PAGE_IDENTIFIER = location.href
       this.page.url = PAGE_URL // Replace PAGE_URL with your page's canonical URL variable
       this.page.identifier = PAGE_IDENTIFIER // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     }

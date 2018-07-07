@@ -36,7 +36,7 @@ export default mapStateAndStyle(styles)(
     componentDidMount() {
       const { markedHtml, dispatch } = this.props
       const { name, createTime, categorySequence, tags } = GVData
-
+      console.log( GVData )
       dispatch({ type: "app/UPDATE_NAME", name })
       dispatch({ type: "app/UPDATE_CREATE_TIME", createTime })
       dispatch({ type: "app/UPDATE_CATEGORY_SEQUENCE", categorySequence })
