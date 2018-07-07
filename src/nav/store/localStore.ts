@@ -10,7 +10,7 @@ class LocalStore {
   }
   getItem( key ) {
     try {
-      const jsonString = localStorage.getItem( key )
+      const jsonString = localStorage.getItem( key ) || ''
       const json = JSON.parse( jsonString )
       return json
     } catch ( e ) {
