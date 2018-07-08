@@ -33,6 +33,7 @@ function build() {
       scripts: [
         '<script src="/scripts/detail.bundle.js"></script>'
       ],
+      commentRoot: 'https://api.github.com/repos/terry-su/tsblogcomments-en/issues/'
     },
 
     

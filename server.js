@@ -32,11 +32,11 @@ app.get( "/", ( req, res ) => {
 } )
 
 app.get( "/detail", ( req, res ) => {
-  res.sendFile( PATH.resolve( __dirname, 'build/All/Technology/__Geometry Algorithms in Javascript/Geometry Algorithm in Javascript.html' ) )
+  res.sendFile( PATH.resolve( __dirname, 'build/blogsOutputExceptNavHtml/details/test.html' ) )
 } )
 
-app.get( "/props.json", ( req, res ) => {
-  res.sendFile( PATH.resolve( __dirname, 'build/All/Technology/__Geometry Algorithms in Javascript/props.json' ) )
-} )
+// app.get( "/props.json", ( req, res ) => {
+//   res.sendFile( PATH.resolve( __dirname, 'build/All/Technology/__Geometry Algorithms in Javascript/props.json' ) )
+// } )
 
 app.listen( port, () => { console.log( `listening on the port ${ port }` ) } )

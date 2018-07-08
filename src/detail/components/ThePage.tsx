@@ -10,6 +10,7 @@ import { GV } from "../../shared/constants/names"
 import { GVConfigDetail } from "../store/global"
 import { GVData } from "../../shared/store/global"
 import TheDisqus from "./Comment/TheDisqus"
+import TheGithubIssueComment from "./Comment/TheGithubIssueComment/TheGithubIssueComment";
 
 const styles = {
   container: {
@@ -29,14 +30,13 @@ const styles = {
   }
 }
 
-const testing: boolean = false
+const testing: boolean = true
 
 export default mapStateAndStyle(styles)(
   class ThePage extends Component<any, any> {
     componentDidMount() {
       const { markedHtml, dispatch } = this.props
       const { name, createTime, categorySequence, tags } = GVData
-      console.log( GVData )
       dispatch({ type: "app/UPDATE_NAME", name })
       dispatch({ type: "app/UPDATE_CREATE_TIME", createTime })
       dispatch({ type: "app/UPDATE_CATEGORY_SEQUENCE", categorySequence })
@@ -49,6 +49,7 @@ export default mapStateAndStyle(styles)(
         <TheTest />
       ) : (
         <div className={c.container}>
+          <TheGithubIssueComment />
           <div className={c.articleContainer}>
             <TheArticle />
           </div>

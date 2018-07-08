@@ -1,0 +1,1 @@
+export const getGithubIssueCommentsUrl = ( commentRoot, comment ) => `${commentRoot}${comment}/comments`
