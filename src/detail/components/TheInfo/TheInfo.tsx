@@ -16,7 +16,6 @@ const styles = {
   container: {
     width: "100%",
     maxWidth: MAX_ARTICLE_WITH,
-    fontSize: "14px",
     textAlign: "right"
   },
   postTime: {
@@ -42,6 +41,11 @@ const styles = {
     display: "flex",
     justifyContent: "flex-end"
     // color: "#2166f1"
+  },
+  "@media (max-width: 576px)": {
+    container: {
+      fontSize: "14px",
+    }
   }
 }
 

@@ -6,7 +6,6 @@ const styles = {
     display: "flex",
     // boxSizing: "border-box",
     // border: "1px solid blue",
-    fontSize: "14px"
   },
   avatarContainer: {
     display: "flex",
@@ -34,7 +33,6 @@ const styles = {
   },
   title: {
     display: "inline-flex",
-    fontSize: "16px",
     fontWeight: "bold"
   },
   time: {
@@ -51,6 +49,8 @@ export default mapStateAndStyle(styles)(
     render() {
       const { classes: c, data = {} } = this.props
       const { avatorUrl, name, createTime, updateTime, content } = data
+
+      const time = new Date(createTime).toTimeString()
 
       return (
         <div className={c.container}>

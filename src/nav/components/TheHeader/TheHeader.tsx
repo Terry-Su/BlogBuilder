@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import mapStateAndStyle from "../../../shared/utils/mapStateAndStyle"
+import { MAIN_FILL_COLOR, SLOGAN_COLOR } from "../../../shared/constants/colors";
 
 const styles = {
   container: {
@@ -7,18 +8,17 @@ const styles = {
     flexDirection: 'column',
     justifyContent: "center",
     alignItems: "flex-start",
-    fontSize: "14px"
+    fontSize: "16px"
   },
   logo: {
     fontSize: "28px",
     textAlign: "left",
     fontWeight: "bold",
-    color: "#0071ea"
+    color: MAIN_FILL_COLOR
   },
   slogan: {
     margin: "5px 0 0 0",
-    fontSize: "16px",
-    color: "#0071ea",
+    color: SLOGAN_COLOR,
     textAlign: "left"
   }
 }

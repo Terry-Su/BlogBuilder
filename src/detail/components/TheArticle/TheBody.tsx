@@ -4,15 +4,16 @@ import { MAX_ARTICLE_WITH } from "../../constants/styles"
 
 const styles = {
   container: {
+    display: 'flex',
+    width: '100%',
+    justifyContent: 'center'
+
+  },
+  contentContainer: {
     width: '100%',
     maxWidth: MAX_ARTICLE_WITH,
     padding: "0 20px",
     boxSizing: "border-box",
-    fontSize: "16px",
-  },
-  contentContainer: {
-    width: '100%',
-    maxWidth: "100%!important",
   },
 }
 

@@ -16,7 +16,7 @@ import { GVConfigNav, GVNav } from "../store/global"
 const styles = {
   container: {},
   headerContainer: {
-    padding: "30px 0 0 50px",
+    padding: "30px 0 0 8%",
     boxSizing: "border-box"
   },
   mainContainer: {
@@ -42,6 +42,10 @@ const styles = {
     margin: "100px 0 15px 0"
   },
   "@media (max-width: 576px)": {
+    headerContainer: {
+      padding: "30px 0 0 50px",
+      boxSizing: "border-box"
+    },
     mainContainer: {
       margin: "50px 0 0 0",
       padding: '0',

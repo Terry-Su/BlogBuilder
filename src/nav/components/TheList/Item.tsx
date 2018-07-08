@@ -2,15 +2,17 @@ import React, { Component } from "react"
 import mapStateAndStyle from "../../../shared/utils/mapStateAndStyle";
 import { appendBackInfoToUrl, removeBackInfoFromUrl } from '../../navUtils/url';
 import { POST_TIME } from '../../../shared/constants/localization';
+import { MAIN_FILL_COLOR } from "../../../shared/constants/colors";
 const styles = {
   name: {
     fontWeight: 'bold',
     textDecoration: 'none',
-    color: '#0071ea',
+    color: MAIN_FILL_COLOR,
+    fontSize: '18px',
   },
   property: {
     margin: '10px 0 0 0',
-    fontSize: '12px',
+    fontSize: '14px',
     // color: '#3d79f1'
   },
   introduction: {

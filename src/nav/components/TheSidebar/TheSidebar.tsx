@@ -6,7 +6,6 @@ import TheNewestItem from "./TheNewestItem";
 
 const styles = {
   container: {
-    // color: '#0071ea',
     cursor: "default"
   },
   categoryContainer: {
