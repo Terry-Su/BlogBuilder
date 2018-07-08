@@ -5,13 +5,14 @@ import dva, { connect, Router } from "dva"
 import modelsMap from "./models/index"
 import { mapValues } from "lodash"
 
+
+
 const appDom = document.getElementById( 'markedHtml' )
 const markedHtml = appDom ? appDom.innerHTML : ''
 
 const app = dva()
 
 model()
-
 
 const TheHotAppComponent = hot(module)(connect(props => props)(TheApp))
 

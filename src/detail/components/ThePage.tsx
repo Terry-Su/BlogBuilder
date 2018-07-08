@@ -7,7 +7,7 @@ import TheCopyright from "../../shared/components/TheCopyright"
 import "../../shared/assets/css/main.scss"
 import "../assets/css/highlight.scss"
 import { GV } from "../../shared/constants/names"
-import { GVConfigDetail } from "../store/global"
+import { GVConfigDetail, shouldShowGithubIsuueComments } from "../store/global"
 import { GVData } from "../../shared/store/global"
 import TheDisqus from "./Comment/TheDisqus"
 import TheGithubIssueComment from "./Comment/TheGithubIssueComment/TheGithubIssueComment"
@@ -24,9 +24,14 @@ const styles = {
   copyrightContainer: {
     padding: "100px 0 15px 0"
   },
-  disqusContainer: {
+  commentContainer: {
     width: "700px",
     margin: "50px 0 0 0"
+  },
+  disqusContainer: {
+  },
+  githubIssueCommentContainer: {
+    margin: '30px 0 0 0'
   }
 }
 
@@ -56,9 +61,13 @@ export default mapStateAndStyle(styles)(
             <TheInfo />
           </div>
 
-          <div className={c.disqusContainer}>
-            <TheGithubIssueComment />
-            <TheDisqus />
+          <div className={c.commentContainer}>
+            <div className={c.disqusContainer}>
+              <TheDisqus />
+            </div>
+            {shouldShowGithubIsuueComments && <div className={c.githubIssueCommentContainer}>
+              <TheGithubIssueComment />
+            </div>}
           </div>
 
           <div className={c.copyrightContainer}>

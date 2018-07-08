@@ -1,13 +1,15 @@
 import { fetchGithubIssueComments } from "../services"
-import { filterGithubIssueComments } from "../store/filter";
+import { filterGithubIssueComments } from "../store/filter"
 
-export default {
+const commentModel = {
   namespace: "comment",
   state    : {
-    comments: []
+    comments      : [],
+    doesDisqusWork: false
   },
   reducers: {
-    UPDATE_COMMENTS: ( state, { comments } ) => ( { ...state, comments } )
+    UPDATE_COMMENTS: ( state, { comments } ) => ( { ...state, comments } ),
+    DISQUS_DOES_WORK: ( state ) =>  ( { ...state, doesDisqusWork: true } ),
   },
   effects: {
     *fetchGithubIssueComments( {}, { put, call } ) {
@@ -16,9 +18,13 @@ export default {
 
         if ( data ) {
           const comments = filterGithubIssueComments( data )
-          yield put( { type: 'UPDATE_COMMENTS', comments } )
+          yield put( { type: "UPDATE_COMMENTS", comments } )
         }
       }
     }
   }
 }
+
+export default commentModel
+
+export const isGithubCommentsEmpty = ( state: any ) => state.comments.length === 0
