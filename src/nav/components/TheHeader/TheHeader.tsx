@@ -12,8 +12,8 @@ const styles = {
   },
   subContainer: {
     width: "180px",
-    marginLeft: '100px',
-    // background: "orange"
+    margin: '0 0 0 100px',
+    background: "orange"
   },
   logo: {
     height: '50px',
@@ -27,6 +27,11 @@ const styles = {
     fontSize: '20px',
     color: '#0071ea',
     textAlign: 'center'
+  },
+  '@media (max-width: 576px)': {
+    subContainer: {
+      background: "blue"
+    }
   }
 }
 

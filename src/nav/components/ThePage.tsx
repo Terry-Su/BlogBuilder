@@ -17,6 +17,7 @@ const styles = {
   container: {},
   mainContainer: {
     display: "flex",
+    flexWrap: "wrap",
     margin: "50px 0 0 0"
   },
   sidebarContainer: {
@@ -26,7 +27,9 @@ const styles = {
     margin: "0 0 0 50px"
   },
   copyrightContainer: {
-    margin: "100px 0 15px 0"
+    display: 'flex',
+    justifyContent: 'center',
+    margin: "100px 0 15px 0",
   }
 }
 

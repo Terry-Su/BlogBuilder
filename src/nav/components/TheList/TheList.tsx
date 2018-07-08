@@ -3,7 +3,7 @@ import mapStateAndStyle from "../../../shared/utils/mapStateAndStyle"
 import Item from "./Item"
 const styles = {
   container: {
-    width: '800px',
+    // width: '800px',
   },
   itemContainer:{
     padding: '0 0 20px 0'

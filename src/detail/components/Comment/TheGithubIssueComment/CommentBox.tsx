@@ -10,8 +10,8 @@ const styles = {
   },
   avatarContainer: {
     display: "flex",
-    width: "80px",
-    justifyContent: "center",
+    minWidth: "60px",
+    justifyContent: "flex-start",
     alignItems: "flex-start"
   },
   avatarImage: {
@@ -21,10 +21,10 @@ const styles = {
   },
   mainContainer: {
     display: "flex",
-    padding: "10px",
+    padding: '15px',
+    boxSizing: 'border-box',
     flex: "auto",
     flexDirection: "column",
-    boxSizing: "border-box",
     border: "1px solid grey",
     borderRadius: "5px"
   },

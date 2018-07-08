@@ -37,18 +37,16 @@ export default mapStateAndStyle(styles)(
               <a
                 className={c.link}
                 href={githubIssueCommentsUrl}
-                target="blank"
               >
-                Be the first to comment
+                { doesDisqusWork ? 'Be the first to comment on github': 'Be the first to comment' }
               </a>
             ) : (
               <a
                 className={c.link}
                 href={githubIssueCommentsUrl}
-                target="blank"
               >
                 {
-                  doesDisqusWork ? 'You can also comment on github': 'Write comment'
+                  doesDisqusWork ? 'You can also comment on github': 'Write a comment'
                 }
               </a>
             )}

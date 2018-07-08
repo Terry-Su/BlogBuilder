@@ -1,17 +1,15 @@
 import React, { Component } from "react"
 import mapStateAndStyle from "../../../shared/utils/mapStateAndStyle"
+import { MAX_ARTICLE_WITH } from "../../constants/styles";
 
 const styles = {
   container: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  subContainer: {
-    width: "700px",
+    width: "100%",
+    maxWidth: MAX_ARTICLE_WITH,
+    padding: '0 20px',
+    boxSizing: 'border-box',
     fontSize: "16px",
-    // color: "#2166f1"
-  }
+  },
 }
 
 export default mapStateAndStyle(styles)(
@@ -20,13 +18,11 @@ export default mapStateAndStyle(styles)(
       const { classes: c, app } = this.props
       const { body } = app
       return (
-        <div className={c.container}>
-          <div
-            className={`${c.subContainer} highlight`}
+        <div
+            className={`${c.container} highlight`}
             dangerouslySetInnerHTML={{ __html: body }}
           >
           </div>
-        </div>
       )
     }
   }

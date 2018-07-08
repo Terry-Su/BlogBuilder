@@ -11,6 +11,7 @@ import { GVConfigDetail, shouldShowGithubIsuueComments } from "../store/global"
 import { GVData } from "../../shared/store/global"
 import TheDisqus from "./Comment/TheDisqus"
 import TheGithubIssueComment from "./Comment/TheGithubIssueComment/TheGithubIssueComment"
+import { MAX_ARTICLE_WITH } from "../constants/styles";
 
 const styles = {
   container: {
@@ -18,21 +19,32 @@ const styles = {
     flexDirection: "column",
     alignItems: "center"
   },
-  infoContainer: {
-    margin: "20px 0 0 0"
+  articleContainer: {
+    padding: '0 10px',
+    boxSizing: 'border-box', 
   },
-  copyrightContainer: {
-    padding: "100px 0 15px 0"
+  infoContainer: {
+    width: "100%",
+    maxWidth: MAX_ARTICLE_WITH,
+    padding: '0 20px',
+    margin: "20px 0 0 0",
+    boxSizing: 'border-box', 
   },
   commentContainer: {
-    width: "700px",
-    margin: "50px 0 0 0"
+    width: "100%",
+    maxWidth: MAX_ARTICLE_WITH,
+    padding: '0 10px',
+    margin: "50px 0 0 0",
+    boxSizing: 'border-box',
   },
   disqusContainer: {
   },
   githubIssueCommentContainer: {
     margin: '30px 0 0 0'
-  }
+  },
+  copyrightContainer: {
+    padding: "100px 0 15px 0",
+  },
 }
 
 const testing: boolean = false

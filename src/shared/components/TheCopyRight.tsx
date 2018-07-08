@@ -3,10 +3,10 @@ import mapStateAndStyle from "../utils/mapStateAndStyle"
 import Space from "./Space"
 const styles = {
   container: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    fontSize: '14px',    
+    // display: "flex",
+    // justifyContent: "center",
+    // alignItems: "center",
+    fontSize: '12px',    
     // color: "#979797"
   },
   link: {
