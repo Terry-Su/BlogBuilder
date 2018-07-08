@@ -3,35 +3,23 @@ import mapStateAndStyle from "../../../shared/utils/mapStateAndStyle"
 
 const styles = {
   container: {
-    height: "150px",
     display: "flex",
-    justifyContent: "flex-start",
-    alignItems: 'center',
-    // background: "blue"
-    // border: '1px solid grey',
-  },
-  subContainer: {
-    width: "180px",
-    margin: '0 0 0 100px',
-    background: "orange"
+    flexDirection: 'column',
+    justifyContent: "center",
+    alignItems: "flex-start",
+    fontSize: "14px"
   },
   logo: {
-    height: '50px',
-    fontSize: '50px',
-    color: '#0071ea',
-    textAlign: 'center'
+    fontSize: "28px",
+    textAlign: "left",
+    fontWeight: "bold",
+    color: "#0071ea"
   },
   slogan: {
-    height: '20px',
-    margin: '20px 0 0 0',
-    fontSize: '20px',
-    color: '#0071ea',
-    textAlign: 'center'
-  },
-  '@media (max-width: 576px)': {
-    subContainer: {
-      background: "blue"
-    }
+    margin: "5px 0 0 0",
+    fontSize: "16px",
+    color: "#0071ea",
+    textAlign: "left"
   }
 }
 
@@ -43,10 +31,8 @@ export default mapStateAndStyle(styles)(
 
       return (
         <div className={c.container}>
-          <div className={c.subContainer}>
-            <div className={c.logo}>{textLogo}</div>
-            <div className={c.slogan}>{slogan}</div>
-          </div>
+          <div className={c.logo}>{textLogo}</div>
+          <div className={c.slogan}>{slogan}</div>
         </div>
       )
     }

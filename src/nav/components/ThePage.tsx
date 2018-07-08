@@ -8,28 +8,59 @@ import "../../shared/assets/css/main.scss"
 import TheCopyright from "../../shared/components/TheCopyright"
 import { shouldLocalstorageUpdate } from "../navUtils/initialize"
 import localStore from "../store/localStore"
-import TheNewestItem from "./TheSidebar/TheNewestItem";
-import {  NAV } from '../constants/names';
-import { CONFIG, GV } from '../../shared/constants/names';
-import {  GVConfigNav, GVNav } from "../store/global";
+import TheNewestItem from "./TheSidebar/TheNewestItem"
+import { NAV } from "../constants/names"
+import { CONFIG, GV } from "../../shared/constants/names"
+import { GVConfigNav, GVNav } from "../store/global"
 
 const styles = {
   container: {},
+  headerContainer: {
+    padding: "30px 0 0 50px",
+    boxSizing: "border-box"
+  },
   mainContainer: {
     display: "flex",
-    flexWrap: "wrap",
-    margin: "50px 0 0 0"
+    // flexWrap: "wrap",
+    margin: "50px 0 0 0",
+    padding: '0 8%',
+    boxSizing: "border-box"
   },
   sidebarContainer: {
-    margin: "0 0 0 100px"
+    minWidth: "230px",
+    // boxSizing: "border-box"
+    margin: "0 5% 0 0",
   },
   listContainer: {
-    margin: "0 0 0 50px"
+    flex: "auto",
+    // padding: "0 5%",
+    // boxSizing: 'border-box',
   },
   copyrightContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    margin: "100px 0 15px 0",
+    display: "flex",
+    justifyContent: "center",
+    margin: "100px 0 15px 0"
+  },
+  "@media (max-width: 576px)": {
+    mainContainer: {
+      margin: "50px 0 0 0",
+      padding: '0',
+      flexDirection: 'column'
+    },
+    sidebarContainer: {
+      padding: "0 0 20px 0",
+      margin: "0 10px 0 10px",
+      boxSizing: "border-six",
+      borderBottom: "1px solid rgba(0,0,0,0.05)"
+    },
+    listContainer: {
+      padding: "0 20px",
+      margin: "20px 0 0 0",
+      boxSizing: "border-six"
+    },
+    copyrightContainer: {
+      margin: "50px 0 10px 0"
+    }
   }
 }
 
@@ -62,8 +93,10 @@ export default mapStateAndStyle(styles)(
         dispatch({ type: "app/UPDATE_SLOGAN", slogan })
         dispatch({ type: "app/UPDATE_NAV", [NAV]: GVNav })
 
-
-        dispatch( { type: 'app/UPDATE_ACTIVE_SEQUENCE', activeSequence: TheNewestItem.sequence } )
+        dispatch({
+          type: "app/UPDATE_ACTIVE_SEQUENCE",
+          activeSequence: TheNewestItem.sequence
+        })
       }
 
       localStore.setUpdateSymbol(symbolUpdatingLocalstorage)
@@ -74,7 +107,9 @@ export default mapStateAndStyle(styles)(
         <TheTest />
       ) : (
         <div className={c.container}>
-          <TheHeader />
+          <div className={c.headerContainer}>
+            <TheHeader />
+          </div>
           <div className={c.mainContainer}>
             <div className={c.sidebarContainer}>
               <TheSidebar />

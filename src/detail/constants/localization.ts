@@ -12,3 +12,9 @@ export const REPRINT_NOTE_DETAIL = getLangString( {
   the source, no commercial reprint`,
   [ CN ]: `作者版权所有，转载请注明出处，谢绝商业转载`
 } )
+
+
+export const HOME_PAGE = getLangString( {
+  [EN]: `Home`,
+  [CN]: `主页`
+} )

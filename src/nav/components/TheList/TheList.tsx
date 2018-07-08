@@ -6,11 +6,12 @@ const styles = {
     // width: '800px',
   },
   itemContainer:{
-    padding: '0 0 20px 0'
+    margin: '0 0 30px 0',
+    // borderBottom: '1px solid #ccc',
   }
 }
 
-export default mapStateAndStyle(styles)(
+ export default mapStateAndStyle(styles)(
   class TheList extends Component<any, any> {
     render() {
       const { list } = this.props

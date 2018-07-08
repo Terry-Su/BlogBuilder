@@ -5,7 +5,7 @@ import CategoryCell from "./CategoryCell"
 import { notEmptyString } from "../../../shared/utils/string"
 import { notNil } from "../../../shared/utils/lodash"
 import { POST_TIME } from "../../../shared/constants/localization"
-import { REPRINT_NOTE, REPRINT_NOTE_DETAIL } from "../../constants/localization"
+import { REPRINT_NOTE, REPRINT_NOTE_DETAIL, HOME_PAGE } from "../../constants/localization"
 import { MAX_ARTICLE_WITH } from "../../constants/styles"
 const styles = {
   container: {
@@ -21,12 +21,12 @@ const styles = {
   },
   categorySequence: {
     display: "flex",
-    justifyContent: "flex-end"
+    justifyContent: "flex-end",
     // color: "#21aff1"
   },
   tags: {
     display: "flex",
-    justifyContent: "flex-end"
+    justifyContent: "flex-end",
     // color: "#c64725"
   },
   reprintingNote: {
@@ -49,6 +49,7 @@ export default mapStateAndStyle(styles)(
             </div>
           ) : null}
           <div className={c.categorySequence}>
+           <CategoryCell name={ HOME_PAGE } />
             {categorySequence.map((name, key) => (
               <CategoryCell name={name} key={key} />
             ))}

@@ -4,19 +4,17 @@ import { appendBackInfoToUrl, removeBackInfoFromUrl } from '../../navUtils/url';
 import { POST_TIME } from '../../../shared/constants/localization';
 const styles = {
   name: {
-    fontSize: '20px',
     fontWeight: 'bold',
+    textDecoration: 'none',
     color: '#0071ea',
-    textDecoration: 'none'
   },
   property: {
     margin: '10px 0 0 0',
-    fontSize: '14px',
+    fontSize: '12px',
     // color: '#3d79f1'
   },
   introduction: {
     margin: '10px 0 0 0',
-    fontSize: '16px',
     // color: '#2166f1'
   }
 }

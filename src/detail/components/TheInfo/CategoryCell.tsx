@@ -3,7 +3,8 @@ import mapStateAndStyle from "../../../shared/utils/mapStateAndStyle"
 const styles = {
   container: {
     display: "inline-flex",
-    padding: "5px"
+    padding: "5px",
+    alignItems: "center"
   }
 }
 
