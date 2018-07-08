@@ -5,8 +5,13 @@ import CategoryCell from "./CategoryCell"
 import { notEmptyString } from "../../../shared/utils/string"
 import { notNil } from "../../../shared/utils/lodash"
 import { POST_TIME } from "../../../shared/constants/localization"
-import { REPRINT_NOTE, REPRINT_NOTE_DETAIL, HOME_PAGE } from "../../constants/localization"
+import {
+  REPRINT_NOTE,
+  REPRINT_NOTE_DETAIL,
+  HOME_PAGE
+} from "../../constants/localization"
 import { MAX_ARTICLE_WITH } from "../../constants/styles"
+import { homeUrl } from "../../store/global";
 const styles = {
   container: {
     width: "100%",
@@ -19,19 +24,23 @@ const styles = {
     justifyContent: "flex-end"
     // color: "#2166f1"
   },
+  homeLink: {
+    color: 'blue',
+    textDecoration: 'underline',
+  },
   categorySequence: {
     display: "flex",
-    justifyContent: "flex-end",
+    justifyContent: "flex-end"
     // color: "#21aff1"
   },
   tags: {
     display: "flex",
-    justifyContent: "flex-end",
+    justifyContent: "flex-end"
     // color: "#c64725"
   },
   reprintingNote: {
     display: "flex",
-    justifyContent: "flex-end",
+    justifyContent: "flex-end"
     // color: "#2166f1"
   }
 }
@@ -49,7 +58,9 @@ export default mapStateAndStyle(styles)(
             </div>
           ) : null}
           <div className={c.categorySequence}>
-           <CategoryCell name={ HOME_PAGE } />
+            <a className={c.homeLink} href={ homeUrl }>
+              <CategoryCell name={HOME_PAGE} />
+            </a>
             {categorySequence.map((name, key) => (
               <CategoryCell name={name} key={key} />
             ))}

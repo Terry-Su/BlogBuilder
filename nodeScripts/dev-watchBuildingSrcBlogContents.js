@@ -25,6 +25,7 @@ function build() {
         '<script src="/scripts/nav.bundle.js"></script>'
       ],
       symbolUpdatingLocalstorage: new Date(),
+      home: '/'
     },
     
     detail: {
