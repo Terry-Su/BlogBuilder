@@ -15,11 +15,13 @@ import { MAX_ARTICLE_WITH } from "../constants/styles";
 
 const styles = {
   container: {
+    width: '100%',
     display: "flex",
     flexDirection: "column",
     alignItems: "center"
   },
   articleContainer: {
+    width: '100%',
     padding: '0 10px',
     boxSizing: 'border-box', 
   },

@@ -4,12 +4,14 @@ import TheTitle from "./TheTitle"
 import TheBody from "./TheBody"
 const styles = {
   container: {
+    width: '100%',
     fontSize: '16px',   
   },
   titleContainer: {
     margin: "50px 0 0 0"
   },
   bodyContainer: {
+    width: '100%',
     margin: "30px 0 0 0"
   }
 }
