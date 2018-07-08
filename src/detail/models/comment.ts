@@ -16,7 +16,7 @@ export default {
 
         if ( data ) {
           const comments = filterGithubIssueComments( data )
-          put( { type: 'UPDATE_COMMENTS', comments } )
+          yield put( { type: 'UPDATE_COMMENTS', comments } )
         }
       }
     }

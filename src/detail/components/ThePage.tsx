@@ -10,13 +10,13 @@ import { GV } from "../../shared/constants/names"
 import { GVConfigDetail } from "../store/global"
 import { GVData } from "../../shared/store/global"
 import TheDisqus from "./Comment/TheDisqus"
-import TheGithubIssueComment from "./Comment/TheGithubIssueComment/TheGithubIssueComment";
+import TheGithubIssueComment from "./Comment/TheGithubIssueComment/TheGithubIssueComment"
 
 const styles = {
   container: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
   },
   infoContainer: {
     margin: "20px 0 0 0"
@@ -30,7 +30,7 @@ const styles = {
   }
 }
 
-const testing: boolean = true
+const testing: boolean = false
 
 export default mapStateAndStyle(styles)(
   class ThePage extends Component<any, any> {
@@ -49,7 +49,6 @@ export default mapStateAndStyle(styles)(
         <TheTest />
       ) : (
         <div className={c.container}>
-          <TheGithubIssueComment />
           <div className={c.articleContainer}>
             <TheArticle />
           </div>
@@ -58,6 +57,7 @@ export default mapStateAndStyle(styles)(
           </div>
 
           <div className={c.disqusContainer}>
+            <TheGithubIssueComment />
             <TheDisqus />
           </div>
 
