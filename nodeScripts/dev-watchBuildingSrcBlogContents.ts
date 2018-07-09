@@ -1,3 +1,5 @@
+import { KATEX_JS_URL, KATEX_CSS_URL } from "./constants/urls";
+
 const PATH = require("path")
 const {default: buildBlogContents} = require("../../BlogContentsBuilder/build/index")
 const gulp = require('gulp')
@@ -36,7 +38,9 @@ function build() {
       ],
       commentRoot: 'https://api.github.com/repos/terry-su/tsblogcomments-en/issues/',
       commentPageRoot: 'https://github.com/Terry-Su/TSBlogComments-En/issues/',
-      home: '/'
+      home: '/',
+      mathCssUrl: KATEX_JS_URL,
+      mathJsUrl: KATEX_CSS_URL,
     },
 
     
