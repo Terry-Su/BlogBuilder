@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import mapStateAndStyle from "../../../../shared/utils/mapStateAndStyle"
+import { formatNormalDate } from "../../../../shared/utils/date";
 
 const styles = {
   container: {
@@ -50,7 +51,7 @@ export default mapStateAndStyle(styles)(
       const { classes: c, data = {} } = this.props
       const { avatorUrl, name, createTime, updateTime, content } = data
 
-      const time = new Date(createTime).toTimeString()
+      const time = formatNormalDate( new Date(createTime) )
 
       return (
         <div className={c.container}>
@@ -64,7 +65,7 @@ export default mapStateAndStyle(styles)(
           <div className={c.mainContainer}>
             <div className={c.titleContainer}>
               <span className={c.title}>{ name }</span>
-              <span className={c.time}>{ createTime }</span>
+              <span className={c.time}>{ time }</span>
             </div>
             <div className={c.contentContainer} dangerouslySetInnerHTML={{
               __html: content
