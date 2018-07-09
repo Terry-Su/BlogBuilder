@@ -32,8 +32,7 @@ app.get( "/", ( req, res ) => {
 } )
 
 app.get( "/detail", ( req, res ) => {
-  // res.sendFile( PATH.resolve( __dirname, 'build/blogsOutputExceptNavHtml/details/test.html' ) )
-  res.sendFile( PATH.resolve( __dirname, 'build/blogsOutputExceptNavHtml/details/__gist---es6-fetch-usage.html' ) )
+  res.sendFile( PATH.resolve( __dirname, 'build/blogsOutputExceptNavHtml/details/test.html' ) )
 } )
 
 // app.get( "/props.json", ( req, res ) => {

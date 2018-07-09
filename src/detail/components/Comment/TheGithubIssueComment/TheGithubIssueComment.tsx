@@ -3,6 +3,7 @@ import mapStateAndStyle from "../../../../shared/utils/mapStateAndStyle"
 import CommentBox from "./CommentBox"
 import { githubIssueCommentsUrl } from "../../../store/global"
 import { isGithubCommentsEmpty } from "../../../models/comment"
+import { BE_THE_FIRST_TO_COMMENT, BE_THE_FIRST_TO_COMMENT_ON_GITHUB, YOU_CAN_ALSO_COMMENT_ON_GITHUB, WRITE_A_COMMENT } from "../../../constants/localization";
 
 const styles = {
   container: {
@@ -38,7 +39,7 @@ export default mapStateAndStyle(styles)(
                 className={c.link}
                 href={githubIssueCommentsUrl}
               >
-                { doesDisqusWork ? 'Be the first to comment on github': 'Be the first to comment' }
+                { doesDisqusWork ? BE_THE_FIRST_TO_COMMENT_ON_GITHUB: BE_THE_FIRST_TO_COMMENT }
               </a>
             ) : (
               <a
@@ -46,7 +47,7 @@ export default mapStateAndStyle(styles)(
                 href={githubIssueCommentsUrl}
               >
                 {
-                  doesDisqusWork ? 'You can also comment on github': 'Write a comment'
+                  doesDisqusWork ? YOU_CAN_ALSO_COMMENT_ON_GITHUB: WRITE_A_COMMENT
                 }
               </a>
             )}
