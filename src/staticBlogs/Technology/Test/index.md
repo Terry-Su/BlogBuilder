@@ -1,3 +1,7 @@
+```math
+A ( \vartriangle ) = | v \perp w | / 2t
+```
+
 ```js
 fetch('./data/test.html')
 	.then(function (response) {

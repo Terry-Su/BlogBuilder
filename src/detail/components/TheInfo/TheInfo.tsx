@@ -12,6 +12,7 @@ import {
 } from "../../constants/localization"
 import { MAX_ARTICLE_WITH } from "../../constants/styles"
 import { homeUrl } from "../../store/global";
+import { GVData } from "../../../shared/store/global";
 const styles = {
   container: {
     width: "100%",
@@ -52,8 +53,8 @@ const styles = {
 export default mapStateAndStyle(styles)(
   class TheInfo extends Component<any, any> {
     render() {
-      const { classes: c, app } = this.props
-      const { createTime, categorySequence, tags } = app
+      const { classes: c } = this.props
+      const { createTime, categorySequence, tags } = GVData
       return (
         <div className={c.container}>
           {notNil(createTime) && notEmptyString(createTime) ? (

@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import mapStateAndStyle from "../../../shared/utils/mapStateAndStyle";
+import { GVData } from "../../../shared/store/global";
 const styles = {
   container: {
     display: "flex",
@@ -14,8 +15,8 @@ const styles = {
 export default mapStateAndStyle( styles )(
   class TheTitle extends Component<any, any> {
     render() {
-      const { classes: c, app } = this.props
-      const { name } = app
+      const { classes: c } = this.props
+      const { name } = GVData
       return <div className={c.container}>
           { name }
       </div>

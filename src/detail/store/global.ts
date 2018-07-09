@@ -14,4 +14,13 @@ export const githubIssueCommentsUrl = getGithubIssuePageUrl(
 )
 export const shouldShowGithubIsuueComments = notNil( githubIssueCommentsUrl )
 
-export const homeUrl = GVConfigDetail[ HOME ] || '#'
+export const homeUrl = GVConfigDetail[ HOME ] || "#"
+
+const { name, createTime, categorySequence, tags } = GVData
+export { name, createTime, categorySequence, tags }
+
+
+const markedHtmlDom = document.getElementById( "markedHtml" )
+export const markedHtml = markedHtmlDom ? markedHtmlDom.innerHTML : ""
+
+

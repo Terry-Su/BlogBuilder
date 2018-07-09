@@ -25,7 +25,7 @@ function build() {
         '<script src="/scripts/nav.bundle.js"></script>'
       ],
       symbolUpdatingLocalstorage: new Date(),
-      home: '/'
+      
     },
     
     detail: {
@@ -35,7 +35,8 @@ function build() {
         '<script src="/scripts/detail.bundle.js"></script>'
       ],
       commentRoot: 'https://api.github.com/repos/terry-su/tsblogcomments-en/issues/',
-      commentPageRoot: 'https://github.com/Terry-Su/TSBlogComments-En/issues/'
+      commentPageRoot: 'https://github.com/Terry-Su/TSBlogComments-En/issues/',
+      home: '/'
     },
 
     

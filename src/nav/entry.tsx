@@ -8,6 +8,8 @@ import localStore from "./store/localStore"
 import { isBackFromOnePage, removeBackInfoFromUrl } from './navUtils/url';
 import { shouldLocalstorageUpdate } from './navUtils/initialize';
 
+
+
 const app = dva({
   onStateChange: () => {
     // let category = null
