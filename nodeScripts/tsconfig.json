@@ -5,6 +5,7 @@
     "types": ["node"]
   },
   "include": [
-    "./**/*"
+    "./**/*",
+    "./../../Terry-Su.github.io/scripts/constants/**/*"
   ]
 }
