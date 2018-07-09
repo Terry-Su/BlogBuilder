@@ -43,7 +43,7 @@ const styles = {
   },
   "@media (max-width: 576px)": {
     headerContainer: {
-      padding: "30px 0 0 50px",
+      padding: "30px 0 0 30px",
       boxSizing: "border-box"
     },
     mainContainer: {

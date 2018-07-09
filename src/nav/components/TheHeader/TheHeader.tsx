@@ -11,7 +11,7 @@ const styles = {
     fontSize: "16px"
   },
   logo: {
-    fontSize: "28px",
+    fontSize: "36px",
     textAlign: "left",
     fontWeight: "bold",
     color: MAIN_FILL_COLOR
