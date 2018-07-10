@@ -7,8 +7,10 @@ import { mapValues, find, pick, cloneDeep } from 'lodash';
 import localStore from "./store/localStore"
 import { isBackFromOnePage, removeBackInfoFromUrl } from './navUtils/url';
 import { shouldLocalstorageUpdate } from './navUtils/initialize';
+import { applyStyle } from "../shared/utils/dom";
+import { CSS_STYLE } from "../shared/constants/localization";
 
-
+applyStyle( CSS_STYLE )
 
 const app = dva({
   onStateChange: () => {

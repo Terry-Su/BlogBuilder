@@ -14,8 +14,8 @@ build()
 gulp.watch( `${origin}/**`, build )
 
 function build() {
-  const lang = CN
-  // const lang = EN
+  // const lang = CN
+  const lang = EN
   const textLogo = "Custom"
   const slogan = "Custom slogan"
   buildBlogContents( origin, output, {

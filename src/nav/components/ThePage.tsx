@@ -12,6 +12,7 @@ import TheNewestItem from "./TheSidebar/TheNewestItem"
 import { NAV } from "../constants/names"
 import { CONFIG, GV } from "../../shared/constants/names"
 import { GVConfigNav, GVNav } from "../store/global"
+import { loadCssLink } from "../../shared/utils/dom";
 
 const styles = {
   container: {},

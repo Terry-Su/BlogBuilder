@@ -56,7 +56,7 @@ module.exports = ( env, argv ) => {
             "sass-loader" // compiles Sass to CSS
           ]
         },
-        { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=10000000' }
+        { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000000' }
       ]
     },
     resolve: {

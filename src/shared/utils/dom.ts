@@ -13,3 +13,10 @@ export function loadScript(src, callback = () => {}) {
   script.onload = callback
   document.head.appendChild(script)
 }
+
+export function applyStyle(styleText) {
+  const style = document.createElement('style')
+  style.type = 'text/css';
+  style.appendChild(document.createTextNode(styleText));
+  document.head.appendChild(style)
+}

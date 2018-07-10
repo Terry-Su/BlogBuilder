@@ -15,7 +15,7 @@ const styles = {
     textAlign: "center"
   },
   link: {
-    color: "blue"
+    // color: "blue"
   },
   commentBoxContainer: {
     margin: "0 0 20px 0"

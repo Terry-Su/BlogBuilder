@@ -2,6 +2,7 @@ const express = require( 'express' )
 const PATH = require( 'path' )
 const webpack = require( 'webpack' )
 const webpackConfig = require( './webpack.config.js' )
+const root = PATH.resolve(__dirname, './')
 const buildDirectory = PATH.resolve(__dirname, './build')
 
 const combinedWebpackConfig = {
@@ -26,6 +27,7 @@ app.use(
 app.use( require( 'webpack-hot-middleware' )( compiler ) )
 
 app.use( express.static( buildDirectory ) )
+app.use( express.static( root ) )
 
 app.get( "/", ( req, res ) => {
   res.sendFile( PATH.resolve( __dirname, 'build/index.html' ) )

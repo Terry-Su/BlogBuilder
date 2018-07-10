@@ -1,13 +1,4 @@
-```math
-A ( \vartriangle ) = | v \perp w | / 2t
-```
-
-```js
-fetch('./data/test.html')
-	.then(function (response) {
-		return response.text()    // return a promise 
-	})
-	.then(function (body) {
-		console.log( body )    // log: html content
-	})
-```
+/ | Rule | Suitable Scene
+---|---|---
+**Winding** number | [Nonezero-rule](https://en.wikipedia.org/wiki/Nonzero-rule) | All polygons
+Crossing Number | [Even-odd rule](https://en.wikipedia.org/wiki/Even%E2%80%93odd_rule) |  Polygons with simple curves

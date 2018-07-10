@@ -25,8 +25,8 @@ const styles = {
     // color: "#2166f1"
   },
   homeLink: {
-    color: 'blue',
-    textDecoration: 'underline',
+    // color: 'blue',
+    // textDecoration: 'underline',
   },
   categorySequence: {
     display: "flex",

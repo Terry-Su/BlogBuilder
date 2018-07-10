@@ -1,0 +1,17 @@
+table {
+  max-width: 100%;
+  box-sizing: border-box;
+  border-collapse: collapse;
+}
+
+
+th,
+td {
+  padding: 10px 10px;
+  border: 1px solid #ccc;
+  /* border-bottom: 1px solid #ccc; */
+}
+
+table {
+  border: 1px solid #ccc;
+}

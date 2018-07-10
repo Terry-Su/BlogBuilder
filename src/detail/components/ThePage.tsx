@@ -4,19 +4,18 @@ import TheArticle from "./TheArticle/TheArticle"
 import TheInfo from "./TheInfo/TheInfo"
 import TheTest from "./TheTest/TheTest"
 import TheCopyright from "../../shared/components/TheCopyright"
-import "../../shared/assets/css/main.scss"
-
-// import 'highlight.js/styles/atom-one-light.css'
-import "highlight.js/styles/vs2015.css"
-
-
 import { GV } from "../../shared/constants/names"
 import { GVConfigDetail, shouldShowGithubIsuueComments } from "../store/global"
 import { GVData } from "../../shared/store/global"
 import TheDisqus from "./Comment/TheDisqus"
 import TheGithubIssueComment from "./Comment/TheGithubIssueComment/TheGithubIssueComment"
 import { MAX_ARTICLE_WITH } from "../constants/styles";
-import { loadCssLink } from "../../shared/utils/dom";
+
+
+
+
+
+
 
 
 
@@ -58,7 +57,6 @@ const styles = {
 }
 
 const testing: boolean = false
-
 export default mapStateAndStyle(styles)(
   class ThePage extends Component<any, any> {
     componentDidMount() {

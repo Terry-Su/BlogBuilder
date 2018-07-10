@@ -7,7 +7,6 @@ const styles = {
     color: "#979797"
   },
   link: {
-    color: "#2166f1",
     textDecoration: "underline",
 
     '&:hover': {
