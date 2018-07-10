@@ -2,7 +2,7 @@
    "eslint.validate": [
     "javascript",
     "javascriptreact",
-    { "language": "typescript", "autoFix": true },
+    { "language": "typescript" },
   ],
   "prettier.eslintIntegration": true,
 }

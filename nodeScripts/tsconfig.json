@@ -6,6 +6,6 @@
   },
   "include": [
     "./**/*",
-    "./../../Terry-Su.github.io/scripts/constants/**/*"
+    "./../../Terry-Su.github.io/scripts/**/*"
   ]
 }
