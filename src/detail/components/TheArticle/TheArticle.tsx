@@ -5,6 +5,8 @@ import TheBody from "./TheBody"
 const styles = {
   container: {
     width: '100%',
+    boxSizing: "border-box",
+    padding: "0 20px",
   },
   titleContainer: {
     margin: "50px 0 0 0"

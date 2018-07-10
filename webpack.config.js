@@ -2,6 +2,7 @@ const PATH = require( "path" )
 const CopyWebpackPlugin = require( "copy-webpack-plugin" )
 const HtmlWebpackPlugin = require( "html-webpack-plugin" )
 const CleanWebpackPlugin = require( "clean-webpack-plugin" )
+const BundleAnalyzerPlugin = require( "webpack-bundle-analyzer" ).BundleAnalyzerPlugin
 
 const buildDirectory = PATH.resolve( __dirname, "./build" )
 
@@ -56,7 +57,10 @@ module.exports = ( env, argv ) => {
             "sass-loader" // compiles Sass to CSS
           ]
         },
-        { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000000' }
+        {
+          test  : /\.(png|woff|woff2|eot|ttf|svg)$/,
+          loader: "url-loader?limit=100000000"
+        }
       ]
     },
     resolve: {
@@ -65,7 +69,9 @@ module.exports = ( env, argv ) => {
     devtool: isProduction ? false : "source-map",
     plugins: [].concat(
       isProduction ?
-        [ new CleanWebpackPlugin( [ "build" ] ) ] :
+        [ new CleanWebpackPlugin( [ "build" ] ),
+        // new BundleAnalyzerPlugin()
+       ] :
         [ new webpack.HotModuleReplacementPlugin() ]
     )
   }

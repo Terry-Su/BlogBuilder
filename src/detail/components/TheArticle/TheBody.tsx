@@ -2,12 +2,10 @@ import React, { Component } from "react"
 import mapStateAndStyle from "../../../shared/utils/mapStateAndStyle"
 import { MAX_ARTICLE_WITH } from "../../constants/styles"
 import hljs from "highlight.js"
-// import katex from "../../assets/js/katex.js"
 import { loadCssLink, loadScript } from "../../../shared/utils/dom"
 import { markedHtml, mathCssUrl, mathJsUrl } from "../../store/global"
 import { notNil } from "../../../shared/utils/lodash";
 
-// import '../../assets/css/katex.css'
 
 const styles = {
   container: {
@@ -18,8 +16,6 @@ const styles = {
   contentContainer: {
     width: "100%",
     maxWidth: MAX_ARTICLE_WITH,
-    padding: "0 20px",
-    boxSizing: "border-box"
   }
 }
 hljs.initHighlightingOnLoad()

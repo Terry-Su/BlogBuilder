@@ -4,7 +4,9 @@ import Space from "./Space"
 const styles = {
   container: {
     fontSize: '12px',    
-    color: "#979797"
+    color: "#979797",
+    textAlign: 'center',
+    lineHeight: '1.5',
   },
   link: {
     textDecoration: "underline",

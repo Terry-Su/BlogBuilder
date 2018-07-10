@@ -12,13 +12,6 @@ import TheGithubIssueComment from "./Comment/TheGithubIssueComment/TheGithubIssu
 import { MAX_ARTICLE_WITH } from "../constants/styles";
 
 
-
-
-
-
-
-
-
 const styles = {
   container: {
     width: '100%',
