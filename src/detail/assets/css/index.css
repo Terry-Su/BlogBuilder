@@ -22,6 +22,7 @@ table {
 iframe {
   width: 100%;
   height: 300px;
+  border: none;
 }
 
 ul li, ul ol {
