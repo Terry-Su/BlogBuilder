@@ -6,6 +6,7 @@ import modelsMap from "./models/index"
 import { mapValues } from "lodash"
 import { applyStyle } from "../shared/utils/dom";
 import { CSS_STYLE } from "../shared/constants/localization";
+import { initializeIframeResizing } from "./utils/dom";
 
 import "../shared/assets/css/main.scss"
 import "highlight.js/styles/vs2015.css"
@@ -24,6 +25,7 @@ app.router(() => <TheHotAppComponent />)
 
 app.start("#app")
 
+initializeIframeResizing()
 
 function model() {
   mapValues(modelsMap, (model: any) => app.model(model))
