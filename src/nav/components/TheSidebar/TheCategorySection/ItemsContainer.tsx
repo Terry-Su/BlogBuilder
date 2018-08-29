@@ -93,8 +93,8 @@ const ItemsContainer = mapStateAndStyle(styles)(
               shouldExpand={shouldExpand}
               interval={interval}
               showIcon={shouldShowMore}
-              canNotBeActivated={!isLastBlogsDirectory}
-              clickOnlyToExpand={!isLastBlogsDirectory}
+              // canNotBeActivated={!isLastBlogsDirectory}
+              // clickOnlyToExpand={!isLastBlogsDirectory}
               active={ this.getIsCategoryInfoSequenceActive( categoryInfo ) }
               onExpandIconClick={this.onItemExpandIconClick}
               onNameClick={() => this.onItemNameClick(categoryInfo)}
