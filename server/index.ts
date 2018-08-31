@@ -12,7 +12,19 @@ import { __DEV__ } from "./global"
 const compiler = webpack( webpackConfig )
 
 if ( !__DEV__ ) {
-  compiler.run()
+  compiler.run( ( err, stats ) => {
+    if ( err ) {
+      console.error( err )
+      return
+    }
+
+    console.log(
+      stats.toString( {
+        chunks: false,
+        colors: true
+      } )
+    )
+  } )
 }
 
 if ( __DEV__ ) {
