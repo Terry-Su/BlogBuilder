@@ -1,3 +1,7 @@
+> ```math
+> x' =  x \cdot cos \theta - y \cdot sin \theta + xc
+> ```
+
 ```js
 function a() {
 

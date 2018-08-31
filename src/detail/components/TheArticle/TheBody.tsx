@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import mapStateAndStyle from "../../../shared/utils/mapStateAndStyle"
 import { MAX_ARTICLE_WITH } from "../../constants/styles"
 import { markedHtml } from "../../store/global"
+import katex from "../../detailUtils/katex";
 
 const styles = {
   container: {
@@ -21,7 +22,7 @@ export default mapStateAndStyle(styles)(
       super(props)
     }
     componentDidMount() {
-     
+      katex()
     }
     render() {
       const { classes: c } = this.props

@@ -1,5 +1,6 @@
 import * as PATH from "path"
 import { __DEV__ } from "../global"
+import { OUTPUT_NAV_FILE_NAME, OUTPUT_DETAIL_FILE_NAME } from "../constants/names"
 const CopyWebpackPlugin = require( "copy-webpack-plugin" )
 const HtmlWebpackPlugin = require( "html-webpack-plugin" )
 const CleanWebpackPlugin = require( "clean-webpack-plugin" )
@@ -12,16 +13,16 @@ const buildDirectory = PATH.resolve( __dirname, "../../build" )
 const webpack = require( "webpack" )
 
 module.exports = {
-  mode: __DEV__ ? 'development': 'production',
+  mode : __DEV__ ? "development" : "production",
   entry: {
-    "scripts/nav.bundle.js": [
+    [ `scripts/${ OUTPUT_NAV_FILE_NAME }` ]: [
       PATH.resolve( srcDirectory, "nav/entry.tsx" )
     ].concat(
       __DEV__ ?
         [ "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000" ] :
         []
     ),
-    "scripts/detail.bundle.js": [
+    [ `scripts/${ OUTPUT_DETAIL_FILE_NAME }` ]: [
       PATH.resolve( srcDirectory, "detail/entry.tsx" )
     ].concat(
       __DEV__ ?
@@ -67,6 +68,9 @@ module.exports = {
   plugins: [].concat(
     __DEV__ ?
       [ new webpack.HotModuleReplacementPlugin() ] :
-      [ new CleanWebpackPlugin( [ "build" ] ), new BundleAnalyzerPlugin() ]
+      [
+          // new CleanWebpackPlugin( [ buildDirectory ] ),
+          // new BundleAnalyzerPlugin(),
+        ]
   )
 }

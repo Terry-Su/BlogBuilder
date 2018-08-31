@@ -10,7 +10,7 @@
     "content": "ts-node --project server/tsconfig.json server/dev-watchBuildingSrcBlogContents",
     "cb": "ts-node --project nodeScripts/tsconfig.json nodeScripts/dev-watchBuildingSrcBlogContents",
     "test": "ts-node --project nodeScripts/tsconfig.json spec/jasmineEntry",
-    "copy": "ts-node --project server/tsconfig.json server/transportToBlogCDN.ts",
+    "copy": "ts-node --project server/tsconfig.json server/copyBuiltScriptsToBlogCDN.ts",
     "eslint": "eslint src/**/*.ts"
   },
   "repository": {
