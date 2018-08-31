@@ -11,13 +11,13 @@ import python from "highlight.js/lib/languages/python"
 export default function() {
   const langs = [
     { javascript },
-    // { css },
-    // { xml },
-    // { htmlbars },
-    // { typescript },
-    // { bash },
-    // { java },
-    // { python },
+    { css },
+    { xml },
+    { htmlbars },
+    { typescript },
+    { bash },
+    { java },
+    { python },
   ]
   
   langs.forEach( object => {
