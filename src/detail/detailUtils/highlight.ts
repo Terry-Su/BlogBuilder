@@ -1,6 +1,8 @@
 import hljs from "highlight.js/lib/highlight"
 import javascript from "highlight.js/lib/languages/javascript"
 import css from "highlight.js/lib/languages/css"
+import stylus from "highlight.js/lib/languages/stylus"
+import scss from "highlight.js/lib/languages/scss"
 import xml from "highlight.js/lib/languages/xml"
 import htmlbars from "highlight.js/lib/languages/htmlbars"
 import typescript from "highlight.js/lib/languages/typescript"
@@ -12,6 +14,8 @@ export default function() {
   const langs = [
     { javascript },
     { css },
+    { scss },
+    { stylus },
     { xml },
     { htmlbars },
     { typescript },

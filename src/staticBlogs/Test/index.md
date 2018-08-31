@@ -1,3 +1,35 @@
+```stylus
+.element
+  /* Position */
+  position absolute
+  left 0
+  top 0
+  
+  /* Display & Box model */
+  display flex
+  box-sizing border-box
+  width 500px
+  height 500px
+  padding 5px
+  margin 10px
+  border 1px solid grey
+  border-radius 5px
+  justify-content center
+  align-items center
+
+  /* Text */
+  font-size 16px
+  line-height 20px
+  font-weight bold
+  
+  /* Other */
+  cursor pointer
+  
+  /* Color */
+  color blue
+  background white
+```
+
 > ```math
 > x' =  x \cdot cos \theta - y \cdot sin \theta + xc
 > ```
