@@ -1,7 +1,6 @@
-import { cloneDeep } from "lodash"
 import SidebarItemProps from "../typings/SidebarItemProps"
 import { fetchCategoryBlogs } from "../services/index"
-import { isNil } from "lodash"
+import { cloneDeep, isNil } from "../../shared/utils/lodash";
 
 const defaultInfo: SidebarItemProps = null
 

@@ -1,4 +1,4 @@
-const PATH = require('path')
+import * as PATH from 'path'
 const FS = require('fs-extra')
 
 

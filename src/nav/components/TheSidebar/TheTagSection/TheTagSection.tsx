@@ -10,8 +10,8 @@ const styles = {
 }
 import Item from "../Item"
 import { NAV } from '../../../constants/names';
-import { isEqual } from 'lodash';
 import { NAV_SIDE_BAR_TAG } from "../../../constants/localization";
+import { isEqual } from "../../../../shared/utils/lodash";
 
 export default mapStateAndStyle(styles)(
   class TheTagSection extends Component<any, any> {

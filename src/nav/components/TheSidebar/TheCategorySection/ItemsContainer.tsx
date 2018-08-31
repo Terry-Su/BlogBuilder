@@ -2,8 +2,7 @@ import React, { Component } from "react"
 import Item from "../Item"
 import mapStateAndStyle from "../../../../shared/utils/mapStateAndStyle"
 import mapStyle from "../../../../shared/utils/mapStyle"
-import { isEqual } from 'lodash';
-
+import { isEqual } from "./../../../../shared/utils/lodash";
 const styles = {
   item: {
     // margin: '0 0 5px 0'

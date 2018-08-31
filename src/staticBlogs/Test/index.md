@@ -1,3 +1,10 @@
+```js
+function a() {
+
+}
+console.log(123)
+```
+
 ### What is margin collapsing?
 Margin collapsing, only for **top** and **bottom** margins, is a behavior that margins of **blocks** are collapsed(combined).
 Normally, collapsed margin's size is the largest of margins being collapsed.

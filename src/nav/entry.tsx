@@ -3,12 +3,12 @@ import { hot } from "react-hot-loader"
 import TheApp from "./components/TheApp"
 import dva, { connect, Router } from "dva"
 import modelsMap from "./models/index"
-import { mapValues, find, pick, cloneDeep } from 'lodash';
 import localStore from "./store/localStore"
 import { isBackFromOnePage, removeBackInfoFromUrl } from './navUtils/url';
 import { shouldLocalstorageUpdate } from './navUtils/initialize';
 import { applyStyle } from "../shared/utils/dom";
 import { CSS_STYLE } from "../shared/constants/localization";
+import { pick, mapValues, cloneDeep } from "../shared/utils/lodash";
 
 applyStyle( CSS_STYLE )
 

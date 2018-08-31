@@ -6,6 +6,7 @@
   },
   "include": [
     "./**/*",
+    "./../config.ts",
     "./../../Terry-Su.github.io/scripts/**/*"
   ]
 }

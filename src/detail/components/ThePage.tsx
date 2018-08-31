@@ -10,7 +10,9 @@ import { GVData } from "../../shared/store/global"
 import TheDisqus from "./Comment/TheDisqus"
 import TheGithubIssueComment from "./Comment/TheGithubIssueComment/TheGithubIssueComment"
 import { MAX_ARTICLE_WITH } from "../constants/styles";
+import highlight from "../detailUtils/highlight";
 
+highlight()
 
 const styles = {
   container: {

@@ -1,4 +1,4 @@
-import { cloneDeep } from 'lodash';
+import { cloneDeep } from "../../shared/utils/lodash";
 
 export const combineLocalCategoryAndIncomingCategory= (localCategory, category) => {
   try {

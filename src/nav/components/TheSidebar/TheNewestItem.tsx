@@ -2,8 +2,8 @@ import React, { Component } from "react"
 import mapStateAndStyle from "../../../shared/utils/mapStateAndStyle"
 import Item from "./Item"
 import { NAV } from '../../constants/names';
-import { isEqual } from "lodash";
 import { NAV_SIDE_BAR_THE_NEWEST } from "../../constants/localization";
+import { isEqual } from "../../../shared/utils/lodash";
 const styles = {}
 
 export default mapStateAndStyle(styles)(
