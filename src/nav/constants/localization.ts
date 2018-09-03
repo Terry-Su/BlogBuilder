@@ -14,7 +14,7 @@ export const NAV_SIDE_BAR_TAG = getLangString( {
 
 export const SWITCH_LANG_ICON_URL = getLangString( {
   [ EN ]: "中文博客",
-  [ CN ]: "En Blog"
+  [ CN ]: "EN Blog"
 } )
 
 export const SWITCH_LANG_ICON_LINK = getLangString( {
