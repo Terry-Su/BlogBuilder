@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import mapStateAndStyle from "../utils/mapStateAndStyle"
 import Space from "./Space"
+import { GITHUB_URL } from "../constants/urls";
 const styles = {
   container: {
     fontSize: '12px',    
@@ -26,7 +27,7 @@ export default mapStateAndStyle(styles)(
           <span>Copyright © 2017-2018</span>
           <Space />
           <Space />
-          <a className={c.link} href="https://github.com/Terry-Su">Terry Su</a> 
+          <a className={c.link} href={ GITHUB_URL }>Terry Su</a> 
           <Space />
           <Space />
           <span>

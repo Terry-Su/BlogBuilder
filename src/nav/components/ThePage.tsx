@@ -17,7 +17,7 @@ import { loadCssLink } from "../../shared/utils/dom";
 const styles = {
   container: {},
   headerContainer: {
-    padding: "30px 0 0 8%",
+    padding: "30px 8% 0 8%",
     boxSizing: "border-box"
   },
   mainContainer: {

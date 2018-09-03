@@ -1,6 +1,6 @@
-import { CN } from './../../shared/constants/names';
+import { CN } from './../../shared/constants/names'
 import { getLangString } from "../../shared/commonUtils/lang"
-import { EN } from "../../shared/constants/names";
+import { EN } from "../../shared/constants/names"
 
 export const NAV_SIDE_BAR_THE_NEWEST = getLangString( {
   [ EN ]: "The newest",
@@ -10,4 +10,14 @@ export const NAV_SIDE_BAR_THE_NEWEST = getLangString( {
 export const NAV_SIDE_BAR_TAG = getLangString( {
   [ EN ]: "Tag",
   [ CN ]: "标签"
+} )
+
+export const SWITCH_LANG_ICON_URL = getLangString( {
+  [ EN ]: "中文博客",
+  [ CN ]: "En Blog"
+} )
+
+export const SWITCH_LANG_ICON_LINK = getLangString( {
+  [ EN ]: "https://terry-su.github.io/cn",
+  [ CN ]: "https://terry-su.github.io"
 } )
