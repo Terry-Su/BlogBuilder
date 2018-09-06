@@ -11,6 +11,7 @@ import TheDisqus from "./Comment/TheDisqus"
 import TheGithubIssueComment from "./Comment/TheGithubIssueComment/TheGithubIssueComment"
 import { MAX_ARTICLE_WITH } from "../constants/styles";
 import highlight from "../detailUtils/highlight";
+import { initializeIframeResizing } from "../utils/dom";
 
 highlight()
 
