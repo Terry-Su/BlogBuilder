@@ -48,7 +48,7 @@ if ( __DEV__ ) {
 
   app.get( "/detail", ( req, res ) => {
     res.sendFile(
-      PATH.resolve( buildDirectory, "blogsOutputExceptNavHtml/details/test.html" )
+      PATH.resolve( buildDirectory, "blogsOutputExceptNavHtml/detail/test.html" )
     )
   } )
 

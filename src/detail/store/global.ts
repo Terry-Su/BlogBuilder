@@ -19,5 +19,5 @@ export const homeUrl = GVConfigDetail[ HOME ] || "#"
 const markedHtmlDom = document.getElementById( "markedHtml" )
 export const markedHtml = markedHtmlDom ? markedHtmlDom.innerHTML : ""
 
-const { mathCssUrl, mathJsUrl, mermaidJsUrl } = GVConfigDetail
-export  { mathCssUrl, mathJsUrl, mermaidJsUrl } 
+const { mathCssUrl, mathJsUrl, mermaidJsUrl, bottomText } = GVConfigDetail
+export  { mathCssUrl, mathJsUrl, mermaidJsUrl, bottomText } 

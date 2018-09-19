@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import mapStateAndStyle from "../../../shared/utils/mapStateAndStyle"
 import { MAX_ARTICLE_WITH } from "../../constants/styles"
-import { markedHtml } from "../../store/global"
+import { markedHtml, bottomText } from "../../store/global"
 import katex from "../../detailUtils/katex";
 import mermaid from "../../detailUtils/mermaid";
 
@@ -32,7 +32,7 @@ export default mapStateAndStyle(styles)(
         <div className={`${c.container}`}>
           <div
             className={`${c.contentContainer}`}
-            dangerouslySetInnerHTML={{ __html: markedHtml }}
+            dangerouslySetInnerHTML={{ __html: `${ markedHtml }<p>${ bottomText }</p>` }}
           />
         </div>
       )
