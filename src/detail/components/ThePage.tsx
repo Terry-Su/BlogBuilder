@@ -11,6 +11,8 @@ import TheDisqus from "./Comment/TheDisqus"
 import TheGithubIssueComment from "./Comment/TheGithubIssueComment/TheGithubIssueComment"
 import { MAX_ARTICLE_WITH } from "../constants/styles";
 import highlight from "../detailUtils/highlight";
+import TheHeader from "../../shared/components/TheHeader/TheHeader"
+
 
 highlight()
 
@@ -56,11 +58,11 @@ export default mapStateAndStyle(styles)(
   class ThePage extends Component<any, any> {
     componentDidMount() {
       const { markedHtml, dispatch } = this.props
-      const { name, createTime, categorySequence, tags } = GVData
-      dispatch({ type: "app/UPDATE_NAME", name })
-      dispatch({ type: "app/UPDATE_CREATE_TIME", createTime })
-      dispatch({ type: "app/UPDATE_CATEGORY_SEQUENCE", categorySequence })
-      dispatch({ type: "app/UPDATE_TAGS", tags })
+      const { name, createTime, categorySequence, tags, config } = GVData
+      const { slogan, textLogo } = config.detail
+
+      dispatch({ type: "app/UPDATE_TEXT_LOGO", textLogo })
+      dispatch({ type: "app/UPDATE_SLOGAN", slogan })
     }
     render() {
       const { classes: c } = this.props
@@ -68,6 +70,7 @@ export default mapStateAndStyle(styles)(
         <TheTest />
       ) : (
         <div className={c.container}>
+           <TheHeader showSwitchLangIcon={false} />
           <div className={c.articleContainer}>
             <TheArticle />
           </div>

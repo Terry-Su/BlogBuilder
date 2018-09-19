@@ -3,7 +3,7 @@ import mapStateAndStyle from "../../shared/utils/mapStateAndStyle"
 import TheTest from "./TheTest/TheTest"
 import TheSidebar from "./TheSidebar/TheSidebar"
 import TheList from "./TheList/TheList"
-import TheHeader from "./TheHeader/TheHeader"
+import TheHeader from "../../shared/components/TheHeader/TheHeader"
 import "../../shared/assets/css/main.scss"
 import TheCopyright from "../../shared/components/TheCopyright"
 import { shouldLocalstorageUpdate } from "../navUtils/initialize"
@@ -16,10 +16,6 @@ import { loadCssLink } from "../../shared/utils/dom";
 
 const styles = {
   container: {},
-  headerContainer: {
-    padding: "30px 8% 0 8%",
-    boxSizing: "border-box"
-  },
   mainContainer: {
     display: "flex",
     // flexWrap: "wrap",
@@ -43,10 +39,6 @@ const styles = {
     margin: "100px 0 15px 0"
   },
   "@media (max-width: 576px)": {
-    headerContainer: {
-      padding: "30px 0 0 30px",
-      boxSizing: "border-box"
-    },
     mainContainer: {
       margin: "50px 0 0 0",
       padding: '0',
@@ -112,9 +104,10 @@ export default mapStateAndStyle(styles)(
         <TheTest />
       ) : (
         <div className={c.container}>
-          <div className={c.headerContainer}>
-            <TheHeader />
-          </div>
+          {/* <div className={c.headerContainer}>
+            
+          </div> */}
+          <TheHeader />
           <div className={c.mainContainer}>
             <div className={c.sidebarContainer}>
               <TheSidebar />

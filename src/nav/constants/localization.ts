@@ -12,12 +12,3 @@ export const NAV_SIDE_BAR_TAG = getLangString( {
   [ CN ]: "标签"
 } )
 
-export const SWITCH_LANG_ICON_URL = getLangString( {
-  [ EN ]: "中文博客",
-  [ CN ]: "EN Blog"
-} )
-
-export const SWITCH_LANG_ICON_LINK = getLangString( {
-  [ EN ]: "https://terry-su.github.io/cn",
-  [ CN ]: "https://terry-su.github.io"
-} )

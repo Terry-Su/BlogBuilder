@@ -1,7 +1,7 @@
-import { CN } from './../../shared/constants/names';
+import { CN } from './../../shared/constants/names'
 import { getLangString } from "../../shared/commonUtils/lang"
-import { EN } from "../../shared/constants/names";
-import { STYLE_FONT_LIBRE_BASKERVILLE, STYLE_JULIUS_SANS_ONE } from './styles';
+import { EN } from "../../shared/constants/names"
+import { STYLE_FONT_LIBRE_BASKERVILLE, STYLE_JULIUS_SANS_ONE } from './styles'
 
 export const POST_TIME = getLangString( {
   [ EN ]: "Posted",
@@ -13,14 +13,14 @@ export const POST_TIME = getLangString( {
 
 
 export const CSS_FONT = getLangString( {
-  [EN]: `
+  [ EN ]: `
   ${STYLE_FONT_LIBRE_BASKERVILLE}
   ${STYLE_JULIUS_SANS_ONE}
 `,
-  [CN]: `
+  [ CN ]: `
   ${STYLE_JULIUS_SANS_ONE}
 ` 
-})
+} )
 
 export const CSS_STYLE = getLangString( {
   [ EN ]: `
@@ -51,4 +51,20 @@ h6 {
   font-family: "Julius Sans One", "Microsoft Yahei", sans-serif;
 }
 `
+} )
+
+
+export const SWITCH_LANG_ICON_URL = getLangString( {
+  [ EN ]: "中文博客",
+  [ CN ]: "EN Blog"
+} )
+
+export const HOME_PAGE_URL = getLangString( {
+  [ EN ]: "/",
+  [ CN ]: "/cn"
+} )
+
+export const SWITCH_LANG_ICON_LINK = getLangString( {
+  [ EN ]: "https://terry-su.github.io/cn",
+  [ CN ]: "https://terry-su.github.io"
 } )
