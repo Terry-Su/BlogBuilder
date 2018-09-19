@@ -28,3 +28,15 @@ iframe {
 ul li, ul ol {
   line-height: 2;
 }
+
+
+.mermaid{
+  text-align: center;
+  color: white;
+  background: white;
+}
+
+.mermaid:not([data-processed]) {
+  /* color: #ddd; */
+  /* background: #ddd; */
+}

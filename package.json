@@ -51,6 +51,7 @@
     "html-webpack-plugin": "^3.2.0",
     "jasmine": "^2.9.0",
     "lodash": "^4.17.5",
+    "mermaid": "^8.0.0-rc.8",
     "node-sass": "^4.9.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

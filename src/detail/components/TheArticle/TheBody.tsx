@@ -3,6 +3,7 @@ import mapStateAndStyle from "../../../shared/utils/mapStateAndStyle"
 import { MAX_ARTICLE_WITH } from "../../constants/styles"
 import { markedHtml } from "../../store/global"
 import katex from "../../detailUtils/katex";
+import mermaid from "../../detailUtils/mermaid";
 
 const styles = {
   container: {
@@ -23,6 +24,7 @@ export default mapStateAndStyle(styles)(
     }
     componentDidMount() {
       katex()
+      mermaid()
     }
     render() {
       const { classes: c } = this.props
