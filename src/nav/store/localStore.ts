@@ -1,4 +1,4 @@
-import { LOCAL_STOREAGE_STORE_NAME, LOCAL_STOREAGE_UPDATE_SYMBOL_NAME } from './../constants/names';
+import { LOCAL_STOREAGE_STORE_NAME, LOCAL_STOREAGE_UPDATE_SYMBOL_NAME } from './../constants/names'
 class LocalStore {
   setItem( key, data ) {
     try {
@@ -14,7 +14,7 @@ class LocalStore {
       const json = JSON.parse( jsonString )
       return json
     } catch ( e ) {
-      console.log(e)
+      console.log( e )
       return null
     }
   }
@@ -26,10 +26,12 @@ class LocalStore {
     return this.getItem( LOCAL_STOREAGE_STORE_NAME )
   }
 
+  // Determine whether localStorage should update 
   setUpdateSymbol( updateSymbol ) {
     this.setItem( LOCAL_STOREAGE_UPDATE_SYMBOL_NAME, updateSymbol )
   }
 
+  // Determine whether localStorage should update
   getUpdateSymbol() {
     return this.getItem( LOCAL_STOREAGE_UPDATE_SYMBOL_NAME )
   }

@@ -10,7 +10,7 @@ import { applyStyle } from "../shared/utils/dom";
 import { CSS_STYLE } from "../shared/constants/localization";
 import { pick, mapValues, cloneDeep } from "../shared/utils/lodash";
 
-applyStyle( CSS_STYLE )
+// applyStyle( CSS_STYLE )
 
 const app = dva({
   onStateChange: () => {
