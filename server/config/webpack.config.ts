@@ -64,7 +64,11 @@ module.exports = {
   resolve: {
     extensions: [ ".ts", ".tsx", ".js" ]
   },
-  devtool: __DEV__ ? "source-map" : false,
+  devtool  : __DEV__ ? "source-map" : false,
+  externals: {
+    react      : 'React',
+    'react-dom': 'ReactDOM',
+  },
   plugins: [].concat(
     __DEV__ ?
       [ new webpack.HotModuleReplacementPlugin() ] :
